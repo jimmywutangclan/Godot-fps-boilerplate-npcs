@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dbol8i64138la"]
+
+[ext_resource type="Script" uid="uid://cl2f6fwo27d0n" path="res://Scripts/Objects/Patrol_NPC.gd" id="1_drken"]
+[ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="1_lfpb5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
+size = Vector3(1.8918579, 2.8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
+size = Vector3(6.691036, 2.7869873, 16.985056)
+
+[node name="CozyGlowNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel")]
+script = ExtResource("1_drken")
+Navigation_Agent = NodePath("NavigationAgent3D")
+Eyelevel = NodePath("Eyelevel")
+Vision_Distance = 30
+Aim_Distance = 30
+Walk_Speed = 5
+Run_Speed = 9
+Max_Cumulative_Time_Before_Chase = 3.0
+Max_Cumulative_Time_Before_Disengage_Chase = 5.0
+
+[node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
+transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
+shape = SubResource("BoxShape3D_drken")
+
+[node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=895603666]
+transform = Transform3D(0.3120905, 0, 0, 0, 0.3022939, 0, 0, 0, 1, -0.049999923, 0.0043239594, 1.4901161e-08)
+texture = ExtResource("1_lfpb5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=679986033]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1769655086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
+shape = SubResource("BoxShape3D_a4uf4")
+
+[node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bjvayi5kra4aw"]
+
+[ext_resource type="Script" uid="uid://7oio7q7lptxw" path="res://Scripts/Objects/Door.gd" id="1_7bf4s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i488a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rym06"]
+
+[sub_resource type="Animation" id="Animation_i488a"]
+resource_name = "CloseDoor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rym06"]
+resource_name = "OpenDoor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rl8t8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy38e"]
+_data = {
+&"CloseDoor": SubResource("Animation_i488a"),
+&"OpenDoor": SubResource("Animation_rym06"),
+&"RESET": SubResource("Animation_rl8t8")
+}
+
+[node name="Node3D" type="Node3D" unique_id=984706579 groups=["Interactible"]]
+
+[node name="Door" type="StaticBody3D" parent="." unique_id=1888628919 node_paths=PackedStringArray("Animation_Player") groups=["Interactible"]]
+script = ExtResource("1_7bf4s")
+Animation_Player = NodePath("../AnimationPlayer")
+Start_Open = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1774159343]
+transform = Transform3D(3.4071653, 0, 0, 0, 4.9884505, 0, 0, 0, 0.16239005, 1.7255365, 2.532013, -0.09136057)
+mesh = SubResource("BoxMesh_i488a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=752312384]
+transform = Transform3D(3.4728518, 0, 0, 0, 4.988, 0, 0, 0, 0.24887191, 1.7255365, 2.532013, -0.09136057)
+shape = SubResource("BoxShape3D_rym06")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=860480290]
+root_node = NodePath("../Door")
+libraries/ = SubResource("AnimationLibrary_oy38e")
+
+[connection signal="current_animation_changed" from="AnimationPlayer" to="Door" method="_on_animation_player_current_animation_changed"]

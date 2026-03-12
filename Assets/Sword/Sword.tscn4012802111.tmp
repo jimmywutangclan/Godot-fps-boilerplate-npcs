@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cywf48nyij2ty"]
+
+[ext_resource type="Script" uid="uid://b842f8yjqxrik" path="res://Scripts/Weapons/Swing_Melee.gd" id="1_6xnvn"]
+[ext_resource type="Texture2D" uid="uid://c8okxfono3crr" path="res://Assets/Sword/dragonscimi.png" id="1_kbr7c"]
+[ext_resource type="PackedScene" uid="uid://cfptfhm42uuqe" path="res://Assets/Sword/SwordDrop.tscn" id="3_m10yn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbr7c"]
+size = Vector3(0.06713867, 1.175354, 0.20483398)
+
+[sub_resource type="Animation" id="Animation_kbr7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6xnvn"]
+resource_name = "Shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336, 0.1, 0.18, 0.31, 0.39, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.05570303, 1.1497718, -1.1264569), Vector3(-0.01991841, 2.1733437, -1.486787), Vector3(-0.019918399, 2.7186892, -1.486787), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1, 0.18, 0.31, 0.39, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.6683308), Vector3(0, 0, -0.6683308), Vector3(0, 0, -0.6683308), Vector3(-1.4171985, 0, -0.6683308), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m10yn"]
+_data = {
+&"RESET": SubResource("Animation_kbr7c"),
+&"Shoot": SubResource("Animation_6xnvn")
+}
+
+[node name="Sword" type="Node3D" unique_id=1596530308 node_paths=PackedStringArray("Animation_Player", "Physics_Start", "Physics_End") groups=["Item"]]
+transform = Transform3D(1.0000005, 0, 0, 0, 0.99999964, 0, 0, 0, 0.9999995, 0, 0, 0)
+script = ExtResource("1_6xnvn")
+Item_Name = "Sword"
+Thumbnail = ExtResource("1_kbr7c")
+Damage = 35
+Spawn_On_Drop = ExtResource("3_m10yn")
+Animation_Player = NodePath("AnimationPlayer")
+Physics_Start = NodePath("PhysStart")
+Physics_End = NodePath("PhysEnd")
+Force_Multiplier = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1478010786]
+transform = Transform3D(-9.014233e-09, 0, 0.99999994, 0.09413541, 0.19945565, 1.9953234e-08, -0.18348266, 0.10233031, -3.889156e-08, -0.003, 0.3, 0)
+texture = ExtResource("1_kbr7c")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=83678998]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=562183914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01184082, 0.5101013, -0.24060059)
+shape = SubResource("BoxShape3D_kbr7c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1557489877]
+libraries/ = SubResource("AnimationLibrary_m10yn")
+
+[node name="PhysStart" type="Marker3D" parent="." unique_id=1859732674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57289594, -0.20721647)
+
+[node name="PhysEnd" type="Marker3D" parent="." unique_id=1569388644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57289594, -0.41813993)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

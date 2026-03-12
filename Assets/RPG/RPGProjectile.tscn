@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bmy7hhrfjp4k8"]
+
+[ext_resource type="Script" uid="uid://molj111qv05n" path="res://Scripts/Weapons/Rocket.gd" id="1_ayvgv"]
+[ext_resource type="PackedScene" uid="uid://dvf20g78wsrxq" path="res://Assets/RPG/Explosion.tscn" id="2_bpxp7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igbjw"]
+albedo_color = Color(1, 0.101960786, 1, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.79179657, 0.2817781, 0.61490935, 1)
+emission_energy_multiplier = 17.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igbjw"]
+size = Vector3(0.21940327, 0.23687363, 1.219532)
+
+[node name="Rocket" type="RigidBody3D" unique_id=1067080983]
+top_level = true
+collision_layer = 4
+collision_mask = 5
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_ayvgv")
+Damage = 85
+Explosion = ExtResource("2_bpxp7")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=520836962]
+transform = Transform3D(1, 0, 0, 0, -0.00050608715, -0.9999999, 0, 0.9999999, -0.00050608715, 0, -1.0502263e-06, 0.0020751953)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1217728037]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1168804158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.679794e-05, -0.00023460388, 0.0028972626)
+shape = SubResource("BoxShape3D_igbjw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

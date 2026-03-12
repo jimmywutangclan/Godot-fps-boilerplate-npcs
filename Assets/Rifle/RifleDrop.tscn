@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bl1v60wipeuu1"]
+
+[ext_resource type="Script" uid="uid://cnwsbp28f0r7t" path="res://Scripts/Items/ItemDrop.gd" id="1_n5puj"]
+[ext_resource type="Texture2D" uid="uid://cpv4piqq1xgdw" path="res://Assets/Rifle/rifle.png" id="2_f1fsh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5puj"]
+size = Vector3(4.3, 1.3000001, 0.42999998)
+
+[node name="RifleDrop" type="RigidBody3D" unique_id=508111821 groups=["ItemPickup"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_n5puj")
+Item_Name = "Rifle"
+Item_Type = "Weapon"
+Current_Ammo = 30
+Reserve_Ammo = 60
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356374304]
+transform = Transform3D(-0.052293397, 0, 0.5977168, 0, 0.6000003, 0, -0.5977169, 0, -0.052293386, 0, 0, 0)
+texture = ExtResource("2_f1fsh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=151851205]
+transform = Transform3D(-0.052293476, 0, 0.5977178, 0, 0.6000003, 0, -0.5977178, 0, -0.052293476, -0.012328343, -0.09000007, 0.031193158)
+shape = SubResource("BoxShape3D_n5puj")

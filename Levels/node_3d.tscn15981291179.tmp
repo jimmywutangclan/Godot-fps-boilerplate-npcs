@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bn74irxlg1emv"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/Player.tscn" id="1_aqvws"]
+[ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="2_kh3w1"]
+[ext_resource type="PackedScene" uid="uid://mgyracbsfm4k" path="res://Assets/Pistol/PistolDrop.tscn" id="3_r55in"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqvws"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_kh3w1"]
+sky_material = SubResource("ProceduralSkyMaterial_aqvws")
+
+[sub_resource type="Environment" id="Environment_r55in"]
+background_mode = 2
+sky = SubResource("Sky_kh3w1")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1412164605]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=522812942]
+environment = SubResource("Environment_r55in")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=982303203]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1898826528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.465569, 0.033172607, -6.360649)
+use_collision = true
+size = Vector3(57.358017, 0.1404419, 37.353683)
+
+[node name="ProtoController" parent="." unique_id=1200437311 instance=ExtResource("1_aqvws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2671134, 0)
+
+[node name="RPGDrop" parent="." unique_id=508111821 instance=ExtResource("2_kh3w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.673182, 3.1920326, 0)
+
+[node name="PistolDrop" parent="." unique_id=2108531470 instance=ExtResource("3_r55in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3553934, 2.1467137, 0)

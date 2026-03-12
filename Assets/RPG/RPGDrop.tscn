@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://50iugj1rj5hs"]
+
+[ext_resource type="Script" uid="uid://cnwsbp28f0r7t" path="res://Scripts/Items/ItemDrop.gd" id="1_c802u"]
+[ext_resource type="Texture2D" uid="uid://cjgegh3i8g2r8" path="res://Assets/RPG/rocketlauncher.png" id="2_hc4g0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5puj"]
+size = Vector3(10.862256, 1.3000001, 0.42999998)
+
+[node name="RPGDrop" type="RigidBody3D" unique_id=508111821 groups=["ItemPickup"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_c802u")
+Item_Name = "RPG"
+Item_Type = "Weapon"
+Current_Ammo = 3
+Reserve_Ammo = 9
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356374304]
+transform = Transform3D(-0.052293397, 0, 0.5977168, 0, 0.6000003, 0, -0.5977169, 0, -0.052293386, 0, 0, 0)
+texture = ExtResource("2_hc4g0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=151851205]
+transform = Transform3D(-0.04818699, 0, 1.1342149, 0, 1.4126534, 0, -0.5507805, 0, -0.09923083, -0.08115362, -0.09000007, 0.044701338)
+shape = SubResource("BoxShape3D_n5puj")

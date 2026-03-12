@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://x3rgkxmbqaot"]
+
+[ext_resource type="Script" uid="uid://dk1eis54avmc2" path="res://Scripts/Items/AmmoBox.gd" id="1_3dcvk"]
+[ext_resource type="Texture2D" uid="uid://cpv4piqq1xgdw" path="res://Assets/Rifle/rifle.png" id="2_jf0g8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4dn3"]
+albedo_texture = ExtResource("2_jf0g8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hmhl"]
+size = Vector3(0.6886139, 0.27449036, 1.0834961)
+
+[node name="RifleAmmoBox" type="RigidBody3D" unique_id=1264254395 groups=["AmmoBox"]]
+script = ExtResource("1_3dcvk")
+Item_Name = "Rifle"
+Reserve_Ammo = 45
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1948573964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04559326, 0.049682617, 0)
+size = Vector3(0.6016846, 0.2121582, 1)
+material = SubResource("StandardMaterial3D_s4dn3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1575122269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054283142, 0.07221222, 0.0031738281)
+shape = SubResource("BoxShape3D_2hmhl")

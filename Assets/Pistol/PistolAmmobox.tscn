@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://crhkdidukn4h7"]
+
+[ext_resource type="Script" uid="uid://dk1eis54avmc2" path="res://Scripts/Items/AmmoBox.gd" id="1_6ij8o"]
+[ext_resource type="Texture2D" uid="uid://bcyomcw70uw7d" path="res://Assets/Pistol/pistol.png" id="2_28fef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4dn3"]
+albedo_texture = ExtResource("2_28fef")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hmhl"]
+size = Vector3(0.7188873, 0.27937317, 1.0615234)
+
+[node name="PistolAmmoBox" type="RigidBody3D" unique_id=1264254395 groups=["AmmoBox"]]
+script = ExtResource("1_6ij8o")
+Item_Name = "Pistol"
+Reserve_Ammo = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1948573964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04559326, 0.049682617, 0)
+size = Vector3(0.6016846, 0.2121582, 1)
+material = SubResource("StandardMaterial3D_s4dn3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1575122269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03816986, 0.074653625, -0.00048828125)
+shape = SubResource("BoxShape3D_2hmhl")

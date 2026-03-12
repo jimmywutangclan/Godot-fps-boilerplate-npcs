@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://mgyracbsfm4k"]
+
+[ext_resource type="Script" uid="uid://cnwsbp28f0r7t" path="res://Scripts/Items/ItemDrop.gd" id="1_xyj2b"]
+[ext_resource type="Texture2D" uid="uid://bcyomcw70uw7d" path="res://Assets/Pistol/pistol.png" id="2_up71e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xyj2b"]
+size = Vector3(0.19999999, 0.6, 1)
+
+[node name="PistolDrop" type="RigidBody3D" unique_id=2108531470 groups=["ItemPickup"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_xyj2b")
+Item_Name = "Pistol"
+Item_Type = "Weapon"
+Current_Ammo = 8
+Reserve_Ammo = 24
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=264912605]
+transform = Transform3D(2.264937e-09, 0, -0.030000001, 0, 0.029999997, 0, 0.03, 0, 2.2649371e-09, 0, 0, 0)
+texture = ExtResource("2_up71e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1326886954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1175871e-08, 0, 4.4423596e-17)
+shape = SubResource("BoxShape3D_xyj2b")

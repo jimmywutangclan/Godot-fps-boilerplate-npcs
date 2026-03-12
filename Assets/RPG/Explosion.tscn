@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dvf20g78wsrxq"]
+
+[ext_resource type="Texture2D" uid="uid://ow5b4e1upvfc" path="res://Assets/RPG/explosion.png" id="1_n6cis"]
+[ext_resource type="Script" uid="uid://h6mu7vd7mkj" path="res://Scripts/Weapons/Explosion.gd" id="1_yxcwl"]
+[ext_resource type="AudioStream" uid="uid://dx03ngsevyjrf" path="res://Assets/RPG/explosion.mp3" id="2_jp470"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7hgca"]
+
+[node name="Explosion" type="Area3D" unique_id=743774017 node_paths=PackedStringArray("Audio_Player")]
+collision_layer = 4
+collision_mask = 22
+script = ExtResource("1_yxcwl")
+Damage = 85
+Force_Modifier = 1.0
+Audio_Player = NodePath("AudioStreamPlayer3D")
+Explode_Sfx = ExtResource("2_jp470")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1538697452]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_7hgca")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1641133703]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_n6cis")
+
+[node name="Timer" type="Timer" parent="." unique_id=1055532521]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=2130302251]
+max_distance = 382.8
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

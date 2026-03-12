@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://bqo5ivfbm4woq"]
+
+[ext_resource type="Texture2D" uid="uid://cjgegh3i8g2r8" path="res://Assets/RPG/rocketlauncher.png" id="1_mwi04"]
+[ext_resource type="Script" uid="uid://dwnee2udghmqv" path="res://Scripts/Weapons/Projectile_Firearm.gd" id="1_naidd"]
+[ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="3_wgkvi"]
+[ext_resource type="PackedScene" uid="uid://bmy7hhrfjp4k8" path="res://Assets/RPG/RPGProjectile.tscn" id="4_2r37p"]
+[ext_resource type="AudioStream" uid="uid://bjw3rfc31hu1v" path="res://Assets/RPG/Cannon.mp3" id="5_35dca"]
+[ext_resource type="AudioStream" uid="uid://3v2ij36512yb" path="res://Assets/Shared_Weapons/Gun Reload Sound Effect.mp3" id="6_614qy"]
+
+[sub_resource type="Animation" id="Animation_ui4es"]
+resource_name = "Empty"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-2.6775786e-09, 1.6580627, 1.2417632e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfx8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t10h"]
+resource_name = "Reload"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-0.07555085, 1.6145127, 1.0455451), Vector3(-0.08593726, 1.5859873, 1.3956102), Vector3(0, 1.6580627, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ltwe"]
+resource_name = "Shoot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-0.0075961873, 1.6577322, 0.086936064), Vector3(-2.6775786e-09, 1.6580627, 1.2417632e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t10h"]
+_data = {
+&"Empty": SubResource("Animation_ui4es"),
+&"RESET": SubResource("Animation_yfx8c"),
+&"Reload": SubResource("Animation_6t10h"),
+&"Shoot": SubResource("Animation_8ltwe")
+}
+
+[node name="RPG" type="Node3D" unique_id=62736143 node_paths=PackedStringArray("Animation_Player", "Shootpoint", "Audio_Player") groups=["Item"]]
+script = ExtResource("1_naidd")
+Item_Name = "RPG"
+Thumbnail = ExtResource("1_mwi04")
+Current_Ammo = 3
+Max_Clip_Ammo = 3
+Reserve_Ammo = 9
+Max_Reserve_Ammo = 9
+Projectile_Velocity = 150
+Spawn_On_Drop = ExtResource("3_wgkvi")
+Animation_Player = NodePath("AnimationPlayer")
+Projectile_To_Load = ExtResource("4_2r37p")
+Shootpoint = NodePath("Shootpoint")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+Shoot_Sfx = ExtResource("5_35dca")
+Reload_Sfx = ExtResource("6_614qy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863438403]
+libraries/ = SubResource("AnimationLibrary_6t10h")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356374304]
+transform = Transform3D(-0.052293397, 0, 0.5977168, 0, 0.6000003, 0, -0.5977169, 0, -0.052293386, 0, 0, 0)
+texture = ExtResource("1_mwi04")
+
+[node name="Shootpoint" type="Marker3D" parent="." unique_id=153211759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2606082, 0.5526692, -3.1480556)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1961719055]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

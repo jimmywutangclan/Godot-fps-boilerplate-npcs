@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3v2ij36512yb"
+path="res://.godot/imported/Gun Reload Sound Effect.mp3-4779092e9b87b11d8ca4a3d20a19f6a9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Shared_Weapons/Gun Reload Sound Effect.mp3"
+dest_files=["res://.godot/imported/Gun Reload Sound Effect.mp3-4779092e9b87b11d8ca4a3d20a19f6a9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

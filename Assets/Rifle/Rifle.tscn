@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://ccmc5nvwwwvfj"]
+
+[ext_resource type="Texture2D" uid="uid://cpv4piqq1xgdw" path="res://Assets/Rifle/rifle.png" id="1_ui4es"]
+[ext_resource type="Script" uid="uid://vcpdxol0is8v" path="res://Scripts/Weapons/Hitscan_Firearm.gd" id="1_yfx8c"]
+[ext_resource type="PackedScene" uid="uid://bl1v60wipeuu1" path="res://Assets/Rifle/RifleDrop.tscn" id="2_8ltwe"]
+[ext_resource type="AudioStream" uid="uid://be08gp45x7vqc" path="res://Assets/Pistol/pistolshot.mp3" id="4_c2gkj"]
+[ext_resource type="AudioStream" uid="uid://3v2ij36512yb" path="res://Assets/Shared_Weapons/Gun Reload Sound Effect.mp3" id="5_pl4rj"]
+
+[sub_resource type="Animation" id="Animation_ui4es"]
+resource_name = "Empty"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-2.6775786e-09, 1.6580627, 1.2417632e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfx8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t10h"]
+resource_name = "Reload"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-0.07555085, 1.6145127, 1.0455451), Vector3(-0.08593726, 1.5859873, 1.3956102), Vector3(0, 1.6580627, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ltwe"]
+resource_name = "Shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.6580627, 0), Vector3(-0.0075961873, 1.6577322, 0.086936064), Vector3(-2.6775786e-09, 1.6580627, 1.2417632e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t10h"]
+_data = {
+&"Empty": SubResource("Animation_ui4es"),
+&"RESET": SubResource("Animation_yfx8c"),
+&"Reload": SubResource("Animation_6t10h"),
+&"Shoot": SubResource("Animation_8ltwe")
+}
+
+[node name="Rifle" type="Node3D" unique_id=62736143 node_paths=PackedStringArray("Animation_Player", "Audio_Player") groups=["Item"]]
+script = ExtResource("1_yfx8c")
+Item_Name = "Rifle"
+Thumbnail = ExtResource("1_ui4es")
+Current_Ammo = 30
+Max_Clip_Ammo = 30
+Reserve_Ammo = 60
+Max_Reserve_Ammo = 60
+Automatic = true
+Gun_Range = 50
+Damage = 28
+Force_Modifier = 1.0
+Spawn_On_Drop = ExtResource("2_8ltwe")
+Animation_Player = NodePath("AnimationPlayer")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+Shoot_Sfx = ExtResource("4_c2gkj")
+Reload_Sfx = ExtResource("5_pl4rj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863438403]
+libraries/ = SubResource("AnimationLibrary_6t10h")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=356374304]
+transform = Transform3D(-0.052293397, 0, 0.5977168, 0, 0.6000003, 0, -0.5977169, 0, -0.052293386, 0, 0, 0)
+texture = ExtResource("1_ui4es")
+
+[node name="Shootpoint" type="Marker3D" parent="." unique_id=153211759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.1, -1.4)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=564273614]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

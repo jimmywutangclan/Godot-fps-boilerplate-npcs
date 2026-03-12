@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://3x63vb450ukd"]
+
+[ext_resource type="Texture2D" uid="uid://biaxcdklurylf" path="res://Assets/Shared_Weapons/crossshair.png" id="1_hv2u8"]
+[ext_resource type="Script" uid="uid://r1snr7lhvbj8" path="res://Scripts/Weapons/Hitmarker.gd" id="2_52crb"]
+
+[node name="Sprite3D" type="Sprite3D" unique_id=1146667360]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+top_level = true
+modulate = Color(0.94509804, 0, 0.12156863, 1)
+billboard = 2
+texture = ExtResource("1_hv2u8")
+script = ExtResource("2_52crb")
+
+[node name="Timer" type="Timer" parent="." unique_id=1993119298]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

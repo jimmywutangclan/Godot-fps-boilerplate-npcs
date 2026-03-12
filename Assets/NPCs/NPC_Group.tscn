@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cg2t1cvaxf4mf"]
+
+[ext_resource type="Script" uid="uid://bxqnvt842ge41" path="res://Scripts/Objects/NPC_Group.gd" id="1_uh1wq"]
+
+[node name="NPC_Group" type="Node3D" unique_id=794082751]
+script = ExtResource("1_uh1wq")
