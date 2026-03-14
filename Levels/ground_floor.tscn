@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b54v4hl73ju01"]
+
+[ext_resource type="PackedScene" uid="uid://c0p423xsw7s6u" path="res://Assets/Basics/BuildingBlock.tscn" id="1_5kr6d"]
+[ext_resource type="PackedScene" uid="uid://dvlceev45nnpq" path="res://Assets/Props/Teleport.tscn" id="2_mg5lc"]
+
+[node name="GroundFloor" type="Node3D" unique_id=126645085]
+
+[node name="BuildingBlock" parent="." unique_id=1166153048 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(42.451572, 0, 0, 0, 1.230214, 0, 0, 0, 69.45547, 0, 0, 0)
+
+[node name="SpawnPoint1" type="Marker3D" parent="." unique_id=324542278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.836172, 6.080887, 0)
+
+[node name="Teleport" parent="." unique_id=1176371967 instance=ExtResource("2_mg5lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9543362, -27.256704)
+Next_Scene_Name = "node_3d"
+Spawn_Point_Name = "SpawnPoint1"

@@ -15,6 +15,10 @@ run/main_scene="uid://dgid713jv0vxu"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Switch_Scenes="*uid://b85e0ivqf503f"
+
 [input]
 
 WalkLeft={

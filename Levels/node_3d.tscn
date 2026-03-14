@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bn74irxlg1emv"]
 
 [ext_resource type="PackedScene" uid="uid://crhkdidukn4h7" path="res://Assets/Pistol/PistolAmmobox.tscn" id="1_06113"]
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/Player.tscn" id="1_aqvws"]
 [ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="2_kh3w1"]
 [ext_resource type="PackedScene" uid="uid://mgyracbsfm4k" path="res://Assets/Pistol/PistolDrop.tscn" id="3_r55in"]
 [ext_resource type="PackedScene" uid="uid://x3rgkxmbqaot" path="res://Assets/Rifle/RifleAmmobox.tscn" id="5_jpq1g"]
@@ -19,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://rjvj82vqrw3n" path="res://Assets/Consumables/Speed/SpeedDrop.tscn" id="17_3m5m2"]
 [ext_resource type="PackedScene" uid="uid://dicfc8ta6hmyb" path="res://Assets/Consumables/Pills/PillsDrop.tscn" id="18_ehe13"]
 [ext_resource type="PackedScene" uid="uid://di4j8d8u2fl7c" path="res://Assets/Consumables/Armor/ArmorDrop.tscn" id="19_e2oj3"]
+[ext_resource type="PackedScene" uid="uid://dvlceev45nnpq" path="res://Assets/Props/Teleport.tscn" id="20_n5bj0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqvws"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,9 +56,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.465569, 0.033172607, -6.360649)
 use_collision = true
 size = Vector3(57.358017, 0.1404419, 37.353683)
-
-[node name="ProtoController" parent="." unique_id=1200437311 instance=ExtResource("1_aqvws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2671134, 0)
 
 [node name="RPGDrop" parent="." unique_id=508111821 instance=ExtResource("2_kh3w1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.673182, 3.1920326, 0)
@@ -241,3 +238,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.241577, 3.1870115, -8.81106
 
 [node name="Armor" parent="." unique_id=468003379 instance=ExtResource("19_e2oj3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.057735, 6.38437, -16.216751)
+
+[node name="Teleport" parent="." unique_id=1176371967 instance=ExtResource("20_n5bj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.134586, 3.2451458, -15.226757)
+Next_Scene_Name = "ground_floor"
+Spawn_Point_Name = "SpawnPoint1"
+
+[node name="SpawnPoint1" type="Marker3D" parent="." unique_id=577178797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.836172, 6.080887, 0)

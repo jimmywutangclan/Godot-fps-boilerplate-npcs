@@ -117,7 +117,7 @@ func Drop_Item():
 		Dropped_Weapon.Setup_With_Stats(Item_Stats)
 		
 		Dropped_Weapon.set_global_transform(Drop_Point.get_global_transform())
-		var World = get_tree().get_root().get_child(0)
+		var World = get_tree().root.get_child(-1)
 		World.add_child(Dropped_Weapon)
 		Item_Points[Current_Item].remove_child(Child)
 		Child.queue_free()

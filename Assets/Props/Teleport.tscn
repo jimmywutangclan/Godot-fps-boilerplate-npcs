@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dvlceev45nnpq"]
+
+[ext_resource type="Script" uid="uid://dskdw4hgy8q1l" path="res://Scripts/Objects/Teleport.gd" id="1_invsp"]
+[ext_resource type="Texture2D" uid="uid://5u6mo5bml03e" path="res://Assets/Consumables/Steroid/testosterone.jpg" id="2_ncmc2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36h6q"]
+
+[node name="Teleport" type="Area3D" unique_id=1176371967]
+collision_mask = 2
+script = ExtResource("1_invsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1661296301]
+transform = Transform3D(2.6859407, 0, 0, 0, 3.89949, 0, 0, 0, 0.7561681, 0, 0, 0)
+shape = SubResource("BoxShape3D_36h6q")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=467241732]
+transform = Transform3D(0.4683104, 0, 0, 0, 0.3936925, 0, 0, 0, 1, -0.022763014, -0.018059015, 0)
+texture = ExtResource("2_ncmc2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

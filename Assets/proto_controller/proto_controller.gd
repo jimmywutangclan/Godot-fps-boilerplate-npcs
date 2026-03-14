@@ -123,8 +123,9 @@ func _physics_process(delta: float) -> void:
 		death_countdown += delta
 		emit_signal("Update_Player_Death_Fade", (death_countdown / 1.5))
 		if death_countdown >= 2.5:
+			print("Releasing player")
 			release_mouse()
-			get_tree().change_scene_to_file("res://Levels/game_over.tscn")
+			Switch_Scenes.Switch_To_UI("res://Levels/game_over.tscn")
 		return
 	
 	var desired_sound = MoveSound.NONE
