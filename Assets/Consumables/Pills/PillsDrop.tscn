@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dicfc8ta6hmyb"]
+
+[ext_resource type="Script" uid="uid://dd64buujpylvh" path="res://Scripts/Consumables/Consumable_Item_Drop.gd" id="1_8uq62"]
+[ext_resource type="Texture2D" uid="uid://b53yklj1v7uvo" path="res://Assets/Consumables/Pills/pills.png" id="2_q71a2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sefa"]
+size = Vector3(0.15838623, 0.68603516, 1)
+
+[node name="Pills" type="RigidBody3D" unique_id=1330484927 groups=["ItemPickup"]]
+script = ExtResource("1_8uq62")
+Item_Name = "Pills"
+Item_Type = "Consumable"
+
+[node name="Pills" type="Node3D" parent="." unique_id=661756710]
+
+[node name="Sprite3D" type="Sprite3D" parent="Pills" unique_id=1164790545]
+transform = Transform3D(-6.993822e-09, 0, 0.16, 0, 0.16, 0, -0.16, 0, -6.993822e-09, 0, 0, 0)
+texture = ExtResource("2_q71a2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Pills" unique_id=366318996]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1960788105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018157959, 0.032958984, 0)
+shape = SubResource("BoxShape3D_3sefa")

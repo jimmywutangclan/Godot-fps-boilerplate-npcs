@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://cvhgw0f34vjkv" path="res://Assets/NPCs/cozy_glow_npc_sword.tscn" id="12_88f8e"]
 [ext_resource type="PackedScene" uid="uid://qc5dyponklls" path="res://Assets/Props/Door.tscn" id="13_u2084"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="14_cg0vg"]
+[ext_resource type="PackedScene" uid="uid://c81j3kvj1xa02" path="res://Assets/NPCs/stationary_cozy_glow_npc_rifle.tscn" id="15_p7u7d"]
+[ext_resource type="PackedScene" uid="uid://brk80blool2nc" path="res://Assets/Consumables/Steroid/SteroidDrop.tscn" id="16_gu0mu"]
+[ext_resource type="PackedScene" uid="uid://rjvj82vqrw3n" path="res://Assets/Consumables/Speed/SpeedDrop.tscn" id="17_3m5m2"]
+[ext_resource type="PackedScene" uid="uid://dicfc8ta6hmyb" path="res://Assets/Consumables/Pills/PillsDrop.tscn" id="18_ehe13"]
+[ext_resource type="PackedScene" uid="uid://di4j8d8u2fl7c" path="res://Assets/Consumables/Armor/ArmorDrop.tscn" id="19_e2oj3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqvws"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -188,7 +193,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.684381, 0.73190093, 15.992
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.577784, 0.73190093, 15.992384)
 
 [node name="Door" parent="." unique_id=1888628919 instance=ExtResource("13_u2084")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7819223, 0.586499, 14.735765)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.7819223, 0.586499, 17.747532)
 
 [node name="NPC_Group" parent="." unique_id=794082751 instance=ExtResource("14_cg0vg")]
 
@@ -213,3 +218,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.397379, 1.6136665, 37.6915
 Nav_Trail_Group = NodePath("../../Group_Patrol_Markers")
 Start_Reversed = true
 Start_Goalpost = 4
+
+[node name="StationaryCozyGlowRifleNPC" parent="NPC_Group" unique_id=1728938303 node_paths=PackedStringArray("Station_Point", "Direction_To_Face") instance=ExtResource("15_p7u7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.048407, 1.3068278, 25.532242)
+Station_Point = NodePath("../../StationaryCozyGlowPatrolPoint")
+Direction_To_Face = NodePath("../../StationaryCozyGlowWatchPoint")
+
+[node name="StationaryCozyGlowPatrolPoint" type="Marker3D" parent="." unique_id=814778762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.708382, 0.815429, 32.056076)
+
+[node name="StationaryCozyGlowWatchPoint" type="Marker3D" parent="." unique_id=356724879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.708382, 0.815429, 27.119627)
+
+[node name="Steroid" parent="." unique_id=1330484927 instance=ExtResource("16_gu0mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5881095, -7.1122847)
+
+[node name="Speed" parent="." unique_id=121240062 instance=ExtResource("17_3m5m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.812939, 2.2336152, 1.3858447)
+
+[node name="Pills" parent="." unique_id=855252121 instance=ExtResource("18_ehe13")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.241577, 3.1870115, -8.811064)
+
+[node name="Armor" parent="." unique_id=468003379 instance=ExtResource("19_e2oj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.057735, 6.38437, -16.216751)

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://di4j8d8u2fl7c"]
+
+[ext_resource type="Script" uid="uid://dd64buujpylvh" path="res://Scripts/Consumables/Consumable_Item_Drop.gd" id="1_3vrq7"]
+[ext_resource type="Texture2D" uid="uid://bjoveq2jahpxn" path="res://Assets/Consumables/Armor/armor.png" id="2_np5qv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sefa"]
+size = Vector3(0.20761108, 2.3963623, 1.9906616)
+
+[node name="Armor" type="RigidBody3D" unique_id=1330484927 groups=["ItemPickup"]]
+script = ExtResource("1_3vrq7")
+Item_Name = "Armor"
+Item_Type = "Consumable"
+
+[node name="Armor" type="Node3D" parent="." unique_id=661756710]
+
+[node name="Sprite3D" type="Sprite3D" parent="Armor" unique_id=1164790545]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, 0, 0, 0)
+texture = ExtResource("2_np5qv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Armor" unique_id=366318996]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1960788105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006454468, 0.07647705, 0.025054932)
+shape = SubResource("BoxShape3D_3sefa")

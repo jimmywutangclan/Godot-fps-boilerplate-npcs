@@ -6,6 +6,7 @@
 extends CharacterBody3D
 
 signal Update_Player_Health
+signal Update_Player_Armor
 
 ## Can we move around?
 @export var can_move : bool = true
@@ -46,12 +47,16 @@ signal Update_Player_Health
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "freefly"
 
-@export var Current_Health: int = 120
+@export var Max_Health: int = 120
+var Current_Health: int
+@export var Current_Armor: int = 0
+var Stats_Constraints: Dictionary
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var speed_perception_modifier : int = 1
 
 var sound_locked : bool = false
 
@@ -65,11 +70,14 @@ var sound_locked : bool = false
 @export var Start_Jump_Sfx: AudioStreamMP3
 @export var Jump_Landing_Sfx: AudioStreamMP3
 @export var Animation_Player: AnimationPlayer
+@export var Talking_Audio_Player: AudioStreamPlayer3D
 
 @export var Top_Cast: Marker3D
 @export var Bottom_Cast: Marker3D
 
 @export var Item_Manager: Node3D
+
+var Active_Effects: Array
 
 enum MoveSound {NONE, WALK, RUN, JUMP}
 var current_move_sound: MoveSound = MoveSound.NONE
@@ -79,9 +87,13 @@ var is_dead: bool = false
 
 func _ready() -> void:
 	check_input_mappings()
+	Active_Effects = []
+	Current_Health = Max_Health
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
-	emit_signal("Update_Player_Health", Current_Health)
+	emit_signal("Update_Player_Health", Current_Health, Max_Health)
+	Stats_Constraints = {}
+	Stats_Constraints["Current_Health"] = "Max_Health"
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -187,6 +199,7 @@ func _physics_process(delta: float) -> void:
 	
 	was_on_floor = is_on_floor()
 	
+	Manage_Effects(delta)
 	# Use velocity to actually move
 	move_and_slide()
 
@@ -253,11 +266,52 @@ func _on_movement_player_finished() -> void:
 	current_move_sound = MoveSound.NONE
 
 func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO, _Force_Modifier:= 1, _Origin_Player = null):
-	Current_Health -= Damage
+	var Damage_Absorbed_By_Armor = min(Current_Armor, Damage)
+	var Remainder_Damage = Damage - Damage_Absorbed_By_Armor
+	Current_Armor -= Damage_Absorbed_By_Armor
+	
+	Current_Health -= Damage_Absorbed_By_Armor / 3
+	Current_Health -= Remainder_Damage
 	Current_Health = max(0, Current_Health)
-	emit_signal("Update_Player_Health", Current_Health)
+	emit_signal("Update_Player_Health", Current_Health, Max_Health)
+	emit_signal("Update_Player_Armor", Current_Armor)
 	if Current_Health <= 0:
 		can_move = false
 		can_jump = false
 		is_dead = true
 		Item_Manager.Is_Dead = true
+
+func Apply_Item_Stats(Effects, EffectTime):
+	for Stat in Effects:
+		var Current_Value = get(Stat)
+		var Modification_Value = Effects[Stat]
+		
+		var Original_Value = Current_Value + Modification_Value
+		
+		var Updated_Value
+		if Stats_Constraints.get(Stat) == null:
+			Updated_Value = Original_Value
+		else:
+			var Maximum_Value = get(Stats_Constraints.get(Stat))
+			Updated_Value = min(Maximum_Value, Original_Value)
+
+		set(Stat, Updated_Value)
+	emit_signal("Update_Player_Health", Current_Health, Max_Health)
+	emit_signal("Update_Player_Armor", Current_Armor)
+	
+	if EffectTime > 0:
+		var pair = [EffectTime, Effects]
+		Active_Effects.append(pair)
+		
+
+func Manage_Effects(delta):
+	for pair in Active_Effects:
+		pair[0] -= delta
+		if pair[0] < 0:
+			print("Cleanup")
+			var Effects = pair[1]
+			for Stat in Effects:
+				var Current_Value = get(Stat)
+				var Modification_Value = Effects[Stat]
+				set(Stat, Current_Value - Modification_Value)
+			Active_Effects.erase(pair)

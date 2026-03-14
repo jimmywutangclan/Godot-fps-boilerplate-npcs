@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hrpq7q74rbp7"]
+
+[ext_resource type="Script" uid="uid://dresiwprr7fp" path="res://Scripts/Consumables/Consumable_Item.gd" id="1_btl3n"]
+[ext_resource type="Texture2D" uid="uid://nnemk3aa3fg7" path="res://Assets/Consumables/Taco/taco.png" id="1_dbama"]
+[ext_resource type="PackedScene" uid="uid://bn5el6n7cnnnh" path="res://Assets/Consumables/Taco/TacoDrop.tscn" id="2_spwvv"]
+[ext_resource type="AudioStream" uid="uid://b731y0rwogtb5" path="res://Assets/Consumables/Taco/taco.mp3" id="4_s78t1"]
+
+[node name="Taco" type="Node3D" unique_id=661756710 groups=["Item"]]
+script = ExtResource("1_btl3n")
+Thumbnail = ExtResource("1_dbama")
+Effects = {
+"Current_Health": 100
+}
+Spawn_On_Drop = ExtResource("2_spwvv")
+Consume_Sound = ExtResource("4_s78t1")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1164790545]
+transform = Transform3D(-1.7484555e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.7484555e-09, 0, 0, 0)
+texture = ExtResource("1_dbama")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=366318996]

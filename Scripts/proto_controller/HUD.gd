@@ -3,6 +3,7 @@ extends Node
 @onready var WeaponStatsBox = $VBoxContainer/AmmoBox/WeaponStats
 @onready var HealthStatsBox = $VBoxContainer/Healthbox/HealthStats
 @onready var YoudiedBox = $VBoxContainer/YoudiedBox/YoudiedLabel
+@onready var ArmorBox = $VBoxContainer/ArmorBox/ArmorStats
 
 func _on_item_manager_update_weapon_stats(Value) -> void:
 	WeaponStatsBox.set_text(Value)
@@ -21,7 +22,15 @@ func _on_item_manager_update_inventory(Current_Item, Thumbnail) -> void:
 			ActivityFrame.visible = false
 
 
-func _on_proto_controller_update_player_health(Health) -> void:
-	HealthStatsBox.set_text("Health: " + str(Health))
-	if Health == 0:
+func _on_proto_controller_update_player_health(Current_Health, Max_Health) -> void:
+	HealthStatsBox.set_text("Health: " + str(Current_Health) + "/" + str(Max_Health))
+	if Current_Health == 0:
 		YoudiedBox.set_text("You suck")
+
+
+func _on_proto_controller_update_player_armor(Armor) -> void:
+	if Armor == 0:
+		ArmorBox.set_text("")
+	else:
+		ArmorBox.set_text("Armor: " + str(Armor))
+		

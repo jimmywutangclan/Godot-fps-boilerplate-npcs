@@ -151,6 +151,12 @@ func Pickup_AmmoBox(Target_Item: Node):
 func Interact_Item(Target_Item: Node):
 	Target_Item.Interact()
 
+func Release_Item_Slot(Item):
+	Item_Points[Current_Item].remove_child(Item)
+	Item.queue_free()
+	Update_Inventory_Hbox(Current_Item)
+	Setup_Empty_Object()
+
 # =========== EXTERNAL CALLS ===============
 
 func Update_Gun_Stats_Canvas(Label_Contents):

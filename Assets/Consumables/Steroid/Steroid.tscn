@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cxbnimnod2his"]
+
+[ext_resource type="Script" uid="uid://dresiwprr7fp" path="res://Scripts/Consumables/Consumable_Item.gd" id="1_yls1c"]
+[ext_resource type="Texture2D" uid="uid://5u6mo5bml03e" path="res://Assets/Consumables/Steroid/testosterone.jpg" id="2_ivrag"]
+[ext_resource type="PackedScene" uid="uid://brk80blool2nc" path="res://Assets/Consumables/Steroid/SteroidDrop.tscn" id="3_ivrag"]
+[ext_resource type="AudioStream" uid="uid://lxwvip50ai3g" path="res://Assets/Consumables/Steroid/pop.mp3" id="4_hsath"]
+
+[node name="Steroid" type="Node3D" unique_id=661756710 groups=["Item"]]
+script = ExtResource("1_yls1c")
+Thumbnail = ExtResource("2_ivrag")
+Effects = {
+"Max_Health": 120
+}
+Spawn_On_Drop = ExtResource("3_ivrag")
+Consume_Sound = ExtResource("4_hsath")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1164790545]
+transform = Transform3D(-1.7484555e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.7484555e-09, 0, 0, 0)
+texture = ExtResource("2_ivrag")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=366318996]

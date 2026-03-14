@@ -2,7 +2,8 @@ extends CharacterBody3D
 
 @export var Navigation_Agent: NavigationAgent3D
 @export var NPC_Group: Node3D
-@export var Nav_Trail_Group: Node3D
+@export var Station_Point: Node3D
+@export var Direction_To_Face: Node3D
 
 @export var Eyelevel: Node3D
 @export var Eyelevel_Forward: Node3D
@@ -36,9 +37,6 @@ var Fight_Target: Node3D = null
 var Fight_Elapsed_Reaction_Time: float = 0.0
 
 # patrol
-var Nav_Trail: Array
-var Current_Goalpost: int
-var Reversing: bool
 var Arrived: bool
 
 # investigation
@@ -65,18 +63,10 @@ var Group: Node3D
 
 func _ready():
 	Current_State = STATE.PATROL
-	Current_Goalpost = Start_Goalpost
-	Reversing = Start_Reversed
 	Arrived = false
 	
-	for Nav_Point in Nav_Trail_Group.get_children():
-		Nav_Trail.append(Nav_Point)
-		
 	Inrange_Nodes = []
-	
-	var Pos = Nav_Trail[Current_Goalpost].get_global_transform().origin
-	Navigation_Agent.set_target_position(Pos)
-	
+		
 	Cumulative_Time_Seen = 0.0
 	Pending_Final_Decision = false
 	
@@ -89,10 +79,9 @@ func _physics_process(delta: float) -> void: # We run our finite state per loop
 		else:
 			Transition_Chase(Fight_Target)
 	
-	if Current_State == STATE.PATROL: # Keep walking and checking for player		
-		if Arrived:
-			Update_Goalpost()
-		
+	if Current_State == STATE.PATROL: # Keep walking and checking for player
+		if Arrived == false:
+			Navigation_Agent.set_target_position(Station_Point.get_global_transform().origin)
 		for Target in Inrange_Nodes:
 			var Seen_Target = Raycast_Target(Target)
 			if Seen_Target and Seen_Target.collider == Target:
@@ -118,9 +107,10 @@ func Transition_Patrol():
 	print("Entering patrol state")
 	Cumulative_Time_Seen = 0.0
 	Cumulative_Time_Detached = 0.0
-	var Pos = Nav_Trail[Current_Goalpost].get_global_transform().origin
+	var Pos = Station_Point.get_global_transform().origin
 	Navigation_Agent.set_target_position(Pos)
 	Current_State = STATE.PATROL
+	Arrived = false
 	
 func Transition_Investigate(Target):
 	print("Entering investigation state")
@@ -143,22 +133,6 @@ func Transition_Chase(Target):
 	Group.Alert_All(Target)
 
 # ==================== HELPERS ============
-	
-func Update_Goalpost():
-	if Reversing == false and Current_Goalpost == len(Nav_Trail) - 1:
-		Reversing = true
-	if Reversing == true and Current_Goalpost == 0:
-		Reversing = false
-		
-	if Reversing == false:
-		Current_Goalpost += 1
-	else:
-		Current_Goalpost -= 1
-		
-	var Pos = Nav_Trail[Current_Goalpost].get_global_transform().origin
-	Navigation_Agent.set_target_position(Pos)
-	
-	Arrived = false
 
 func Test_Target_Audible(Target):
 	if Target.is_in_group("Player"):
@@ -257,7 +231,7 @@ func Move_NPC(delta):
 		velocity_speed = Walk_Speed
 		desired_sound = Move_Sound.WALK
 		turn_speed = 1.5
-		
+
 	var destination = Navigation_Agent.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
@@ -272,6 +246,8 @@ func Move_NPC(delta):
 		))
 		# var look_target = global_position + direction
 		# look_at(look_target, Vector3.UP) old logic
+	elif Current_State == STATE.PATROL and Arrived:
+		look_at(Direction_To_Face.get_global_transform().origin, Vector3.UP)
 		
 	if desired_sound != current_move_sound:
 		current_move_sound = desired_sound

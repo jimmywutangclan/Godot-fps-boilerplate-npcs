@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bn5el6n7cnnnh"]
+
+[ext_resource type="Script" uid="uid://dd64buujpylvh" path="res://Scripts/Consumables/Consumable_Item_Drop.gd" id="1_3sefa"]
+[ext_resource type="Texture2D" uid="uid://nnemk3aa3fg7" path="res://Assets/Consumables/Taco/taco.png" id="2_j3oo8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sefa"]
+size = Vector3(0.15838623, 0.68603516, 1)
+
+[node name="Taco" type="RigidBody3D" unique_id=1330484927 groups=["ItemPickup"]]
+script = ExtResource("1_3sefa")
+Item_Name = "Taco"
+Item_Type = "Consumable"
+
+[node name="Taco" type="Node3D" parent="." unique_id=661756710]
+
+[node name="Sprite3D" type="Sprite3D" parent="Taco" unique_id=1164790545]
+transform = Transform3D(-1.7484555e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.7484555e-09, 0, 0, 0)
+texture = ExtResource("2_j3oo8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Taco" unique_id=366318996]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1960788105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018157959, 0.032958984, 0)
+shape = SubResource("BoxShape3D_3sefa")
