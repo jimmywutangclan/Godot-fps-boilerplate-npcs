@@ -4,6 +4,7 @@ extends Node
 @onready var HealthStatsBox = $VBoxContainer/Healthbox/HealthStats
 @onready var YoudiedBox = $VBoxContainer/YoudiedBox/YoudiedLabel
 @onready var ArmorBox = $VBoxContainer/ArmorBox/ArmorStats
+@onready var DeathFade = $DeathFade
 
 func _on_item_manager_update_weapon_stats(Value) -> void:
 	WeaponStatsBox.set_text(Value)
@@ -33,4 +34,6 @@ func _on_proto_controller_update_player_armor(Armor) -> void:
 		ArmorBox.set_text("")
 	else:
 		ArmorBox.set_text("Armor: " + str(Armor))
-		
+
+func _on_proto_controller_update_player_death_fade(Alpha) -> void:
+	DeathFade.color.a = Alpha

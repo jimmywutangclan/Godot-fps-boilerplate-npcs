@@ -7,6 +7,7 @@ extends CharacterBody3D
 
 signal Update_Player_Health
 signal Update_Player_Armor
+signal Update_Player_Death_Fade
 
 ## Can we move around?
 @export var can_move : bool = true
@@ -69,8 +70,11 @@ var sound_locked : bool = false
 @export var Run_Sfx: AudioStreamMP3
 @export var Start_Jump_Sfx: AudioStreamMP3
 @export var Jump_Landing_Sfx: AudioStreamMP3
+@export var Death_Sfx: AudioStreamMP3
+@export var Hit_Sfx: AudioStreamMP3
 @export var Animation_Player: AnimationPlayer
 @export var Talking_Audio_Player: AudioStreamPlayer3D
+@export var Injury_Audio_Player: AudioStreamPlayer3D
 
 @export var Top_Cast: Marker3D
 @export var Bottom_Cast: Marker3D
@@ -84,6 +88,7 @@ var current_move_sound: MoveSound = MoveSound.NONE
 var was_on_floor: bool = false
 var is_crouched: bool = false
 var is_dead: bool = false
+var death_countdown: float = 0.0
 
 func _ready() -> void:
 	check_input_mappings()
@@ -114,6 +119,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
+	if is_dead == true:
+		death_countdown += delta
+		emit_signal("Update_Player_Death_Fade", (death_countdown / 1.5))
+		if death_countdown >= 2.5:
+			release_mouse()
+			get_tree().change_scene_to_file("res://Levels/game_over.tscn")
+		return
+	
 	var desired_sound = MoveSound.NONE
 	
 	# If freeflying, handle freefly and nothing else
@@ -266,6 +279,12 @@ func _on_movement_player_finished() -> void:
 	current_move_sound = MoveSound.NONE
 
 func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO, _Force_Modifier:= 1, _Origin_Player = null):
+	if is_dead == true:
+		return
+	
+	Injury_Audio_Player.stream = Hit_Sfx
+	Injury_Audio_Player.play()
+	
 	var Damage_Absorbed_By_Armor = min(Current_Armor, Damage)
 	var Remainder_Damage = Damage - Damage_Absorbed_By_Armor
 	Current_Armor -= Damage_Absorbed_By_Armor
@@ -280,6 +299,8 @@ func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO,
 		can_jump = false
 		is_dead = true
 		Item_Manager.Is_Dead = true
+		Talking_Audio_Player.stream = Death_Sfx
+		Talking_Audio_Player.play()
 
 func Apply_Item_Stats(Effects, EffectTime):
 	for Stat in Effects:
@@ -308,7 +329,6 @@ func Manage_Effects(delta):
 	for pair in Active_Effects:
 		pair[0] -= delta
 		if pair[0] < 0:
-			print("Cleanup")
 			var Effects = pair[1]
 			for Stat in Effects:
 				var Current_Value = get(Stat)

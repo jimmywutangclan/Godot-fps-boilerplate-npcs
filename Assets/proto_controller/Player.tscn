@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cywf48nyij2ty" path="res://Assets/Sword/Sword.tscn" id="5_2uv2o"]
 [ext_resource type="AudioStream" uid="uid://dwedkok5nbe2i" path="res://Assets/Props/bump.mp3" id="5_fegmr"]
 [ext_resource type="AudioStream" uid="uid://cklfrb0xgha70" path="res://Assets/proto_controller/Item Pick up (Counter Strike Source) - Sound Effect for editing (1).mp3" id="6_26ngx"]
+[ext_resource type="AudioStream" uid="uid://b05e13qljcrvx" path="res://Assets/proto_controller/itsover.mp3" id="6_l0yf4"]
 [ext_resource type="Script" uid="uid://x0r2f4yfaiy3" path="res://Scripts/proto_controller/HUD.gd" id="6_q4qrv"]
 [ext_resource type="Texture2D" uid="uid://biaxcdklurylf" path="res://Assets/Shared_Weapons/crossshair.png" id="6_rntms"]
+[ext_resource type="AudioStream" uid="uid://drs0oiwoj3aq0" path="res://Assets/proto_controller/playerhit.mp3" id="7_6e7mg"]
 [ext_resource type="Texture2D" uid="uid://bv7ums40fjnt8" path="res://Assets/proto_controller/itemholder.png" id="8_i164a"]
 [ext_resource type="Texture2D" uid="uid://cf0gl8veupx1c" path="res://Assets/proto_controller/framing.png" id="9_4ceyr"]
 [ext_resource type="PackedScene" uid="uid://hrpq7q74rbp7" path="res://Assets/Consumables/Taco/Taco.tscn" id="10_4pqql"]
@@ -1409,7 +1411,7 @@ _data = {
 &"StartCrouch": SubResource("Animation_ycop6")
 }
 
-[node name="ProtoController" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager") groups=["Player", "Target"]]
+[node name="ProtoController" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Injury_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager") groups=["Player", "Target"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_ucva2")
@@ -1425,8 +1427,11 @@ Walk_Sfx = ExtResource("2_13mns")
 Run_Sfx = ExtResource("3_67v5n")
 Start_Jump_Sfx = ExtResource("2_dmmq1")
 Jump_Landing_Sfx = ExtResource("5_fegmr")
+Death_Sfx = ExtResource("6_l0yf4")
+Hit_Sfx = ExtResource("7_6e7mg")
 Animation_Player = NodePath("CrouchToggleAnimationPlayer")
 Talking_Audio_Player = NodePath("TalkingAudioPlayer")
+Injury_Audio_Player = NodePath("InjuryAudioPlayer")
 Top_Cast = NodePath("TopCast")
 Bottom_Cast = NodePath("BottomCast")
 Item_Manager = NodePath("Head/ItemManager")
@@ -1837,6 +1842,15 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 4
 
+[node name="DeathFade" type="ColorRect" parent="CanvasLayer" unique_id=113891488]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
 [node name="MovementPlayer" type="AudioStreamPlayer3D" parent="." unique_id=397991660]
 
 [node name="ItemManagerPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1226645404]
@@ -1861,7 +1875,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12724757, 0.16178322)
 
 [node name="TalkingAudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=440262668]
 
+[node name="InjuryAudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=90044589]
+
 [connection signal="Update_Player_Armor" from="." to="CanvasLayer" method="_on_proto_controller_update_player_armor"]
+[connection signal="Update_Player_Death_Fade" from="." to="CanvasLayer" method="_on_proto_controller_update_player_death_fade"]
 [connection signal="Update_Player_Health" from="." to="CanvasLayer" method="_on_proto_controller_update_player_health"]
 [connection signal="Update_Inventory" from="Head/ItemManager" to="CanvasLayer" method="_on_item_manager_update_inventory"]
 [connection signal="Update_Weapon_Stats" from="Head/ItemManager" to="CanvasLayer" method="_on_item_manager_update_weapon_stats"]

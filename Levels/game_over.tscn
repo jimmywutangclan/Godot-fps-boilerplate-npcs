@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cjxg5pjhg2ssf"]
+
+[ext_resource type="Texture2D" uid="uid://diu0qgn8rvey" path="res://UIAssets/itsover.png" id="1_36375"]
+[ext_resource type="Script" uid="uid://c2gtlfs22ch3w" path="res://UIAssets/Game_Over.gd" id="1_yfdjv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfdjv"]
+texture = ExtResource("1_36375")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_powyv"]
+bg_color = Color(0.10399219, 0.111597516, 0.112623654, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iu2pq"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+shadow_color = Color(0, 0, 0, 0.8901961)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcxqb"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
+
+[node name="Control" type="Control" unique_id=2107843672]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yfdjv")
+
+[node name="Panel" type="Panel" parent="." unique_id=53326074]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yfdjv")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1993485649]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.5
+offset_top = 207.0
+offset_right = 200.5
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 9
+
+[node name="Exit" type="Button" parent="VBoxContainer2" unique_id=2016142676]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_powyv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iu2pq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qcxqb")
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer2/Exit" to="." method="_on_exit_pressed"]
