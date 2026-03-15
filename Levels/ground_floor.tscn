@@ -6,12 +6,29 @@
 [node name="GroundFloor" type="Node3D" unique_id=126645085]
 
 [node name="BuildingBlock" parent="." unique_id=1166153048 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(42.451572, 0, 0, 0, 1.230214, 0, 0, 0, 69.45547, 0, 0, 0)
+transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, 0, 0, 0)
+
+[node name="BuildingBlock2" parent="." unique_id=1507564013 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, -66.040146, 0, 0)
+
+[node name="BuildingBlock3" parent="." unique_id=2115352437 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, 11.706737, 3.3267307, 34.123184)
+
+[node name="BuildingBlock4" parent="." unique_id=1871771386 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, -11.684847, 3.3267307, 34.123184)
+
+[node name="BuildingBlock5" parent="." unique_id=2029920383 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(4.8597927, 0, 0, 0, 7.582742, 0, 0, 0, 1.2216709, -0.02422738, 7.0701275, 34.123184)
 
 [node name="SpawnPoint1" type="Marker3D" parent="." unique_id=324542278]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.836172, 6.080887, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1781025, 6.358752, 31.79948)
 
 [node name="Teleport" parent="." unique_id=1176371967 instance=ExtResource("2_mg5lc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9543362, -27.256704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.1929893, -27.256704)
 Next_Scene_Name = "node_3d"
 Spawn_Point_Name = "SpawnPoint1"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=927931925]
+transform = Transform3D(383.64493, 0, 0, 0, 43.33539, 0, 0, 0, 476.55295, 6.8419952, -42.971592, -7.51297)
+use_collision = true
+collision_mask = 15

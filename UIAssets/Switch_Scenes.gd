@@ -25,7 +25,7 @@ func Deferred_Switch_Scene(Player, Next_Scene_Path, Target_Spawn):
 	var Next_Scene = ResourceLoader.load(Next_Scene_Path).instantiate()
 	var Target_Spawnpoint_Node = Next_Scene.get_node(Target_Spawn)
 	Next_Scene.add_child(Player)
-	Player.position = Target_Spawnpoint_Node.get_global_transform().origin
+	Player.position = Target_Spawnpoint_Node.position
 
 	Current_Scene_Name = Next_Scene_Path
 	Cached_Scenes[Current_Scene_Name] = Next_Scene
@@ -54,8 +54,7 @@ func Deferred_Switch_Scene_Persisted(Player, Next_Scene_Path, Target_Spawn):
 	
 	var Target_Spawnpoint_Node = Next_Scene.get_node(Target_Spawn)
 	Next_Scene.add_child(Player)
-	Player.position = Target_Spawnpoint_Node.get_global_transform().origin
-	
+	Player.position = Target_Spawnpoint_Node.position	
 	get_tree().root.add_child(Next_Scene)
 
 func Switch_To_UI(UI_Scene_Path):
