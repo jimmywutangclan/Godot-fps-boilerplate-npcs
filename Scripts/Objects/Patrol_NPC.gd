@@ -51,6 +51,8 @@ var Pending_Final_Decision: bool
 var Chase_Target: Node3D
 var Cumulative_Time_Detached: float
 @export var Weapon: Node3D
+@export var Minimum_Attack_Distance: float = 0
+var Skip_Dir_Changes: bool
 
 # vision
 var Inrange_Nodes: Array
@@ -83,6 +85,7 @@ func _ready():
 	Cumulative_Time_Detached = 0.0
 
 func _physics_process(delta: float) -> void: # We run our finite state per loop
+	Skip_Dir_Changes = false
 	if Fight_Started:
 		if Fight_Elapsed_Reaction_Time < Aggro_Reaction_Time:
 			Fight_Elapsed_Reaction_Time += delta
@@ -195,6 +198,8 @@ func Process_Investigation(delta):
 				Transition_Chase(Seen_Target.collider)
 	
 func Process_Chase_Target(delta):
+	Skip_Dir_Changes = true
+	look_at(Chase_Target.get_global_transform().origin, Vector3.UP)
 	Navigation_Agent.set_target_position(Chase_Target.get_global_transform().origin)
 	var Seen_Target = Raycast_Target(Chase_Target)
 	
@@ -205,6 +210,9 @@ func Process_Chase_Target(delta):
 		Cumulative_Time_Detached += delta
 	else:
 		var Distance = (Seen_Target.position - Eyelevel.get_global_transform().origin).length_squared()
+		if Distance <= Minimum_Attack_Distance * Minimum_Attack_Distance:
+			var Turn_Away_Dir = (Seen_Target.position - Eyelevel.get_global_transform().origin).normalized() * 0.2
+			Navigation_Agent.set_target_position(global_position - Turn_Away_Dir)
 		if Distance <= Vision_Distance * Vision_Distance:
 			var Can_Shoot = Can_Attack_From_Angle(Eyelevel.get_global_transform().origin, Eyelevel_Forward.get_global_transform().origin, Seen_Target.position)
 			if Can_Shoot:
@@ -263,7 +271,7 @@ func Move_NPC(delta):
 	var direction = local_destination.normalized()
 	velocity = direction * velocity_speed
 		
-	if direction.length() > 0.1:
+	if direction.length() > 0.1 and Skip_Dir_Changes == false:
 		var look_target = global_position + direction
 		var target_transform = transform.looking_at(look_target, Vector3.UP)
 		transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(

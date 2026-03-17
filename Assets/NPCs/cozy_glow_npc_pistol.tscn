@@ -31,6 +31,7 @@ Walk_Sfx = ExtResource("2_d1ibc")
 Run_Sfx = ExtResource("3_fe6v4")
 Audio_Player = NodePath("AudioStreamPlayer3D")
 Weapon = NodePath("Pistol")
+Minimum_Attack_Distance = 3.0
 
 [node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
 transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)

@@ -43,6 +43,8 @@ var Enemy: Node3D
 @export var Weapon: Node3D
 @export var Max_Cumulative_Time_Before_Disengage_Chase: float
 var Cumulative_Time_Detached: float = 0.0
+@export var Minimum_Attack_Distance: float = 0
+var Skip_Dir_Changes: bool
 
 func _ready():
 	Current_State = STATE.IDLE
@@ -50,6 +52,7 @@ func _ready():
 	Player_Follow_Marker = -1
 
 func _physics_process(delta: float) -> void: # We run our finite state per loop
+	Skip_Dir_Changes = false
 	# Manage per tick motion
 	if Current_State == STATE.IDLE:
 		return
@@ -96,9 +99,10 @@ func Process_Chase_Target(delta):
 		Transition_Follow(Player)
 		return
 	
+	Skip_Dir_Changes = true
+	look_at(Enemy.get_global_transform().origin, Vector3.UP)
 	Navigation_Agent.set_target_position(Enemy.get_global_transform().origin)
 	var Seen_Target = Raycast_Target(Enemy)
-	print(Seen_Target)
 	
 	if Weapon.get("Current_Ammo") != null and Weapon.Current_Ammo == 0 and Weapon.Reserve_Ammo > 0:
 		Weapon.NPC_Reload()
@@ -107,6 +111,9 @@ func Process_Chase_Target(delta):
 		Cumulative_Time_Detached += delta
 	else:
 		var Distance = (Seen_Target.position - Eyelevel.get_global_transform().origin).length_squared()
+		if Distance <= Minimum_Attack_Distance * Minimum_Attack_Distance:
+			var Turn_Away_Dir = (Seen_Target.position - Eyelevel.get_global_transform().origin).normalized() * 0.2
+			Navigation_Agent.set_target_position(global_position - Turn_Away_Dir)
 		if Distance <= Vision_Distance * Vision_Distance:
 			var Can_Shoot = Can_Attack_From_Angle(Eyelevel.get_global_transform().origin, Eyelevel_Forward.get_global_transform().origin, Seen_Target.position)
 			if Can_Shoot:
@@ -151,7 +158,7 @@ func Move_NPC(delta):
 	if Current_State != STATE.IDLE:
 		velocity_speed = Run_Speed
 		desired_sound = Move_Sound.RUN
-		turn_speed = 5
+		turn_speed = 15
 	else:
 		return
 		
@@ -160,7 +167,7 @@ func Move_NPC(delta):
 	var direction = local_destination.normalized()
 	velocity = direction * velocity_speed
 		
-	if direction.length() > 0.1:
+	if direction.length() > 0.1 and Skip_Dir_Changes == false:
 		var look_target = global_position + direction
 		var target_transform = transform.looking_at(look_target, Vector3.UP)
 		transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(

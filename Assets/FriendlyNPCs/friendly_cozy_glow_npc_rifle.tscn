@@ -32,6 +32,7 @@ Audio_Player = NodePath("AudioStreamPlayer3D")
 Follow_Distance = 10
 Weapon = NodePath("Rifle")
 Max_Cumulative_Time_Before_Disengage_Chase = 5.0
+Minimum_Attack_Distance = 3.0
 
 [node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
 transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
@@ -48,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
-transform = Transform3D(6.8707523, 0, 0, 0, 1, 0, 0, 0, 1.4023758, -0.04947138, 1.2037964, 12.3720255)
+transform = Transform3D(11.697504, 0, 0, 0, 1, 0, 0, 0, 2.3334777, -0.04947138, 1.2037964, 12.3720255)
 shape = SubResource("BoxShape3D_a4uf4")
 
 [node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
