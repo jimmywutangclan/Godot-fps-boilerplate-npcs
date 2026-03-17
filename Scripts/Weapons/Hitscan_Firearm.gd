@@ -25,6 +25,7 @@ var Shootpoint: Node
 var Action_Locked = false
 
 @export var Is_NPC_Weapon: bool = false
+@export var Is_Friendly_NPC_Weapon: bool = false
 
 func _ready():
 	Animation_Player.animation_finished.connect(Finished_Animation)
@@ -99,6 +100,10 @@ func hitscan_Collision(Collision_Point):
 		var Collider = Bullet_Collision.collider
 		var Direction = Bullet_Dir
 		var Position = Bullet_Collision.position
+		
+		if Is_Friendly_NPC_Weapon and (Collider.is_in_group("Player") or Collider.is_in_group("Friendly")):
+			return
+		
 		if Collider.is_in_group("Target") and Collider.has_method("Hit_Successful"):
 			var Target = null
 			if Is_NPC_Weapon == false:

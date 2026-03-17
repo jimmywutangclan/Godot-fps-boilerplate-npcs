@@ -1411,7 +1411,7 @@ _data = {
 &"StartCrouch": SubResource("Animation_ycop6")
 }
 
-[node name="ProtoController" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Injury_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager") groups=["Player", "Target"]]
+[node name="ProtoController" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Injury_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager", "Follow_Markers") groups=["Player", "Target"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_ucva2")
@@ -1422,6 +1422,7 @@ input_forward = "WalkFront"
 input_back = "WalkBack"
 input_jump = "Jump"
 input_sprint = "Sprint"
+Max_Health = 50000
 Audio_Player = NodePath("MovementPlayer")
 Walk_Sfx = ExtResource("2_13mns")
 Run_Sfx = ExtResource("3_67v5n")
@@ -1435,6 +1436,7 @@ Injury_Audio_Player = NodePath("InjuryAudioPlayer")
 Top_Cast = NodePath("TopCast")
 Bottom_Cast = NodePath("BottomCast")
 Item_Manager = NodePath("Head/ItemManager")
+Follow_Markers = NodePath("FollowMarkers")
 
 [node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=406590760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05693987, 1.4999998, -1.4901161e-08)
@@ -1897,6 +1899,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12724757, 0.16178322)
 [node name="TalkingAudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=440262668]
 
 [node name="InjuryAudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=90044589]
+
+[node name="FollowMarkers" type="Node3D" parent="." unique_id=1742567432]
+
+[node name="Mark1" type="Marker3D" parent="FollowMarkers" unique_id=248985847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2157636, 1.0259328, 0)
+
+[node name="Mark5" type="Marker3D" parent="FollowMarkers" unique_id=518205643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6782393, 1.0259328, 0.1291542)
+
+[node name="Mark2" type="Marker3D" parent="FollowMarkers" unique_id=222974871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2157636, 1.0259328, 2.1862369)
+
+[node name="Mark4" type="Marker3D" parent="FollowMarkers" unique_id=1539646113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6782393, 1.0259328, 2.1862369)
+
+[node name="Mark3" type="Marker3D" parent="FollowMarkers" unique_id=1928475718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025809288, 1.0259328, 2.1862369)
 
 [connection signal="Update_Player_Armor" from="." to="CanvasLayer" method="_on_proto_controller_update_player_armor"]
 [connection signal="Update_Player_Death_Fade" from="." to="CanvasLayer" method="_on_proto_controller_update_player_death_fade"]

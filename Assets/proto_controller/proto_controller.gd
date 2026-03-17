@@ -81,6 +81,8 @@ var sound_locked : bool = false
 
 @export var Item_Manager: Node3D
 
+@export var Follow_Markers: Node3D
+
 var Active_Effects: Array
 
 enum MoveSound {NONE, WALK, RUN, JUMP}
@@ -89,6 +91,9 @@ var was_on_floor: bool = false
 var is_crouched: bool = false
 var is_dead: bool = false
 var death_countdown: float = 0.0
+
+var Follow_Markers_List: Array
+var Current_Marker_Assignment: int
 
 func _ready() -> void:
 	check_input_mappings()
@@ -99,6 +104,11 @@ func _ready() -> void:
 	emit_signal("Update_Player_Health", Current_Health, Max_Health)
 	Stats_Constraints = {}
 	Stats_Constraints["Current_Health"] = "Max_Health"
+	
+	Current_Marker_Assignment = 0
+	var Marks = Follow_Markers.get_children()
+	for Mark in Marks:
+		Follow_Markers_List.append(Mark)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -278,6 +288,16 @@ func check_input_mappings():
 
 func _on_movement_player_finished() -> void:
 	current_move_sound = MoveSound.NONE
+	
+func Assign_Marker():
+	var To_Return = Current_Marker_Assignment
+	Current_Marker_Assignment += 1
+	return To_Return
+	
+func Get_Marker_Pos(marker_idx):
+	if marker_idx > len(Follow_Markers_List):
+		return position
+	return Follow_Markers_List[marker_idx].get_global_transform().origin
 
 func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO, _Force_Modifier:= 1, _Origin_Player = null):
 	if is_dead == true:

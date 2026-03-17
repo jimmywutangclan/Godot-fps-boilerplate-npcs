@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://c81j3kvj1xa02"]
+[gd_scene format=3 uid="uid://c6s64rj1og0tf"]
 
-[ext_resource type="Script" uid="uid://b2fcgfib7sky8" path="res://Scripts/Objects/Stationary_NPC.gd" id="1_qufwx"]
-[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_qipn5"]
-[ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_talux"]
-[ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="4_qhl8t"]
-[ext_resource type="PackedScene" uid="uid://ccmc5nvwwwvfj" path="res://Assets/Rifle/Rifle.tscn" id="5_hw1io"]
+[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="1_qojny"]
+[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_7umw3"]
+[ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_1jsti"]
+[ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="4_ue0rj"]
+[ext_resource type="PackedScene" uid="uid://ccmc5nvwwwvfj" path="res://Assets/Rifle/Rifle.tscn" id="5_dnose"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
 size = Vector3(1.8918579, 2.8, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
-size = Vector3(6.691036, 2.7869873, 16.985056)
+size = Vector3(6.691036, 2.7869873, 34.12192)
 
-[node name="StationaryCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
-collision_layer = 16
-collision_mask = 7
-script = ExtResource("1_qufwx")
+[node name="FriendlyCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
+collision_layer = 32
+collision_mask = 23
+script = ExtResource("1_qojny")
 Navigation_Agent = NodePath("NavigationAgent3D")
 Eyelevel = NodePath("Eyelevel")
 Eyelevel_Forward = NodePath("Eyelevel_Forward")
@@ -23,15 +23,15 @@ Vision_Distance = 20
 Aim_Distance = 20
 Aim_Error = 0.25
 Walk_Speed = 5
-Run_Speed = 9
-Max_Cumulative_Time_Before_Chase = 0.35
-Max_Cumulative_Time_Before_Disengage_Chase = 10.0
+Run_Speed = 7
 Aggro_Reaction_Time = 0.1
 Current_Health = 120
-Walk_Sfx = ExtResource("2_qipn5")
-Run_Sfx = ExtResource("3_talux")
+Walk_Sfx = ExtResource("2_7umw3")
+Run_Sfx = ExtResource("3_1jsti")
 Audio_Player = NodePath("AudioStreamPlayer3D")
+Follow_Distance = 10
 Weapon = NodePath("Rifle")
+Max_Cumulative_Time_Before_Disengage_Chase = 5.0
 
 [node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
 transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
@@ -39,24 +39,16 @@ shape = SubResource("BoxShape3D_drken")
 
 [node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=895603666]
 transform = Transform3D(0.3120905, 0, 0, 0, 0.3022939, 0, 0, 0, 1, -0.049999923, 0.0043239594, 1.4901161e-08)
-texture = ExtResource("4_qhl8t")
+texture = ExtResource("4_ue0rj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=679986033]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1769655086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
-collision_mask = 2
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
-shape = SubResource("BoxShape3D_a4uf4")
-
-[node name="Back_Audio_Detection" type="Area3D" parent="." unique_id=748417290]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 4.9)
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Back_Audio_Detection" unique_id=1896272864]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
+transform = Transform3D(6.8707523, 0, 0, 0, 1, 0, 0, 0, 1.4023758, -0.04947138, 1.2037964, 12.3720255)
 shape = SubResource("BoxShape3D_a4uf4")
 
 [node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
@@ -65,10 +57,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)
 [node name="Eyelevel_Forward" type="Marker3D" parent="." unique_id=520593481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.411, -6)
 
-[node name="Rifle" parent="." unique_id=62736143 instance=ExtResource("5_hw1io")]
+[node name="Rifle" parent="." unique_id=62736143 instance=ExtResource("5_dnose")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4492666, 0.8950714, -0.28344333)
-Damage = 30
 Is_NPC_Weapon = true
+Is_Friendly_NPC_Weapon = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1684221152]
 volume_db = 45.0
@@ -77,6 +69,4 @@ max_distance = 25.0
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
-[connection signal="body_entered" from="Back_Audio_Detection" to="." method="_on_back_audio_detection_body_entered"]
-[connection signal="body_exited" from="Back_Audio_Detection" to="." method="_on_back_audio_detection_body_exited"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

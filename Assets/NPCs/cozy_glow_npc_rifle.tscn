@@ -12,7 +12,7 @@ size = Vector3(1.8918579, 2.8, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
 size = Vector3(6.691036, 2.7869873, 16.985056)
 
-[node name="CozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target"]]
+[node name="CozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_kmvct")

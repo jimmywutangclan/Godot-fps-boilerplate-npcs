@@ -2,23 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://c0p423xsw7s6u" path="res://Assets/Basics/BuildingBlock.tscn" id="1_5kr6d"]
 [ext_resource type="PackedScene" uid="uid://dvlceev45nnpq" path="res://Assets/Props/Teleport.tscn" id="2_mg5lc"]
+[ext_resource type="PackedScene" uid="uid://c6s64rj1og0tf" path="res://Assets/FriendlyNPCs/friendly_cozy_glow_npc_rifle.tscn" id="3_gmetl"]
+[ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="4_rg44m"]
+[ext_resource type="PackedScene" uid="uid://dbol8i64138la" path="res://Assets/NPCs/cozy_glow_npc_pistol.tscn" id="5_21hbi"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mg5lc"]
+vertices = PackedVector3Array(-86.76593, 3.9851072, -34.227734, -86.76593, 3.9851072, 34.272266, -45.26593, 3.9851072, 34.272266, -45.26593, 3.9851072, -34.227734, -1.7659302, 3.9851072, 32.772266, -1.5159302, 3.9851072, 34.272266, 1.4840698, 3.9851072, 34.272266, 1.7340698, 3.9851072, 32.772266, -20.76593, 3.9851072, -34.227734, 20.73407, 3.9851072, -34.227734, -20.76593, 3.9851072, 32.772266, 20.73407, 3.9851072, 32.772266, -20.76593, 14.985107, 33.772266, -20.76593, 14.985107, 34.272266, 20.73407, 14.985107, 34.272266, 20.73407, 14.985107, 33.772266)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(4, 8, 7), PackedInt32Array(7, 8, 9), PackedInt32Array(4, 10, 8), PackedInt32Array(9, 11, 7), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13)]
 
 [node name="GroundFloor" type="Node3D" unique_id=126645085]
-
-[node name="BuildingBlock" parent="." unique_id=1166153048 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, 0, 0, 0)
-
-[node name="BuildingBlock2" parent="." unique_id=1507564013 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, -66.040146, 0, 0)
-
-[node name="BuildingBlock3" parent="." unique_id=2115352437 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, 11.706737, 3.3267307, 34.123184)
-
-[node name="BuildingBlock4" parent="." unique_id=1871771386 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, -11.684847, 3.3267307, 34.123184)
-
-[node name="BuildingBlock5" parent="." unique_id=2029920383 instance=ExtResource("1_5kr6d")]
-transform = Transform3D(4.8597927, 0, 0, 0, 7.582742, 0, 0, 0, 1.2216709, -0.02422738, 7.0701275, 34.123184)
 
 [node name="SpawnPoint1" type="Marker3D" parent="." unique_id=324542278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1781025, 6.358752, 31.79948)
@@ -32,3 +24,74 @@ Spawn_Point_Name = "SpawnPoint1"
 transform = Transform3D(383.64493, 0, 0, 0, 43.33539, 0, 0, 0, 476.55295, 6.8419952, -42.971592, -7.51297)
 use_collision = true
 collision_mask = 15
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=497575365]
+navigation_mesh = SubResource("NavigationMesh_mg5lc")
+
+[node name="BuildingBlock" parent="NavigationRegion3D" unique_id=1166153048 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, 0, 0, 0)
+
+[node name="BuildingBlock2" parent="NavigationRegion3D" unique_id=1507564013 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(42.451572, 0, 0, 0, 3.7231941, 0, 0, 0, 69.45547, -66.040146, 0, 0)
+
+[node name="BuildingBlock3" parent="NavigationRegion3D" unique_id=2115352437 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, 11.706737, 3.3267307, 34.123184)
+
+[node name="BuildingBlock4" parent="NavigationRegion3D" unique_id=1871771386 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(19.04313, 0, 0, 0, 11.356581, 0, 0, 0, 1.2216709, -11.684847, 3.3267307, 34.123184)
+
+[node name="BuildingBlock5" parent="NavigationRegion3D" unique_id=2029920383 instance=ExtResource("1_5kr6d")]
+transform = Transform3D(4.8597927, 0, 0, 0, 7.582742, 0, 0, 0, 1.2216709, -0.02422738, 7.0701275, 34.123184)
+
+[node name="FriendlyCozyGlowRifleNPC" parent="." unique_id=907599060 instance=ExtResource("3_gmetl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5753975, 5.2535124, 27.234129)
+
+[node name="FriendlyCozyGlowRifleNPC2" parent="." unique_id=1668572723 instance=ExtResource("3_gmetl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.59061, 5.2535124, 27.234129)
+
+[node name="NPC_Group" parent="." unique_id=794082751 instance=ExtResource("4_rg44m")]
+
+[node name="CozyGlowPistolNPC" parent="NPC_Group" unique_id=1198074537 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029457, 8.433699, -12.851314)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC2" parent="NPC_Group" unique_id=241467734 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.433699, -12.851314)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC3" parent="NPC_Group" unique_id=167149586 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.975997, 8.433699, -12.851314)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC4" parent="NPC_Group" unique_id=1070713882 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029457, 8.433699, -7.177079)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC5" parent="NPC_Group" unique_id=120657064 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.433699, -7.177079)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC6" parent="NPC_Group" unique_id=1792891367 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.975997, 8.433699, -7.177079)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC7" parent="NPC_Group" unique_id=51152994 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.029457, 8.433699, -2.0368543)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC8" parent="NPC_Group" unique_id=2076483062 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.433699, -2.0368543)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="CozyGlowPistolNPC9" parent="NPC_Group" unique_id=201184520 node_paths=PackedStringArray("Nav_Trail_Group") instance=ExtResource("5_21hbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.975997, 8.433699, -2.0368543)
+Nav_Trail_Group = NodePath("../../Patrol")
+
+[node name="Patrol" type="Node3D" parent="." unique_id=2098599065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9013135, 0)
+
+[node name="Point1" type="Marker3D" parent="Patrol" unique_id=1307903906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7650123, 0.9216225, -19.522894)
+
+[node name="Point2" type="Marker3D" parent="Patrol" unique_id=612757399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.142548, 0.9216225, -19.522894)
