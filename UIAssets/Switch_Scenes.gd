@@ -11,10 +11,10 @@ func Get_Current_Scene(): # load current scene
 	var Root = get_tree().root
 	return Root.get_child(-1)
 
-func Transition_Scenes(Player, Next_Scene_Path, Target_Spawn):
-	Deferred_Switch_Scene.call_deferred(Player, Next_Scene_Path, Target_Spawn)
+func Discard_Previous_Persist_Current_Scene(Player, Next_Scene_Path, Target_Spawn):
+	Deferred_Discard_Previous_Persist_Current_Scene.call_deferred(Player, Next_Scene_Path, Target_Spawn)
 
-func Deferred_Switch_Scene(Player, Next_Scene_Path, Target_Spawn):
+func Deferred_Discard_Previous_Persist_Current_Scene(Player, Next_Scene_Path, Target_Spawn):
 	var Current_Scene = Get_Current_Scene()
 	
 	get_tree().root.remove_child(Current_Scene)
@@ -57,10 +57,10 @@ func Deferred_Switch_Scene_Persisted(Player, Next_Scene_Path, Target_Spawn):
 	Player.position = Target_Spawnpoint_Node.position	
 	get_tree().root.add_child(Next_Scene)
 
-func Switch_To_UI(UI_Scene_Path):
-	Deferred_Switch_To_UI.call_deferred(UI_Scene_Path)
+func Clear_Game_Return_To_UI(UI_Scene_Path):
+	Deferred_Clear_Game_Return_To_UI.call_deferred(UI_Scene_Path)
 
-func Deferred_Switch_To_UI(UI_Scene_Path):
+func Deferred_Clear_Game_Return_To_UI(UI_Scene_Path):
 	var Current_Scene = Get_Current_Scene()
 	var Current_Scene_Freed = false
 	
@@ -77,3 +77,48 @@ func Deferred_Switch_To_UI(UI_Scene_Path):
 	var Next_Scene = ResourceLoader.load(UI_Scene_Path).instantiate()
 	get_tree().root.add_child(Next_Scene)
 	
+func Transition_From_Lobby_To_Round(Player, Next_Scene_Path, Target_Spawn):
+	Deferred_Transition_From_Lobby_To_Round.call_deferred(Player, Next_Scene_Path, Target_Spawn)
+
+func Deferred_Transition_From_Lobby_To_Round(Player, Next_Scene_Path, Target_Spawn):
+	var Current_Scene = Get_Current_Scene()
+	if Current_Scene_Name != "":
+		Cached_Scenes[Current_Scene_Name] = Current_Scene
+	Current_Scene_Name = Next_Scene_Path
+	
+	# persist player independently before deactivating the scene
+	Player.get_parent().remove_child(Player)
+	get_tree().root.remove_child(Current_Scene)
+	
+	# create the new scene to NOT persist or cache
+	var Next_Scene = ResourceLoader.load(Next_Scene_Path).instantiate()
+	var Target_Spawnpoint_Node = Next_Scene.get_node(Target_Spawn)
+	Next_Scene.add_child(Player)
+	Player.position = Target_Spawnpoint_Node.position	
+	get_tree().root.add_child(Next_Scene)
+	
+func Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spawn):
+	print("calling this to switch scenes")
+	Deferred_Clear_Instance_Return_To_Lobby.call_deferred(Player, Next_Scene_Path, Target_Spawn)
+
+func Deferred_Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spawn):
+	print("Completing level")
+	var Current_Scene = Get_Current_Scene()
+	# persist player independently before deactivating the scene
+	Player.get_parent().remove_child(Player)
+	
+	get_tree().root.remove_child(Current_Scene)
+	Current_Scene.free()
+	Current_Scene = null
+	
+	var Next_Scene
+	if Next_Scene_Path not in Cached_Scenes:
+		Next_Scene = ResourceLoader.load(Next_Scene_Path).instantiate()
+	else:
+		Next_Scene = Cached_Scenes[Next_Scene_Path]
+	Next_Scene.Complete_Level()
+	
+	var Target_Spawnpoint_Node = Next_Scene.get_node(Target_Spawn)
+	Next_Scene.add_child(Player)
+	Player.position = Target_Spawnpoint_Node.position	
+	get_tree().root.add_child(Next_Scene)

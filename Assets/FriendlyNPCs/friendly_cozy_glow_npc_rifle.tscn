@@ -31,7 +31,7 @@ Run_Sfx = ExtResource("3_1jsti")
 Audio_Player = NodePath("AudioStreamPlayer3D")
 Follow_Distance = 10
 Weapon = NodePath("Rifle")
-Max_Cumulative_Time_Before_Disengage_Chase = 5.0
+Max_Cumulative_Time_Before_Disengage_Chase = 15.0
 Minimum_Attack_Distance = 3.0
 
 [node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]

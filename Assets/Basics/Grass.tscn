@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dwwh2h335n5n"]
+
+[ext_resource type="Texture2D" uid="uid://bx7jnxut0fcqr" path="res://Levels/Level_Assets/grass.jpg" id="1_wnynu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mscj"]
+albedo_texture = ExtResource("1_wnynu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_knnkr"]
+material = SubResource("StandardMaterial3D_4mscj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn8r8"]
+
+[node name="BuildingBlock" type="StaticBody3D" unique_id=1166153048]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1868090097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49626732, 0)
+mesh = SubResource("BoxMesh_knnkr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=397498668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496, 0)
+shape = SubResource("BoxShape3D_bn8r8")

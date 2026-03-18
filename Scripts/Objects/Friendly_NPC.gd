@@ -102,7 +102,7 @@ func Process_Chase_Target(delta):
 	Skip_Dir_Changes = true
 	look_at(Enemy.get_global_transform().origin, Vector3.UP)
 	Navigation_Agent.set_target_position(Enemy.get_global_transform().origin)
-	var Seen_Target = Raycast_Target(Enemy)
+	var Seen_Target = Raycast_Target(Enemy, [Player])
 	
 	if Weapon.get("Current_Ammo") != null and Weapon.Current_Ammo == 0 and Weapon.Reserve_Ammo > 0:
 		Weapon.NPC_Reload()
@@ -129,12 +129,14 @@ func Process_Chase_Target(delta):
 	if Cumulative_Time_Detached >= Max_Cumulative_Time_Before_Disengage_Chase:
 		Transition_Follow(Player)
 	
-func Raycast_Target(Target):
+func Raycast_Target(Target, Exclude := []):
 	var List = [Target.get_global_transform().origin]
 	
 	for Vision_Target in List:
 		var Target_Intersection = PhysicsRayQueryParameters3D.create(Eyelevel.get_global_transform().origin,Vision_Target)
 		Target_Intersection.exclude = [get_rid()]
+		for Excluded in Exclude:
+			Target_Intersection.exclude.append(Excluded.get_rid())
 		var Seen_Target = get_world_3d().direct_space_state.intersect_ray(Target_Intersection)
 		
 		if Seen_Target and Seen_Target.collider == Target:

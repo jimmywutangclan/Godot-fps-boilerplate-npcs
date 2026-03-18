@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ded4im7o1u1ul"]
+
+[ext_resource type="PackedScene" uid="uid://dwwh2h335n5n" path="res://Assets/Basics/Grass.tscn" id="1_ocgqv"]
+[ext_resource type="PackedScene" uid="uid://bfxki1wo0ewkb" path="res://Assets/Props/RoundToLobbyTeleport.tscn" id="2_x4xri"]
+
+[node name="Everfree" type="Node3D" unique_id=1629451527]
+
+[node name="BuildingBlock" parent="." unique_id=1166153048 instance=ExtResource("1_ocgqv")]
+transform = Transform3D(262.36993, 0, 0, 0, 0.19558793, 0, 0, 0, 235.64996, 0, 0, 0)
+
+[node name="SpawnPoint1" type="Marker3D" parent="." unique_id=2287032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.248171, 0)
+
+[node name="RoundToLobbyTeleport" parent="." unique_id=1176371967 instance=ExtResource("2_x4xri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4077795, -31.433302)
+Next_Scene_Name = "Lobby"
+Spawn_Point_Name = "SpawnPoint1"

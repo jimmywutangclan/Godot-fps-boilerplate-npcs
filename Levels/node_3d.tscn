@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://di4j8d8u2fl7c" path="res://Assets/Consumables/Armor/ArmorDrop.tscn" id="19_e2oj3"]
 [ext_resource type="PackedScene" uid="uid://dvlceev45nnpq" path="res://Assets/Props/Teleport.tscn" id="20_n5bj0"]
 [ext_resource type="PackedScene" uid="uid://c6s64rj1og0tf" path="res://Assets/FriendlyNPCs/friendly_cozy_glow_npc_rifle.tscn" id="20_qyihm"]
+[ext_resource type="PackedScene" uid="uid://bfxki1wo0ewkb" path="res://Assets/Props/RoundToLobbyTeleport.tscn" id="21_qyihm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aqvws"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -251,3 +252,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.836172, 6.080887, 0)
 [node name="FriendlyCozyGlowRifleNPC" parent="." unique_id=601507574 instance=ExtResource("20_qyihm")]
 transform = Transform3D(0.041858196, 0, -0.9991236, 0, 1, 0, 0.9991236, 0, 0.041858196, 13.313611, 0.84217715, 15.854307)
 Current_State = 1
+
+[node name="RoundToLobbyTeleport" parent="." unique_id=1991738323 instance=ExtResource("21_qyihm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7684336, 2.2101672, -17.035822)
+Next_Scene_Name = "Lobby"
+Spawn_Point_Name = "SpawnPoint1"

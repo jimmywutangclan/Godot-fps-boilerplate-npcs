@@ -6,7 +6,7 @@ extends Node
 
 func _on_start_game_pressed() -> void:
 	var Player_Node = Player.instantiate()
-	Switch_Scenes.Transition_Scenes(Player_Node, Start_Level.resource_path, Spawn_Point)
+	Switch_Scenes.Discard_Previous_Persist_Current_Scene(Player_Node, Start_Level.resource_path, Spawn_Point)
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

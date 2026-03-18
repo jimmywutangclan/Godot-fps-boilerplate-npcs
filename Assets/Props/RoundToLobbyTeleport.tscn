@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://dvlceev45nnpq"]
+[gd_scene format=3 uid="uid://bfxki1wo0ewkb"]
 
-[ext_resource type="Script" uid="uid://dskdw4hgy8q1l" path="res://Scripts/Objects/Teleport.gd" id="1_invsp"]
-[ext_resource type="Texture2D" uid="uid://310acmm4r8jq" path="res://Levels/Level_Assets/magicmirror.png" id="2_ncmc2"]
+[ext_resource type="Script" uid="uid://bpwyi8yejp1tu" path="res://Scripts/Objects/Round_To_Lobby_Teleport.gd" id="1_4ri7k"]
+[ext_resource type="Texture2D" uid="uid://310acmm4r8jq" path="res://Levels/Level_Assets/magicmirror.png" id="2_ffw8f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_36h6q"]
 
-[node name="Teleport" type="Area3D" unique_id=1176371967]
+[node name="RoundToLobbyTeleport" type="Area3D" unique_id=1176371967]
 collision_mask = 2
-script = ExtResource("1_invsp")
+script = ExtResource("1_4ri7k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1661296301]
 transform = Transform3D(2.6859407, 0, 0, 0, 3.89949, 0, 0, 0, 0.7561681, 0, 0, 0)
@@ -15,6 +15,6 @@ shape = SubResource("BoxShape3D_36h6q")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=467241732]
 transform = Transform3D(0.41314587, 0, 0, 0, 0.27129358, 0, 0, 0, 1, -0.022763014, 0.6279637, 0)
-texture = ExtResource("2_ncmc2")
+texture = ExtResource("2_ffw8f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://mcuyhd0apsiv" path="res://UIAssets/operationtwosisters.png" id="1_6ucrw"]
 [ext_resource type="Script" uid="uid://dqyl1lltrbvo5" path="res://UIAssets/Main_Menu.gd" id="1_jy27m"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/Player.tscn" id="2_3es34"]
-[ext_resource type="PackedScene" uid="uid://bn74irxlg1emv" path="res://Levels/node_3d.tscn" id="3_8md67"]
+[ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="3_8md67"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy27m"]
 texture = ExtResource("1_6ucrw")
