@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dfx2mu5ct4vh1"]
+
+[ext_resource type="Texture2D" uid="uid://cpwr0mti45ca8" path="res://Levels/Level_Assets/stone.jpg" id="1_k8al5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ufoq"]
+albedo_texture = ExtResource("1_k8al5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_knnkr"]
+material = SubResource("StandardMaterial3D_7ufoq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn8r8"]
+
+[node name="BuildingBlock" type="StaticBody3D" unique_id=1166153048]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1868090097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49626732, 0)
+mesh = SubResource("BoxMesh_knnkr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=397498668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496, 0)
+shape = SubResource("BoxShape3D_bn8r8")

@@ -33,5 +33,8 @@ func Complete_Level():
 func Increase_Difficulty_Tier():
 	Difficulty_Tier += 1
 	Completed_Levels = []
+	print("Tier is now " + str(Difficulty_Tier))
+	if Difficulty_Tier > 4:
+		print("You won!") # TODO: transition straight to victory scene by clearing UI with win screen
 	# TODO: Spawn the supplies for finishing your tier
 	Select_Next_Level()
