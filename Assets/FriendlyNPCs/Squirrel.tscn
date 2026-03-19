@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://kqai42bpogp"]
+
+[ext_resource type="Texture2D" uid="uid://dhkyflm8xqduo" path="res://Assets/FriendlyNPCs/squirrel.png" id="1_dm2rl"]
+[ext_resource type="Script" uid="uid://fab6abmm2u5d" path="res://Scripts/Objects/Patrol_Only_NPC.gd" id="1_vj8wv"]
+[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_k5fhg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ac5er"]
+size = Vector3(1.8918579, 2.35105, 0.2)
+
+[node name="Squirrel" type="CharacterBody3D" unique_id=2036864575 node_paths=PackedStringArray("Navigation_Agent", "Audio_Player") groups=["Passive", "Target"]]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_vj8wv")
+Navigation_Agent = NodePath("NavigationAgent3D")
+Walk_Speed = 5
+Current_Health = 500
+Walk_Sfx = ExtResource("2_k5fhg")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+
+[node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=2062089847]
+transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.0498232, -1.4901161e-08)
+shape = SubResource("BoxShape3D_ac5er")
+
+[node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=1514697605]
+transform = Transform3D(0.2357106, 0, 0, 0, 0.3022939, 0, 0, 0, 1, 0.028851718, -0.030389786, 1.4901161e-08)
+texture = ExtResource("1_dm2rl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1087930200]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=755762772]
+volume_db = 45.0
+max_distance = 25.0
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
