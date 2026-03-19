@@ -98,18 +98,16 @@ func Deferred_Transition_From_Lobby_To_Round(Player, Next_Scene_Path, Target_Spa
 	get_tree().root.add_child(Next_Scene)
 	
 func Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spawn):
-	print("calling this to switch scenes")
 	Deferred_Clear_Instance_Return_To_Lobby.call_deferred(Player, Next_Scene_Path, Target_Spawn)
 
 func Deferred_Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spawn):
-	print("Completing level")
 	var Current_Scene = Get_Current_Scene()
 	# persist player independently before deactivating the scene
 	Player.get_parent().remove_child(Player)
 	
 	get_tree().root.remove_child(Current_Scene)
 	Current_Scene.free()
-	Current_Scene = null
+	Current_Scene_Name = Next_Scene_Path
 	
 	var Next_Scene
 	if Next_Scene_Path not in Cached_Scenes:
