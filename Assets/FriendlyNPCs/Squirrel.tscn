@@ -28,8 +28,14 @@ texture = ExtResource("1_dm2rl")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1087930200]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=755762772]
-volume_db = 45.0
-max_distance = 25.0
+attenuation_model = 1
+volume_db = 22.57
+max_distance = 5.0
+
+[node name="BottomCast" type="Marker3D" parent="." unique_id=534641298]
+
+[node name="TopCast" type="Marker3D" parent="." unique_id=1096270725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9662275, 0)
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

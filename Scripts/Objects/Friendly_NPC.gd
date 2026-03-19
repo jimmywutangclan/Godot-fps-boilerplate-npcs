@@ -130,7 +130,16 @@ func Process_Chase_Target(delta):
 		Transition_Follow(Player)
 	
 func Raycast_Target(Target, Exclude := []):
-	var List = [Target.get_global_transform().origin]
+	var Top_Cast = Target.get_node("TopCast")
+	var Bottom_Cast = Target.get_node("BottomCast")
+	var List
+	if Top_Cast == null or Bottom_Cast == null:
+		List = [Target.get_global_transform().origin]
+	else:
+		var Top_Cast_Pos = Target.get_node("TopCast").get_global_transform().origin
+		var Bottom_Cast_Pos = Target.get_node("BottomCast").get_global_transform().origin
+		var Middle_Cast_Pos = Vector3(Top_Cast_Pos.x, (Top_Cast_Pos.y + Bottom_Cast_Pos.y) / 2, Top_Cast_Pos.z)
+		List = [Top_Cast_Pos, Bottom_Cast_Pos, Middle_Cast_Pos]
 	
 	for Vision_Target in List:
 		var Target_Intersection = PhysicsRayQueryParameters3D.create(Eyelevel.get_global_transform().origin,Vision_Target)

@@ -58,6 +58,8 @@ var Skip_Dir_Changes: bool
 var Inrange_Nodes: Array
 # behind the NPC
 var Behind_Nodes: Array
+# vision forward for passives
+var Inrange_Passives: Array
 
 enum STATE {PATROL, INVESTIGATE, CHASE}
 var Current_State: STATE
@@ -75,6 +77,7 @@ func _ready():
 		Nav_Trail.append(Nav_Point)
 		
 	Inrange_Nodes = []
+	Inrange_Passives = []
 	
 	var Pos = Nav_Trail[Current_Goalpost].get_global_transform().origin
 	Navigation_Agent.set_target_position(Pos)
@@ -95,7 +98,7 @@ func _physics_process(delta: float) -> void: # We run our finite state per loop
 	if Current_State == STATE.PATROL: # Keep walking and checking for player		
 		if Arrived:
 			Update_Goalpost()
-		
+					
 		for Target in Inrange_Nodes:
 			var Seen_Target = Raycast_Target(Target)
 			if Seen_Target and Seen_Target.collider == Target:
@@ -104,6 +107,14 @@ func _physics_process(delta: float) -> void: # We run our finite state per loop
 		
 		for Target in Behind_Nodes:
 			Test_Target_Audible(Target)
+			
+		# if no player found, harass a passive instead
+		if Current_State == STATE.PATROL:
+			for Target in Inrange_Passives:
+				var Seen_Target = Raycast_Target(Target)
+				if Seen_Target and Seen_Target.collider == Target:
+					Attack_Passive(Seen_Target.collider)
+					break
 	elif Current_State == STATE.INVESTIGATE: # Walk to our destination and keep lookout for player
 		if Pending_Final_Decision:
 			Conclude_Investigation()
@@ -172,6 +183,17 @@ func Test_Target_Audible(Target):
 		
 		if Perceived_Player_Speed == Player_Run_Speed or (Perceived_Player_Speed > Player_Walk_Speed / 2.0 and Player_Distance <= 5):
 			Transition_Investigate(Target)
+			
+func Attack_Passive(Target):
+	if Target.is_in_group("Passive"):
+		Skip_Dir_Changes = true
+		look_at(Target.get_global_transform().origin, Vector3.UP)
+		
+		if Weapon.get("Current_Ammo") != null and Weapon.Current_Ammo == 0 and Weapon.Reserve_Ammo > 0:
+			Weapon.NPC_Reload()
+		
+		Weapon.NPC_Shoot(Target.position)
+		
 	
 func Conclude_Investigation():
 	var Seen_Target = Raycast_Target(Investigation_Target)
@@ -227,12 +249,18 @@ func Process_Chase_Target(delta):
 			Cumulative_Time_Detached += delta
 	if Cumulative_Time_Detached >= Max_Cumulative_Time_Before_Disengage_Chase:
 		Transition_Patrol()
-	
+
 func Raycast_Target(Target):
-	var Top_Cast = Target.get_node("TopCast").get_global_transform().origin
-	var Bottom_Cast = Target.get_node("BottomCast").get_global_transform().origin
-	var Middle_Cast = Vector3(Top_Cast.x, (Top_Cast.y + Bottom_Cast.y) / 2, Top_Cast.z)
-	var List = [Top_Cast, Bottom_Cast, Middle_Cast]
+	var Top_Cast = Target.get_node("TopCast")
+	var Bottom_Cast = Target.get_node("BottomCast")
+	var List
+	if Top_Cast == null or Bottom_Cast == null:
+		List = [Target.get_global_transform().origin]
+	else:
+		var Top_Cast_Pos = Target.get_node("TopCast").get_global_transform().origin
+		var Bottom_Cast_Pos = Target.get_node("BottomCast").get_global_transform().origin
+		var Middle_Cast_Pos = Vector3(Top_Cast_Pos.x, (Top_Cast_Pos.y + Bottom_Cast_Pos.y) / 2, Top_Cast_Pos.z)
+		List = [Top_Cast_Pos, Bottom_Cast_Pos, Middle_Cast_Pos]
 	
 	for Vision_Target in List:
 		var Target_Intersection = PhysicsRayQueryParameters3D.create(Eyelevel.get_global_transform().origin,Vision_Target)
@@ -330,12 +358,16 @@ func _on_navigation_agent_3d_navigation_finished() -> void:
 	
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player"): 
 		Inrange_Nodes.append(body)
+	elif body.is_in_group("Passive"):
+		Inrange_Passives.append(body)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		Inrange_Nodes.erase(body)
+	elif body.is_in_group("Passive"):
+		Inrange_Passives.erase(body)
 
 func _on_back_audio_detection_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
