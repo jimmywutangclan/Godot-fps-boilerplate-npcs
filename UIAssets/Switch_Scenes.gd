@@ -2,9 +2,11 @@ extends Node
 
 var Cached_Scenes: Dictionary = {}
 var Current_Scene_Name = ""
+var Current_Wave: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Current_Wave = 1
 	pass
 
 func Get_Current_Scene(): # load current scene
@@ -96,6 +98,7 @@ func Deferred_Transition_From_Lobby_To_Round(Player, Next_Scene_Path, Target_Spa
 	Next_Scene.add_child(Player)
 	Player.position = Target_Spawnpoint_Node.position	
 	get_tree().root.add_child(Next_Scene)
+	Next_Scene.Instantiate_Round(Current_Wave, Player)
 	
 func Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spawn):
 	Deferred_Clear_Instance_Return_To_Lobby.call_deferred(Player, Next_Scene_Path, Target_Spawn)

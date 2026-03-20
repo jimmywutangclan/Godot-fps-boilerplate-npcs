@@ -1411,7 +1411,7 @@ _data = {
 &"StartCrouch": SubResource("Animation_ycop6")
 }
 
-[node name="ProtoController" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Injury_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager", "Follow_Markers") groups=["Player", "Target"]]
+[node name="Player" type="CharacterBody3D" unique_id=467395697 node_paths=PackedStringArray("Audio_Player", "Animation_Player", "Talking_Audio_Player", "Injury_Audio_Player", "Top_Cast", "Bottom_Cast", "Item_Manager", "Follow_Markers") groups=["Player", "Target"]]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_ucva2")

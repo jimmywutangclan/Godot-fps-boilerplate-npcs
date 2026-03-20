@@ -3,7 +3,6 @@ extends Node
 @export var Teleporter: Node3D
 @export var Available_Level_Names = []
 var Completed_Levels: Array[String] = []
-var Difficulty_Tier: int = 1
 var Current_Level: String = ""
 
 # Called when the node enters the scene tree for the first time.
@@ -31,10 +30,10 @@ func Complete_Level():
 		Select_Next_Level()
 
 func Increase_Difficulty_Tier():
-	Difficulty_Tier += 1
+	Switch_Scenes.Current_Wave += 1
 	Completed_Levels = []
-	print("Tier is now " + str(Difficulty_Tier))
-	if Difficulty_Tier > 4:
+	print("Tier is now " + str(Switch_Scenes.Current_Wave))
+	if Switch_Scenes.Current_Wave > 4:
 		print("You won!") # TODO: transition straight to victory scene by clearing UI with win screen
 	# TODO: Spawn the supplies for finishing your tier
 	Select_Next_Level()

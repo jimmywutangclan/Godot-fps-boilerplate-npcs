@@ -1,6 +1,8 @@
 extends Node
 
 @export var Animation_Player: AnimationPlayer
+@export var Audio_Player: AudioStreamPlayer3D
+@export var Audio: AudioStreamMP3
 @export var Start_Open: bool = false
 
 var Action_Locked: bool
@@ -22,12 +24,16 @@ func Interact():
 func Open():
 	if Action_Locked == false:
 		Animation_Player.play("OpenDoor")
+		Audio_Player.stream = Audio
+		Audio_Player.play()
 		Action_Locked == true
 		Is_Open = true
 		
 func Close():
 	if Action_Locked == false:
 		Animation_Player.play("CloseDoor")
+		Audio_Player.stream = Audio
+		Audio_Player.play()
 		Action_Locked == true
 		Is_Open = false
 

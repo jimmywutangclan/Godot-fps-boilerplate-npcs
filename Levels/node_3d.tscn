@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bn74irxlg1emv"]
 
 [ext_resource type="PackedScene" uid="uid://crhkdidukn4h7" path="res://Assets/Pistol/PistolAmmobox.tscn" id="1_06113"]
+[ext_resource type="Script" uid="uid://bohcums27j3qm" path="res://Scripts/Levels/DemoScene.gd" id="1_hyg67"]
 [ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="2_kh3w1"]
 [ext_resource type="PackedScene" uid="uid://mgyracbsfm4k" path="res://Assets/Pistol/PistolDrop.tscn" id="3_r55in"]
 [ext_resource type="PackedScene" uid="uid://x3rgkxmbqaot" path="res://Assets/Rifle/RifleAmmobox.tscn" id="5_jpq1g"]
@@ -43,6 +44,7 @@ agent_radius = 1.25
 filter_walkable_low_height_spans = true
 
 [node name="Node3D" type="Node3D" unique_id=1412164605]
+script = ExtResource("1_hyg67")
 
 [node name="PistolAmmoBox" parent="." unique_id=1264254395 instance=ExtResource("1_06113")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4958441, 3.8441916)
