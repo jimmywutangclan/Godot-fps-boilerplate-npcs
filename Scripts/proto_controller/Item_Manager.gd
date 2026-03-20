@@ -14,6 +14,7 @@ var Is_Dead = false
 @export var Item_Points: Array[Node3D]
 @export var Drop_Point: Node3D
 @export var Vision_Range: int
+@export var Flashlight: Node3D
 
 @export var Audio_Player: AudioStreamPlayer3D
 @export var Pickup_Sfx: AudioStreamMP3
@@ -41,6 +42,8 @@ func _process(delta: float):
 func _input(event):
 	if Is_Dead:
 		return
+	if event.is_action_pressed("Flashlight"):
+		Flashlight.visible = !(Flashlight.visible)
 	if event.is_action_pressed("ScrollInventoryUp"):
 		Next_Item = Current_Item - 1
 		if Next_Item < 0:

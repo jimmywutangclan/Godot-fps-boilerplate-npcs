@@ -23,6 +23,7 @@ shape = SubResource("BoxShape3D_ac5er")
 
 [node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=1514697605]
 transform = Transform3D(0.2357106, 0, 0, 0, 0.3022939, 0, 0, 0, 1, 0.028851718, -0.030389786, 1.4901161e-08)
+shaded = true
 texture = ExtResource("1_dm2rl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1087930200]

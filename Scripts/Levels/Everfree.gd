@@ -10,6 +10,7 @@ class SpawnGroup:
 		NPC_Types = _NPC_Types
 		NPC_Counts = _NPC_Counts
 
+@export var Help_Screen: TextureRect
 @export var Win_Screen: TextureRect
 @export var Win_Audio_Player: AudioStreamPlayer2D
 
@@ -40,6 +41,7 @@ var Current_Wave: int = 1
 
 var Current_Groups: Array
 var Round_Over: bool
+var Time_Elapsed: float
 var Time_Since_Win: float
 var Player: Node3D
 
@@ -65,6 +67,7 @@ func _ready() -> void:
 	
 	Current_Groups = []
 	Round_Over = false
+	Time_Elapsed = 0.0
 	Time_Since_Win = 0.0
 	
 	Player = null
@@ -72,6 +75,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	Time_Elapsed += delta
+	if Time_Elapsed >= 5.0 and Help_Screen.visible == true:
+		Help_Screen.visible = false
+	
 	if Round_Over == false:
 		var All_Killed = true
 		for Group in Current_Groups:
