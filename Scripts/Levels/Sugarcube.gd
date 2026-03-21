@@ -26,6 +26,7 @@ class Wave:
 @export var Wave4EnemyCounts: Array[int]
 @export var Wave4Interval: float
 
+@export var Pinkie: Node3D
 @export var Next_Scene: PackedScene
 @export var NPC_Group_Prefab: PackedScene
 @export var Spawnpoints: Node3D
@@ -34,6 +35,9 @@ class Wave:
 @export var Help_Screen: TextureRect
 @export var Win_Screen: TextureRect
 @export var Win_Audio_Player: AudioStreamPlayer2D
+
+@export var Die_Screen: TextureRect
+@export var Die_Stream: AudioStreamPlayer2D
 
 var Waves: Array[Wave]
 
@@ -46,6 +50,7 @@ var RNG: RandomNumberGenerator
 var NPC_Group: Node3D
 var Won: bool
 var Time_Since_Win: float
+var Game_Over: bool
 
 var Player: Node3D
 
@@ -64,6 +69,9 @@ func _ready() -> void:
 	Round_Started = false
 	Won = false
 	Time_Since_Win = 0.0
+	
+	Pinkie.Killed_By_Player.connect(_on_pinkie_killed_by_player)
+	Game_Over = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,6 +115,7 @@ func _process(delta: float) -> void:
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
 	NPC_Group = NPC_Group_Prefab.instantiate()
+	Pinkie.Recruit(Player.get_node("Head").get_node("ItemManager"))
 	
 	var Wave_Number_Index = Wave_Number - 1
 	var Current_Wave = Waves[Wave_Number_Index]
@@ -122,4 +131,8 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	add_child(NPC_Group)
 	Round_Started = true
 	
-	
+func _on_pinkie_killed_by_player():
+	if Game_Over == false:
+		Player.Hit_Successful(9210)
+		Die_Screen.visible = true
+		Die_Stream.play()

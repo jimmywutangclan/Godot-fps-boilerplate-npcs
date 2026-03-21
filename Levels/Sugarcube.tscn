@@ -4,16 +4,12 @@
 [ext_resource type="Script" uid="uid://bws2a0h5x7qtr" path="res://Scripts/Levels/Sugarcube.gd" id="1_gr2rd"]
 [ext_resource type="PackedScene" uid="uid://ygm3sq26ixmv" path="res://Assets/Basics/FurnishedWall.tscn" id="2_5ixxt"]
 [ext_resource type="PackedScene" uid="uid://cdodfeqvxvp00" path="res://Assets/NPCs/PinkieCloneNPCs/pinkie_clone_npc_pistol.tscn" id="2_a58a0"]
-[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="2_aj0wg"]
 [ext_resource type="Texture2D" uid="uid://duiti1581xtdm" path="res://Levels/Level_Assets/bluefloor.jpg" id="2_lxc4i"]
 [ext_resource type="Texture2D" uid="uid://cxr78vqd51s28" path="res://Levels/Level_Assets/woodfloor.jpg" id="3_5aqrl"]
 [ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="3_cx17w"]
-[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="3_lnfnu"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="3_raen5"]
-[ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="4_8ir6v"]
-[ext_resource type="Texture2D" uid="uid://bfcbv4pjhi83v" path="res://Assets/FriendlyNPCs/pinkie.png" id="5_aj0wg"]
 [ext_resource type="Script" uid="uid://7oio7q7lptxw" path="res://Scripts/Objects/Door.gd" id="5_qwcdp"]
-[ext_resource type="PackedScene" uid="uid://ccmc5nvwwwvfj" path="res://Assets/Rifle/Rifle.tscn" id="6_cx17w"]
+[ext_resource type="PackedScene" uid="uid://dclpp1m4u7k25" path="res://Assets/FriendlyNPCs/pinkie_og.tscn" id="5_raen5"]
 [ext_resource type="AudioStream" uid="uid://cglbre7jdl4i0" path="res://Assets/Props/Door.mp3" id="6_hi1cq"]
 [ext_resource type="Texture2D" uid="uid://duniv81j7e7xh" path="res://Levels/Level_Assets/door.JPG" id="7_hi1cq"]
 [ext_resource type="PackedScene" uid="uid://dfx2mu5ct4vh1" path="res://Assets/Basics/StoneWall.tscn" id="10_5aqrl"]
@@ -28,8 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://mc7t83ru2act" path="res://Assets/Props/Table.tscn" id="16_4nnje"]
 [ext_resource type="PackedScene" uid="uid://ghw3x71nefd5" path="res://Assets/Props/Crate.tscn" id="17_itsqj"]
 [ext_resource type="Texture2D" uid="uid://d1or6piu88igh" path="res://Levels/Level_Assets/candycanestick.png" id="20_lnfnu"]
+[ext_resource type="Texture2D" uid="uid://biwomaj2pda5u" path="res://Levels/Level_Assets/creepypie.jpg" id="26_cx17w"]
 [ext_resource type="Texture2D" uid="uid://uw4lnq23htnn" path="res://Levels/Level_Assets/pinkiehelp.png" id="29_2iiav"]
 [ext_resource type="AudioStream" uid="uid://dhcb5swd1qrm4" path="res://Levels/Level_Assets/pinkie_letsgo.mp3" id="29_a58a0"]
+[ext_resource type="AudioStream" uid="uid://b0k3toycxgpie" path="res://Levels/Level_Assets/screamscaR.mp3" id="29_psa31"]
 [ext_resource type="Texture2D" uid="uid://cyuk0fsgqpgsr" path="res://Levels/Level_Assets/pinkiewin.png" id="30_a58a0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2iiav"]
@@ -47,12 +45,6 @@ background_mode = 2
 sky = SubResource("Sky_a58a0")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
-size = Vector3(1.8918579, 2.8, 0.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
-size = Vector3(6.691036, 2.7869873, 34.12192)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwfej"]
 albedo_texture = ExtResource("7_hi1cq")
@@ -198,7 +190,7 @@ albedo_texture = ExtResource("15_4nnje")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nnje"]
 albedo_texture = ExtResource("15_lpa1h")
 
-[node name="Sugarcube" type="Node3D" unique_id=118222618 node_paths=PackedStringArray("Spawnpoints", "Patrol_Route_Nodes", "Help_Screen", "Win_Screen", "Win_Audio_Player")]
+[node name="Sugarcube" type="Node3D" unique_id=118222618 node_paths=PackedStringArray("Pinkie", "Spawnpoints", "Patrol_Route_Nodes", "Help_Screen", "Win_Screen", "Win_Audio_Player", "Die_Screen", "Die_Stream")]
 script = ExtResource("1_gr2rd")
 Wave1Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
 Wave1EnemyCounts = Array[int]([4])
@@ -212,6 +204,7 @@ Wave3Interval = 1.75
 Wave4Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
 Wave4EnemyCounts = Array[int]([10])
 Wave4Interval = 1.0
+Pinkie = NodePath("Pinkie_OG")
 Next_Scene = ExtResource("3_cx17w")
 NPC_Group_Prefab = ExtResource("3_raen5")
 Spawnpoints = NodePath("NPC_Spawns")
@@ -219,6 +212,8 @@ Patrol_Route_Nodes = NodePath("NPC_Patrol")
 Help_Screen = NodePath("CanvasLayer/Help_Screen")
 Win_Screen = NodePath("CanvasLayer/Win_Screen")
 Win_Audio_Player = NodePath("CanvasLayer/AudioStreamPlayer2D")
+Die_Screen = NodePath("CanvasLayer/Die_Screen")
+Die_Stream = NodePath("CanvasLayer/Die_Stream")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1141131452]
 environment = SubResource("Environment_q3i78")
@@ -232,63 +227,8 @@ directional_shadow_max_distance = 386.0
 [node name="SpawnPoint1" type="Marker3D" parent="." unique_id=280288344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.451611, 2.6071043, 0)
 
-[node name="FriendlyCozyGlowRifleNPC" type="CharacterBody3D" parent="." unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
+[node name="Pinkie_OG" parent="." unique_id=1889938565 instance=ExtResource("5_raen5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.797927, 0.6722771, 0.58409667)
-collision_layer = 32
-collision_mask = 23
-script = ExtResource("2_aj0wg")
-Navigation_Agent = NodePath("NavigationAgent3D")
-Eyelevel = NodePath("Eyelevel")
-Eyelevel_Forward = NodePath("Eyelevel_Forward")
-Vision_Distance = 20
-Aim_Distance = 20
-Aim_Error = 0.25
-Walk_Speed = 5
-Run_Speed = 7
-Aggro_Reaction_Time = 0.1
-Current_Health = 120
-Walk_Sfx = ExtResource("3_lnfnu")
-Run_Sfx = ExtResource("4_8ir6v")
-Audio_Player = NodePath("AudioStreamPlayer3D")
-Follow_Distance = 10
-Weapon = NodePath("Rifle")
-Max_Cumulative_Time_Before_Disengage_Chase = 15.0
-Minimum_Attack_Distance = 3.0
-
-[node name="StandingCollider" type="CollisionShape3D" parent="FriendlyCozyGlowRifleNPC" unique_id=1732655521]
-transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
-shape = SubResource("BoxShape3D_drken")
-
-[node name="Sprite3D" type="Sprite3D" parent="FriendlyCozyGlowRifleNPC/StandingCollider" unique_id=895603666]
-transform = Transform3D(0.08606684, 0, 0, 0, 0.11311461, 0, 0, 0, 1, -0.05000019, -0.09422016, 0)
-flip_h = true
-shaded = true
-texture = ExtResource("5_aj0wg")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="FriendlyCozyGlowRifleNPC" unique_id=679986033]
-
-[node name="Area3D" type="Area3D" parent="FriendlyCozyGlowRifleNPC" unique_id=1769655086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
-collision_mask = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FriendlyCozyGlowRifleNPC/Area3D" unique_id=1225738072]
-transform = Transform3D(11.697504, 0, 0, 0, 1, 0, 0, 0, 2.3334777, -0.04947138, 1.2037964, 12.3720255)
-shape = SubResource("BoxShape3D_a4uf4")
-
-[node name="Eyelevel" type="Marker3D" parent="FriendlyCozyGlowRifleNPC" unique_id=1070002382]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)
-
-[node name="Eyelevel_Forward" type="Marker3D" parent="FriendlyCozyGlowRifleNPC" unique_id=520593481]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.411, -6)
-
-[node name="Rifle" parent="FriendlyCozyGlowRifleNPC" unique_id=62736143 instance=ExtResource("6_cx17w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4492666, 0.8950714, -0.28344333)
-Is_NPC_Weapon = true
-Is_Friendly_NPC_Weapon = true
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FriendlyCozyGlowRifleNPC" unique_id=1684221152]
-volume_db = 45.0
-max_distance = 25.0
 
 [node name="Door1" type="Node3D" parent="." unique_id=984706579 groups=["Interactible"]]
 transform = Transform3D(-0.8720955, 0, -8.742278e-08, 0, 0.6688338, 0, 7.6241015e-08, 0, -1, 13.656043, 0.49927294, -4.11119)
@@ -1033,10 +973,24 @@ grow_vertical = 2
 texture = ExtResource("30_a58a0")
 stretch_mode = 3
 
-[connection signal="navigation_finished" from="FriendlyCozyGlowRifleNPC/NavigationAgent3D" to="FriendlyCozyGlowRifleNPC" method="_on_navigation_agent_3d_navigation_finished"]
-[connection signal="body_entered" from="FriendlyCozyGlowRifleNPC/Area3D" to="FriendlyCozyGlowRifleNPC" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="FriendlyCozyGlowRifleNPC/Area3D" to="FriendlyCozyGlowRifleNPC" method="_on_area_3d_body_exited"]
-[connection signal="finished" from="FriendlyCozyGlowRifleNPC/AudioStreamPlayer3D" to="FriendlyCozyGlowRifleNPC" method="_on_audio_stream_player_3d_finished"]
+[node name="Die_Screen" type="TextureRect" parent="CanvasLayer" unique_id=92316477]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_cx17w")
+
+[node name="Die_Stream" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1166512250]
+stream = ExtResource("29_psa31")
+
 [connection signal="current_animation_changed" from="Door1/AnimationPlayer" to="Door1/Door" method="_on_animation_player_current_animation_changed"]
 [connection signal="current_animation_changed" from="Door5/AnimationPlayer" to="Door5/Door" method="_on_animation_player_current_animation_changed"]
 [connection signal="current_animation_changed" from="Door4/AnimationPlayer" to="Door4/Door" method="_on_animation_player_current_animation_changed"]
