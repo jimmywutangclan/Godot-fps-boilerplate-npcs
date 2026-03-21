@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cdodfeqvxvp00"]
+
+[ext_resource type="Script" uid="uid://cl2f6fwo27d0n" path="res://Scripts/Objects/Patrol_NPC.gd" id="1_l7007"]
+[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_e6epp"]
+[ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_jls78"]
+[ext_resource type="Texture2D" uid="uid://bfcbv4pjhi83v" path="res://Assets/FriendlyNPCs/pinkie.png" id="4_1u5ht"]
+[ext_resource type="PackedScene" uid="uid://d0bt1h32ocqdl" path="res://Assets/Pistol/Pistol.tscn" id="5_a3wh5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
+size = Vector3(1.8918579, 2.8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
+size = Vector3(6.691036, 2.7869873, 16.985056)
+
+[node name="CozyGlowPistolNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_l7007")
+Navigation_Agent = NodePath("NavigationAgent3D")
+Eyelevel = NodePath("Eyelevel")
+Eyelevel_Forward = NodePath("Eyelevel_Forward")
+Vision_Distance = 20
+Aim_Distance = 10
+Walk_Speed = 5
+Run_Speed = 8
+Max_Cumulative_Time_Before_Chase = 0.75
+Max_Cumulative_Time_Before_Disengage_Chase = 10.0
+Aggro_Reaction_Time = 0.35
+Current_Health = 120
+Walk_Sfx = ExtResource("2_e6epp")
+Run_Sfx = ExtResource("3_jls78")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+Weapon = NodePath("Pistol")
+Minimum_Attack_Distance = 3.0
+
+[node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
+transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
+shape = SubResource("BoxShape3D_drken")
+
+[node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=895603666]
+transform = Transform3D(0.09267164, 0, 0, 0, 0.12177911, 0, 0, 0, 1, -0.049999923, 0.0043239594, 1.4901161e-08)
+flip_h = true
+shaded = true
+texture = ExtResource("4_1u5ht")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=679986033]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1769655086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
+shape = SubResource("BoxShape3D_a4uf4")
+
+[node name="Back_Audio_Detection" type="Area3D" parent="." unique_id=1448452153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 4.9)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back_Audio_Detection" unique_id=1351469678]
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035922)
+shape = SubResource("BoxShape3D_a4uf4")
+
+[node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)
+
+[node name="Eyelevel_Forward" type="Marker3D" parent="." unique_id=2029879846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.411, -6)
+
+[node name="Pistol" parent="." unique_id=1897225838 instance=ExtResource("5_a3wh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51543224, 0.78468704, -0.62193364)
+Is_NPC_Weapon = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=359409833]
+volume_db = 45.0
+max_distance = 25.0
+
+[node name="BottomCast" type="Marker3D" parent="." unique_id=1715715782]
+
+[node name="TopCast" type="Marker3D" parent="." unique_id=2130609609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2989626, 0)
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Back_Audio_Detection" to="." method="_on_back_audio_detection_body_entered"]
+[connection signal="body_exited" from="Back_Audio_Detection" to="." method="_on_back_audio_detection_body_exited"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

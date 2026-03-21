@@ -63,6 +63,7 @@ func Clear_Game_Return_To_UI(UI_Scene_Path):
 	Deferred_Clear_Game_Return_To_UI.call_deferred(UI_Scene_Path)
 
 func Deferred_Clear_Game_Return_To_UI(UI_Scene_Path):
+	Current_Wave = 1
 	var Current_Scene = Get_Current_Scene()
 	var Current_Scene_Freed = false
 	

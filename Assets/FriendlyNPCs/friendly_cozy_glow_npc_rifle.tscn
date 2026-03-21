@@ -14,7 +14,7 @@ size = Vector3(6.691036, 2.7869873, 34.12192)
 
 [node name="FriendlyCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
 collision_layer = 32
-collision_mask = 23
+collision_mask = 21
 script = ExtResource("1_qojny")
 Navigation_Agent = NodePath("NavigationAgent3D")
 Eyelevel = NodePath("Eyelevel")

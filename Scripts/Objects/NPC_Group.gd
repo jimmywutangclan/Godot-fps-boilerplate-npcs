@@ -14,5 +14,9 @@ func Alert_All(Target):
 		if NPC.Current_State != NPC.STATE.CHASE:
 			NPC.Transition_Chase(Target)
 
+func Add_NPC(NPC):
+	NPC_Group.append(NPC)
+	NPC.Group = self
+
 func Remove_Self(NPC):
 	NPC_Group.erase(NPC)
