@@ -39,6 +39,7 @@ shape = SubResource("BoxShape3D_drken")
 
 [node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=895603666]
 transform = Transform3D(0.3120905, 0, 0, 0, 0.3022939, 0, 0, 0, 1, -0.049999923, 0.0043239594, 1.4901161e-08)
+shaded = true
 texture = ExtResource("1_lfpb5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=679986033]
@@ -77,6 +78,11 @@ max_distance = 25.0
 
 [node name="TopCast" type="Marker3D" parent="." unique_id=2130609609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2989626, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=202931092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.079877, 0)
+light_energy = 1.66
+spot_range = 25.0
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
