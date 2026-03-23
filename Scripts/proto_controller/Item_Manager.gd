@@ -31,7 +31,7 @@ func _process(delta: float):
 	var Sight_Collision = get_Camera_Collision(Vision_Range)[0]
 	
 	if Sight_Collision != null:
-		var Valid_Categories = ["ItemPickup", "AmmoBox", "Interactible", "Friendly"]
+		var Valid_Categories = ["ItemPickup", "AmmoBox", "Interactible", "Friendly", "AppleTree"]
 		for Category in Valid_Categories:
 			if Sight_Collision.collider.is_in_group(Category):
 				Target_Item = Sight_Collision.collider
@@ -74,6 +74,8 @@ func _input(event):
 			if Target_Item.is_in_group("Friendly"):
 				if Target_Item.Current_State == Target_Item.STATE.IDLE and Target_Item.Directly_Recruitable == true:
 					Target_Item.Recruit(self)
+			if Target_Item.is_in_group("AppleTree"):
+				Target_Item.Buck_Tree()
 			Audio_Player.stream = Pickup_Sfx
 			Audio_Player.play()
 	for i in range(0, 10):

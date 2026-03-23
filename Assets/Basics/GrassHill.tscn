@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://0vo473tg5fv8"]
+
+[ext_resource type="Texture2D" uid="uid://bx7jnxut0fcqr" path="res://Levels/Level_Assets/grass.jpg" id="1_hnadp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fmcf"]
+albedo_texture = ExtResource("1_hnadp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_pegm1"]
+material = SubResource("StandardMaterial3D_1fmcf")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mhs3y"]
+
+[node name="Stone" type="StaticBody3D" unique_id=1213023865]
+transform = Transform3D(15.81825, 0, 0, 0, 12.329844, 0, 0, 0, 17.440254, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1070637231]
+mesh = SubResource("SphereMesh_pegm1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=57297510]
+shape = SubResource("SphereShape3D_mhs3y")
