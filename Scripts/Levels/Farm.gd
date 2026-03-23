@@ -10,6 +10,8 @@ class Wave:
 		EnemyWeights = _EnemyWeights
 		SpawnInterval = _SpawnInterval
 
+@export var Next_Scene: PackedScene
+
 @export var Wave1Enemies: Array[PackedScene]
 @export var Wave1EnemyWeights: Array[int]
 @export var Wave1Interval: float
@@ -34,19 +36,31 @@ class Wave:
 @export var Patrol_Groups: Array[Node3D]
 @export var NPC_Groups: Array[Node3D]
 
+@export var Win_Sound: AudioStreamPlayer2D
+@export var Win_Screen: TextureRect
+@export var Help_Text1: TextureRect
+@export var Help_Text2: TextureRect
+
+var RNG: RandomNumberGenerator
+
 var Ripe_Trees_Left: int
 var Round_Started: bool
 var Player: Node3D
 var Current_Interval: float
 var Time_Elapsed: float
 var Time_Elapsed_Since_Last_Spawn: float
+var Time_Since_Final_Stage: float
 var Time_Since_Win: float
 var Waves: Array
 var Current_Wave_Spawnable: Array
+
+var In_Final_Stage: bool
 var Won: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	RNG = RandomNumberGenerator.new()
+	
 	Waves = []
 	Waves.append(Wave.new(Wave1Enemies, Wave1EnemyWeights, Wave1Interval))
 	Waves.append(Wave.new(Wave2Enemies, Wave2EnemyWeights, Wave2Interval))
@@ -58,24 +72,58 @@ func _ready() -> void:
 	Current_Interval = 0.0
 	Time_Elapsed_Since_Last_Spawn = 0.0
 	Time_Since_Win = 0.0
+	Time_Since_Final_Stage = 0.0
 	Won = false
+	In_Final_Stage= false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	Time_Elapsed += delta
+	if Time_Elapsed > 5.0 and Help_Text1.visible == true:
+		Help_Text1.visible = false
+	
 	if Round_Started and Won:
 		Time_Since_Win += delta
+		if Time_Since_Win > 5.0:
+			Player.Invincible = false
+			Switch_Scenes.Clear_Instance_Return_To_Lobby(Player, Next_Scene.resource_path, "SpawnPoint1")
+	elif Round_Started and In_Final_Stage:
+		Time_Since_Final_Stage += delta
+		if Time_Since_Final_Stage > 5.0 and Help_Text2.visible == true:
+			Help_Text2.visible = false
 	elif Round_Started:
 		Time_Elapsed_Since_Last_Spawn += delta
+		if Time_Elapsed_Since_Last_Spawn > Current_Interval:
+			# Select spawnpoint
+			var Spawnpoint_Index = RNG.randi_range(0, Spawn_Points.size()-1)
+			var Spawnpoint = Spawn_Points.get(Spawnpoint_Index)
+			var Patrol_Nodes = Patrol_Groups.get(Spawnpoint_Index)
+			var Spawned_NPC_Group = NPC_Groups.get(Spawnpoint_Index)
+			
+			# Spawn enemy
+			var Selected_Enemy_Index = RNG.randi_range(0, Current_Wave_Spawnable.size()-1)
+			var Selected_Enemy = Current_Wave_Spawnable.get(Selected_Enemy_Index)
+			var Created_Enemy = Selected_Enemy.instantiate()
+			Created_Enemy.Nav_Trail_Group = Patrol_Nodes
+			Created_Enemy.Start_Goalpost = 0
+			Created_Enemy.Start_Reversed = false
+			Created_Enemy.position = Spawnpoint.get_global_transform().origin
+			
+			Spawned_NPC_Group.add_child(Created_Enemy)
+			Spawned_NPC_Group.Add_NPC(Created_Enemy)
+			
+			Time_Elapsed_Since_Last_Spawn = 0
 
 func Handle_Bucked_Tree():
 	print("Tree bucked")
 	Ripe_Trees_Left -= 1
+	if Ripe_Trees_Left == 0:
+		In_Final_Stage = true
+		Help_Text2.visible = true
 
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
-	var RNG = RandomNumberGenerator.new()
 	
 	var Wave_Number_Index = Wave_Number - 1
 	var Current_Wave = Waves[Wave_Number_Index]
@@ -105,3 +153,13 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	print(Ripe_Tree_Indices_Chosen)
 		
 	Round_Started = true
+
+
+func _on_win_area_body_entered(body: Node3D) -> void:
+	print(body)
+	if In_Final_Stage == true and body.is_in_group("Player"):
+		Won = true
+		Player.Invincible = true
+		Win_Screen.visible = true
+		Win_Sound.play()
+		

@@ -95,6 +95,8 @@ var death_countdown: float = 0.0
 var Follow_Markers_List: Array
 var Current_Marker_Assignment: int
 
+var Invincible: bool
+
 func _ready() -> void:
 	check_input_mappings()
 	Active_Effects = []
@@ -109,6 +111,8 @@ func _ready() -> void:
 	var Marks = Follow_Markers.get_children()
 	for Mark in Marks:
 		Follow_Markers_List.append(Mark)
+	
+	Invincible = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -300,6 +304,8 @@ func Get_Marker_Pos(marker_idx):
 	return Follow_Markers_List[marker_idx].get_global_transform().origin
 
 func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO, _Force_Modifier:= 1, _Origin_Player = null):
+	if Invincible == true:
+		return
 	if is_dead == true:
 		return
 	
