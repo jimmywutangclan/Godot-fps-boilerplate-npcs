@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cj8eay1lw2evk"]
+
+[ext_resource type="Script" uid="uid://de53rd7y1bnsg" path="res://Scripts/Objects/Cave_Portal.gd" id="1_rf3ov"]
+[ext_resource type="Texture2D" uid="uid://310acmm4r8jq" path="res://Levels/Level_Assets/magicmirror.png" id="2_53ash"]
+[ext_resource type="AudioStream" uid="uid://c1l0trbhpoctp" path="res://Levels/Level_Assets/portal.mp3" id="3_53ash"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36h6q"]
+
+[node name="CaveWinTrigger" type="Area3D" unique_id=1176371967 node_paths=PackedStringArray("Audio_Player")]
+collision_mask = 2
+script = ExtResource("1_rf3ov")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1661296301]
+transform = Transform3D(2.6859407, 0, 0, 0, 3.89949, 0, 0, 0, 0.7561681, 0, 0, 0)
+shape = SubResource("BoxShape3D_36h6q")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=467241732]
+transform = Transform3D(0.41314587, 0, 0, 0, 0.27129358, 0, 0, 0, 1, -0.022763014, 0.6279637, 0)
+texture = ExtResource("2_53ash")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=157119166]
+stream = ExtResource("3_53ash")
+volume_db = 23.925
+autoplay = true
+max_distance = 12.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

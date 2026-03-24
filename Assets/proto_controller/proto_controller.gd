@@ -303,6 +303,9 @@ func Get_Marker_Pos(marker_idx):
 		return position
 	return Follow_Markers_List[marker_idx].get_global_transform().origin
 
+func Free_Markers():
+	Current_Marker_Assignment = 0
+
 func Hit_Successful(Damage, _Direction:= Vector3.ZERO, _Position:= Vector3.ZERO, _Force_Modifier:= 1, _Origin_Player = null):
 	if Invincible == true:
 		return

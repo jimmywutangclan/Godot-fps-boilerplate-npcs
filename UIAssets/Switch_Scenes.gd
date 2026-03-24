@@ -108,6 +108,7 @@ func Deferred_Clear_Instance_Return_To_Lobby(Player, Next_Scene_Path, Target_Spa
 	var Current_Scene = Get_Current_Scene()
 	# persist player independently before deactivating the scene
 	Player.get_parent().remove_child(Player)
+	Player.Free_Markers()
 	
 	get_tree().root.remove_child(Current_Scene)
 	Current_Scene.free()
