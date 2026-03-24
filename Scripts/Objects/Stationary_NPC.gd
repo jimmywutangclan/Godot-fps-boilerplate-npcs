@@ -134,6 +134,16 @@ func Transition_Chase(Target):
 	Fight_Target = null
 	Fight_Elapsed_Reaction_Time = 0.0
 	Group.Alert_All(Target)
+	
+func Transition_Chase_No_Cascade(Target):
+	print("Entering chase no cascade state")
+	Cumulative_Time_Seen = 0.0
+	Cumulative_Time_Detached = 0.0
+	Chase_Target = Target
+	Current_State = STATE.CHASE
+	Fight_Started = false
+	Fight_Target = null
+	Fight_Elapsed_Reaction_Time = 0.0
 
 # ==================== HELPERS ============
 

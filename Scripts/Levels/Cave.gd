@@ -73,10 +73,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Won:
-		Time_Elapsed_Since_Win += 0.0
+		Time_Elapsed_Since_Win += delta
 		if Time_Elapsed_Since_Win >= 5.0:
 			Player.Invincible = false
-			Switch_Scenes.Deferred_Clear_Instance_Return_To_Lobby(Player, Next_Scene, "SpawnPoint1")
+			Switch_Scenes.Clear_Instance_Return_To_Lobby(Player, Next_Scene.resource_path, "SpawnPoint1")
 
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
@@ -126,6 +126,7 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Teleport.Cave_Portal_Found.connect(_on_teleport_target_reached)
 
 func _on_teleport_target_reached():
+	print("Teleport target reached")
 	Player.Invincible = true
 	Won = true
 	
