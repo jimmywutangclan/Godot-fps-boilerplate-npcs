@@ -254,8 +254,10 @@ func Move_NPC(delta):
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	velocity = direction * velocity_speed
-		
-	if direction.length() > 0.1 and Skip_Dir_Changes == false:
+	
+	if Current_State == STATE.PATROL and Arrived:
+		look_at(Direction_To_Face.get_global_transform().origin, Vector3.UP)
+	elif direction.length() > 0.1 and Skip_Dir_Changes == false:
 		var look_target = global_position + direction
 		var target_transform = transform.looking_at(look_target, Vector3.UP)
 		transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(
@@ -264,8 +266,6 @@ func Move_NPC(delta):
 		))
 		# var look_target = global_position + direction
 		# look_at(look_target, Vector3.UP) old logic
-	elif Current_State == STATE.PATROL and Arrived:
-		look_at(Direction_To_Face.get_global_transform().origin, Vector3.UP)
 		
 	if desired_sound != current_move_sound:
 		current_move_sound = desired_sound
