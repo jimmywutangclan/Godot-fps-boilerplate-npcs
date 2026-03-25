@@ -57,9 +57,9 @@ Next_Scene = ExtResource("2_5hly5")
 Shootpoints = [NodePath("Shootpoint1"), NodePath("Shootpoint8"), NodePath("Shootpoint2"), NodePath("Shootpoint4"), NodePath("Shootpoint5"), NodePath("Shootpoint6"), NodePath("Shootpoint3"), NodePath("Shootpoint7")]
 Explosion_Decal = ExtResource("2_t4p6d")
 Cannonball = ExtResource("2_gw4uq")
-Cannonball_Speed = Array[float]([10.0, 15.0, 15.0, 22.0])
-Wave_Time = Array[float]([14.0, 15.0, 20.0, 30.0])
-Wave_Interval = Array[float]([1.75, 1.5, 1.0, 1.25])
+Cannonball_Speed = Array[float]([10.0, 15.0, 13.75, 15.0])
+Wave_Time = Array[float]([14.0, 15.0, 22.0, 30.0])
+Wave_Interval = Array[float]([1.75, 1.5, 1.25, 1.25])
 Dash = NodePath("Dash")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=934154469]
