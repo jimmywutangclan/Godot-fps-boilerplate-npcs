@@ -256,7 +256,8 @@ func Move_NPC(delta):
 	velocity = direction * velocity_speed
 	
 	if Current_State == STATE.PATROL and Arrived:
-		look_at(Direction_To_Face.get_global_transform().origin, Vector3.UP)
+		var Look_Target = Direction_To_Face.get_global_transform().origin
+		look_at(Vector3(Look_Target.x, global_position.y, Look_Target.z), Vector3.UP)
 	elif direction.length() > 0.1 and Skip_Dir_Changes == false:
 		var look_target = global_position + direction
 		var target_transform = transform.looking_at(look_target, Vector3.UP)

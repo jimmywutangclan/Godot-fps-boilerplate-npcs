@@ -48,8 +48,15 @@ class SpawnGroup:
 @export var Wave4_Stationary_NPC_Counts: Array[int]
 @export var Wave4_Teleport: Node3D
 
+@export var Help_Screen: TextureRect
+@export var Win_Screen: TextureRect
+@export var Win_Audio: AudioStreamPlayer2D
+
+@export var Rarity: Node3D
+
 var Waves: Array
 var Won: bool
+var Time_Elapsed_Since_Start: float
 var Time_Elapsed_Since_Win: float
 
 # Called when the node enters the scene tree for the first time.
@@ -68,10 +75,14 @@ func _ready() -> void:
 	
 	Waves = [Wave1Group, Wave2Group, Wave3Group, Wave4Group]
 	Won = false
+	Time_Elapsed_Since_Start = 0.0
 	Time_Elapsed_Since_Win = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	Time_Elapsed_Since_Start += delta
+	if Help_Screen.visible == true and Time_Elapsed_Since_Start > 5.0:
+		Help_Screen.visible = false
 	if Won:
 		Time_Elapsed_Since_Win += delta
 		if Time_Elapsed_Since_Win >= 5.0:
@@ -80,6 +91,7 @@ func _process(delta: float) -> void:
 
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
+	Rarity.Recruit(Player.get_node("Head").get_node("ItemManager"))
 	var Wave_Number_Rounded = Wave_Number - 1
 	var Wave_Group = Waves[Wave_Number_Rounded]
 	var rng = RandomNumberGenerator.new()
@@ -108,7 +120,6 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	for i in range(Stationary_NPC_Types.size()):
 		var NPC_Type = Stationary_NPC_Types[i]
 		var NPC_Count = Stationary_NPC_Counts[i]
-		print(NPC_Count)
 		for j in range(NPC_Count):
 			var Instantiated_Enemy = NPC_Type.instantiate()
 			var Station_Index = rng.randi_range(0, Stationary_Points.size() - 1)
@@ -126,7 +137,9 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Teleport.Cave_Portal_Found.connect(_on_teleport_target_reached)
 
 func _on_teleport_target_reached():
-	print("Teleport target reached")
-	Player.Invincible = true
-	Won = true
+	if Won == false:
+		Player.Invincible = true
+		Won = true
+		Win_Screen.visible = true
+		Win_Audio.play()
 	

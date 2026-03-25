@@ -10,7 +10,7 @@
 size = Vector3(1.8918579, 2.8, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
-size = Vector3(6.691036, 2.7869873, 16.985056)
+size = Vector3(6.691036, 2.7869873, 42.811203)
 
 [node name="StationaryCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
@@ -50,11 +50,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, -9.109482)
 shape = SubResource("BoxShape3D_a4uf4")
 
 [node name="Back_Audio_Detection" type="Area3D" parent="." unique_id=748417290]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 4.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 17.605362)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Back_Audio_Detection" unique_id=1896272864]

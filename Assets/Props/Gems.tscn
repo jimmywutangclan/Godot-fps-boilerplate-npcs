@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://iucdjwvcy23n"]
+
+[ext_resource type="Texture2D" uid="uid://cf3ka717udpn8" path="res://Assets/Props/gemsarray.png" id="1_rysdx"]
+
+[node name="Gems" type="Sprite3D" unique_id=1347430047]
+texture = ExtResource("1_rysdx")
