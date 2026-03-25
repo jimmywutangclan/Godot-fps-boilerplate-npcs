@@ -22,7 +22,7 @@ size = Vector3(1, 1, 1.4110107)
 [node name="Lobby" type="Node3D" unique_id=646898015 node_paths=PackedStringArray("Teleporter")]
 script = ExtResource("1_r50g8")
 Teleporter = NodePath("LobbyToRoundTeleport")
-Available_Level_Names = ["Cave"]
+Available_Level_Names = ["Blimp"]
 
 [node name="SpawnPoint1" type="Marker3D" parent="." unique_id=127283231]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.025398, 0)

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://3ta7do2a2sam"]
+
+[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="1_wtrpm"]
+[ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_skcqj"]
+[ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_nm2ho"]
+[ext_resource type="Texture2D" uid="uid://bfvt577cceebr" path="res://Assets/FriendlyNPCs/dash.png" id="4_wtrpm"]
+[ext_resource type="PackedScene" uid="uid://d0bt1h32ocqdl" path="res://Assets/Pistol/Pistol.tscn" id="6_skcqj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
+size = Vector3(1.8918579, 2.8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
+size = Vector3(6.691036, 15.738312, 34.12192)
+
+[node name="Dash" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
+collision_layer = 32
+collision_mask = 21
+script = ExtResource("1_wtrpm")
+Navigation_Agent = NodePath("NavigationAgent3D")
+Eyelevel = NodePath("Eyelevel")
+Eyelevel_Forward = NodePath("Eyelevel_Forward")
+Vision_Distance = 20
+Aim_Distance = 20
+Aim_Error = 0.25
+Walk_Speed = 5
+Run_Speed = 7
+Aggro_Reaction_Time = 0.1
+Current_Health = 120
+Walk_Sfx = ExtResource("2_skcqj")
+Run_Sfx = ExtResource("3_nm2ho")
+Audio_Player = NodePath("AudioStreamPlayer3D")
+Follow_Distance = 10
+Weapon = NodePath("Pistol")
+Max_Cumulative_Time_Before_Disengage_Chase = 15.0
+Minimum_Attack_Distance = 3.0
+
+[node name="StandingCollider" type="CollisionShape3D" parent="." unique_id=1732655521]
+transform = Transform3D(1, 0, 0, 0, 0.7997316, 0, 0, 0, 1, -0.05693987, 1.2293429, -1.4901161e-08)
+shape = SubResource("BoxShape3D_drken")
+
+[node name="Sprite3D" type="Sprite3D" parent="StandingCollider" unique_id=895603666]
+transform = Transform3D(0.30825987, 0, 0, 0, 0.32755616, 0, 0, 0, 1, 0.044936568, 0.27558398, 0.116288915)
+flip_h = true
+shaded = true
+texture = ExtResource("4_wtrpm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=679986033]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1769655086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
+transform = Transform3D(11.697504, 0, 0, 0, 1, 0, 0, 0, 2.3334777, -0.04947138, 2.4558563, 12.3720255)
+shape = SubResource("BoxShape3D_a4uf4")
+
+[node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)
+
+[node name="Eyelevel_Forward" type="Marker3D" parent="." unique_id=520593481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.411, -6)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1684221152]
+volume_db = 45.0
+max_distance = 25.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1821618321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.547722, 0)
+light_energy = 1.66
+spot_range = 25.0
+
+[node name="Pistol" parent="." unique_id=1897225838 instance=ExtResource("6_skcqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0150731, 1.0611906, -0.47657385)
+Is_NPC_Weapon = true
+Is_Friendly_NPC_Weapon = true
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

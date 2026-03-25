@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://df3fpqfup7jb1"]
+[gd_scene format=3 uid="uid://1er0025tmfe6"]
 
-[ext_resource type="Texture2D" uid="uid://cwmp6bguq8bbu" path="res://Levels/Level_Assets/hay.jpg" id="1_6y3ii"]
-[ext_resource type="Texture2D" uid="uid://bwt3oft07qra2" path="res://Levels/Level_Assets/candycane.jpg" id="2_k77c7"]
+[ext_resource type="Texture2D" uid="uid://cwmp6bguq8bbu" path="res://Levels/Level_Assets/hay.jpg" id="1_63p4g"]
+[ext_resource type="Texture2D" uid="uid://bwt3oft07qra2" path="res://Levels/Level_Assets/candycane.jpg" id="1_jswhg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4wjq"]
-albedo_texture = ExtResource("1_6y3ii")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjy12"]
+albedo_texture = ExtResource("1_jswhg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fmcf"]
-albedo_texture = ExtResource("2_k77c7")
+albedo_texture = ExtResource("1_63p4g")
 
 [sub_resource type="SphereMesh" id="SphereMesh_pegm1"]
 material = SubResource("StandardMaterial3D_1fmcf")
@@ -18,7 +18,7 @@ material = SubResource("StandardMaterial3D_1fmcf")
 transform = Transform3D(15.81825, 0, 0, 0, 12.329844, 0, 0, 0, 17.440254, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1070637231]
-material_override = SubResource("StandardMaterial3D_q4wjq")
+material_override = SubResource("StandardMaterial3D_bjy12")
 mesh = SubResource("SphereMesh_pegm1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=57297510]

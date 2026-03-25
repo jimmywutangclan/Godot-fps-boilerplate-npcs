@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dvs2w3nudctug"]
+
+[ext_resource type="Script" uid="uid://d3aqfkcqmpef5" path="res://Scripts/Objects/Cannonball.gd" id="1_jv4cc"]
+[ext_resource type="PackedScene" uid="uid://dvf20g78wsrxq" path="res://Assets/RPG/Explosion.tscn" id="2_eg5ds"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igbjw"]
+size = Vector3(1.4795945, 1.2945089, 1.219532)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ox8x0"]
+
+[node name="Cannonball" type="RigidBody3D" unique_id=1067080983 groups=["Target", "Thug"]]
+top_level = true
+collision_layer = 16
+collision_mask = 5
+gravity_scale = 0.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_jv4cc")
+Current_Health = 45
+Damage = 25
+Explosion = ExtResource("2_eg5ds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1168804158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022242665, 0.038912296, 0.0028972626)
+shape = SubResource("BoxShape3D_igbjw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=941864597]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_ox8x0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
