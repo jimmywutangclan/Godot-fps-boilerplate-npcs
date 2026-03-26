@@ -5,10 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dyfvjoatph1fb" path="res://Assets/proto_controller/grunt.mp3" id="2_dmmq1"]
 [ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="2_ka0m1"]
 [ext_resource type="Script" uid="uid://lhxybr7kf37q" path="res://Scripts/proto_controller/Item_Manager.gd" id="2_ttwgb"]
-[ext_resource type="PackedScene" uid="uid://d0bt1h32ocqdl" path="res://Assets/Pistol/Pistol.tscn" id="3_3yvsf"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_67v5n"]
-[ext_resource type="PackedScene" uid="uid://ccmc5nvwwwvfj" path="res://Assets/Rifle/Rifle.tscn" id="4_o3fbo"]
-[ext_resource type="PackedScene" uid="uid://cywf48nyij2ty" path="res://Assets/Sword/Sword.tscn" id="5_2uv2o"]
 [ext_resource type="AudioStream" uid="uid://dwedkok5nbe2i" path="res://Assets/Props/bump.mp3" id="5_fegmr"]
 [ext_resource type="AudioStream" uid="uid://cklfrb0xgha70" path="res://Assets/proto_controller/Item Pick up (Counter Strike Source) - Sound Effect for editing (1).mp3" id="6_26ngx"]
 [ext_resource type="AudioStream" uid="uid://b05e13qljcrvx" path="res://Assets/proto_controller/itsover.mp3" id="6_l0yf4"]
@@ -17,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://drs0oiwoj3aq0" path="res://Assets/proto_controller/playerhit.mp3" id="7_6e7mg"]
 [ext_resource type="Texture2D" uid="uid://bv7ums40fjnt8" path="res://Assets/proto_controller/itemholder.png" id="8_i164a"]
 [ext_resource type="Texture2D" uid="uid://cf0gl8veupx1c" path="res://Assets/proto_controller/framing.png" id="9_4ceyr"]
-[ext_resource type="PackedScene" uid="uid://hrpq7q74rbp7" path="res://Assets/Consumables/Taco/Taco.tscn" id="10_4pqql"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka0m1"]
 size = Vector3(1.8918579, 2.8, 0.2)
@@ -1465,8 +1461,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7, 0)
 [node name="ItemHolder1" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=211870343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 
-[node name="Pistol" parent="Head/ItemManager/ItemHolders/ItemHolder1" unique_id=1897225838 instance=ExtResource("3_3yvsf")]
-
 [node name="ItemHolder2" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=441404755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 
@@ -1476,15 +1470,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 [node name="ItemHolder4" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=1622391067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 
-[node name="Taco" parent="Head/ItemManager/ItemHolders/ItemHolder4" unique_id=661756710 instance=ExtResource("10_4pqql")]
-
 [node name="ItemHolder5" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=1140588855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 
 [node name="ItemHolder6" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=1980014843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
-
-[node name="Rifle" parent="Head/ItemManager/ItemHolders/ItemHolder6" unique_id=62736143 instance=ExtResource("4_o3fbo")]
 
 [node name="ItemHolder7" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=1997118321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
@@ -1494,8 +1484,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
 
 [node name="ItemHolder9" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=809651760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)
-
-[node name="Sword" parent="Head/ItemManager/ItemHolders/ItemHolder9" unique_id=1596530308 instance=ExtResource("5_2uv2o")]
 
 [node name="ItemHolder0" type="Node3D" parent="Head/ItemManager/ItemHolders" unique_id=1676780004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59999996, 0.7, 0.2)

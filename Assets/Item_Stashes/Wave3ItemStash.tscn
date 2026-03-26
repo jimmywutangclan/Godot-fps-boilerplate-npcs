@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bjh3fyn52vxfa"]
+
+[ext_resource type="PackedScene" uid="uid://di4j8d8u2fl7c" path="res://Assets/Consumables/Armor/ArmorDrop.tscn" id="1_fbviy"]
+[ext_resource type="PackedScene" uid="uid://bn5el6n7cnnnh" path="res://Assets/Consumables/Taco/TacoDrop.tscn" id="2_jwq8k"]
+[ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="4_h3b30"]
+[ext_resource type="PackedScene" uid="uid://x3rgkxmbqaot" path="res://Assets/Rifle/RifleAmmobox.tscn" id="4_i6cbt"]
+[ext_resource type="PackedScene" uid="uid://brk80blool2nc" path="res://Assets/Consumables/Steroid/SteroidDrop.tscn" id="5_rty58"]
+[ext_resource type="PackedScene" uid="uid://rjvj82vqrw3n" path="res://Assets/Consumables/Speed/SpeedDrop.tscn" id="6_i6cbt"]
+[ext_resource type="PackedScene" uid="uid://dicfc8ta6hmyb" path="res://Assets/Consumables/Pills/PillsDrop.tscn" id="7_hmq3f"]
+
+[node name="Wave3ItemStash" type="Node3D" unique_id=1546438933]
+
+[node name="Armor" parent="." unique_id=1330484927 instance=ExtResource("1_fbviy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, 0.38575745)
+
+[node name="Armor2" parent="." unique_id=246718486 instance=ExtResource("1_fbviy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, -0.22075772)
+
+[node name="Taco" parent="." unique_id=971090769 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0962095, 0, 0)
+
+[node name="Taco2" parent="." unique_id=1301084381 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6661644, 0, 0)
+
+[node name="Taco3" parent="." unique_id=503517088 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2321448, 0, -0.061380148)
+
+[node name="Taco4" parent="." unique_id=1990794450 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8020997, 0, -0.061380148)
+
+[node name="Taco5" parent="." unique_id=883197934 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21652, 0, 0)
+
+[node name="Taco6" parent="." unique_id=2009524513 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7864747, 0, 0)
+
+[node name="Taco7" parent="." unique_id=295169365 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.352455, 0, -0.061380148)
+
+[node name="Taco8" parent="." unique_id=116376560 instance=ExtResource("2_jwq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92241, 0, -0.061380148)
+
+[node name="RifleAmmoBox" parent="." unique_id=1353598266 instance=ExtResource("4_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5154264, 0, -1.3083934)
+
+[node name="RifleAmmoBox2" parent="." unique_id=888978286 instance=ExtResource("4_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0813138, 0, -1.3083934)
+
+[node name="RifleAmmoBox4" parent="." unique_id=1264254395 instance=ExtResource("4_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8991225, 0, -1.3083934)
+
+[node name="RifleAmmoBox3" parent="." unique_id=1284004684 instance=ExtResource("4_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3069665, 0, -1.3083934)
+
+[node name="RPGDrop" parent="." unique_id=508111821 instance=ExtResource("4_h3b30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0424976, 0, 0)
+
+[node name="Steroid" parent="." unique_id=557910828 instance=ExtResource("5_rty58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24564, 0, 0)
+
+[node name="Speed" parent="." unique_id=1506938644 instance=ExtResource("6_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.101889, 0, 0)
+
+[node name="Pills" parent="." unique_id=288623864 instance=ExtResource("7_hmq3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.053555, 0, 0)

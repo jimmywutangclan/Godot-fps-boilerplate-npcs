@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://duniv81j7e7xh" path="res://Levels/Level_Assets/door.JPG" id="2_f5k8n"]
 [ext_resource type="Texture2D" uid="uid://dffqw0ebcoigw" path="res://Levels/Level_Assets/window.JPG" id="3_ueq3s"]
 [ext_resource type="PackedScene" uid="uid://utvmukbyk00x" path="res://Assets/Basics/WoodFloor.tscn" id="4_ueq3s"]
+[ext_resource type="PackedScene" uid="uid://bjh3fyn52vxfa" path="res://Assets/Item_Stashes/Wave3ItemStash.tscn" id="4_v025o"]
 [ext_resource type="PackedScene" uid="uid://ygm3sq26ixmv" path="res://Assets/Basics/FurnishedWall.tscn" id="5_j83j6"]
 [ext_resource type="Texture2D" uid="uid://ckax1641f8cco" path="res://Levels/Level_Assets/crappywall.png" id="7_2uni1"]
-[ext_resource type="PackedScene" uid="uid://50iugj1rj5hs" path="res://Assets/RPG/RPGDrop.tscn" id="8_1tyf7"]
 [ext_resource type="PackedScene" uid="uid://dd8xjgcgrvm34" path="res://Assets/Props/LobbyToRoundTeleport.tscn" id="8_2uni1"]
+[ext_resource type="PackedScene" uid="uid://cod75s187o16o" path="res://Assets/Item_Stashes/Wave1ItemStash.tscn" id="9_2uni1"]
+[ext_resource type="PackedScene" uid="uid://cajt362ly775m" path="res://Assets/Item_Stashes/Wave2ItemStash.tscn" id="10_xrkt0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugx0c"]
 albedo_texture = ExtResource("7_2uni1")
@@ -19,13 +21,15 @@ material = SubResource("StandardMaterial3D_ugx0c")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bn8r8"]
 size = Vector3(1, 1, 1.4110107)
 
-[node name="Lobby" type="Node3D" unique_id=646898015 node_paths=PackedStringArray("Teleporter")]
+[node name="Lobby" type="Node3D" unique_id=646898015 node_paths=PackedStringArray("Item_Stash_Spawns", "Teleporter")]
 script = ExtResource("1_r50g8")
+Item_Stash_Spawns = [NodePath("Wave1ItemStashSpawn"), NodePath("Wave2ItemStashSpawn"), NodePath("Wave3ItemStashSpawn"), NodePath("Wave4ItemStashSpawn")]
+Item_Stashes = Array[PackedScene]([ExtResource("9_2uni1"), ExtResource("10_xrkt0"), ExtResource("4_v025o"), ExtResource("4_v025o")])
 Teleporter = NodePath("LobbyToRoundTeleport")
-Available_Level_Names = ["Blimp"]
+Available_Level_Names = ["Blimp", "Everfree", "Sugarcube", "Cave", "Farm"]
 
 [node name="SpawnPoint1" type="Marker3D" parent="." unique_id=127283231]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.025398, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -7.4150505, 2.025398, 0)
 
 [node name="Physical_Room" type="Node3D" parent="." unique_id=694605852]
 
@@ -156,9 +160,18 @@ transform = Transform3D(-0.23338777, 0, -1.01749e-06, 0, 4.9432034, 0, 2.0403407
 [node name="BuildingBlock27" parent="Physical_Room" unique_id=796633452 instance=ExtResource("5_j83j6")]
 transform = Transform3D(0.23338777, 0, 0, 0, 4.9432034, 0, 0, 0, 11.638729, -12.880196, 2.349638, -0.83472633)
 
-[node name="RPGDrop" parent="." unique_id=508111821 instance=ExtResource("8_1tyf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.041943, 1.477675, 0)
-
 [node name="LobbyToRoundTeleport" parent="." unique_id=1176371967 instance=ExtResource("8_2uni1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.368777, -8.281215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.816684, 2.368777, -8.281215)
 Spawn_Point_Name = "SpawnPoint1"
+
+[node name="Wave1ItemStashSpawn" type="Marker3D" parent="." unique_id=859478753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, 5.162079)
+
+[node name="Wave2ItemStashSpawn" type="Marker3D" parent="." unique_id=714516139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, 1.9221721)
+
+[node name="Wave3ItemStashSpawn" type="Marker3D" parent="." unique_id=682971015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, -1.7471993)
+
+[node name="Wave4ItemStashSpawn" type="Marker3D" parent="." unique_id=2040809341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, -5.3500195)

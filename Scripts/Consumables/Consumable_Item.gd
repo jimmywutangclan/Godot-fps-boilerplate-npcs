@@ -6,6 +6,8 @@ extends Node
 @export var Spawn_On_Drop: PackedScene
 @export var Consume_Sound: AudioStreamMP3
 
+@export var Item_Name: String = "Consumable"
+
 func On_Open():
 	pass
 
