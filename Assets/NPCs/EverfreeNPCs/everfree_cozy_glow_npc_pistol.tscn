@@ -10,7 +10,10 @@
 size = Vector3(1.8918579, 2.8, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
-size = Vector3(6.691036, 2.7869873, 16.985056)
+size = Vector3(28.04203, 2.7869873, 64.2087)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsgkp"]
+size = Vector3(6.724121, 2.8146973, 17.06189)
 
 [node name="CozyGlowPistolNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
@@ -49,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
 collision_mask = 18
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.13024855, 1.2037964, -19.808235)
 shape = SubResource("BoxShape3D_a4uf4")
 
 [node name="Back_Audio_Detection" type="Area3D" parent="." unique_id=1448452153]
@@ -57,8 +60,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 4.9)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Back_Audio_Detection" unique_id=1351469678]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035922)
-shape = SubResource("BoxShape3D_a4uf4")
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, 0.010489225, 1.2149048, 3.624576)
+shape = SubResource("BoxShape3D_tsgkp")
 
 [node name="Eyelevel" type="Marker3D" parent="." unique_id=1070002382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4113553, -0.34013748)

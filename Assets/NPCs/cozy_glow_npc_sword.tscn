@@ -9,6 +9,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
 size = Vector3(1.8918579, 2.8, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldiar"]
+size = Vector3(27.994476, 2.7869873, 64.03013)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
 size = Vector3(6.691036, 2.7869873, 16.985056)
 
@@ -47,8 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28017765, -12.45417)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1225738072]
-transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, -0.04947138, 1.2037964, 3.8035917)
-shape = SubResource("BoxShape3D_a4uf4")
+transform = Transform3D(2.2953153, 0, 0, 0, 1, 0, 0, 0, 1, 0.13815212, 1.2037964, -19.718945)
+shape = SubResource("BoxShape3D_ldiar")
 
 [node name="Back_Audio_Detection" type="Area3D" parent="." unique_id=1474509421]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 4.9)
