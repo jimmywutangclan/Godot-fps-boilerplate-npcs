@@ -99,11 +99,12 @@ _data = {
 
 [node name="Node3D" type="Node3D" unique_id=984706579 groups=["Interactible"]]
 
-[node name="Door" type="StaticBody3D" parent="." unique_id=1888628919 node_paths=PackedStringArray("Animation_Player", "Audio_Player") groups=["Interactible"]]
+[node name="Door" type="StaticBody3D" parent="." unique_id=1888628919 node_paths=PackedStringArray("Animation_Player", "Audio_Player", "Collision_Shape") groups=["Interactible"]]
 script = ExtResource("1_rym06")
 Animation_Player = NodePath("../AnimationPlayer")
 Audio_Player = NodePath("../AudioStreamPlayer3D")
 Audio = ExtResource("2_rl8t8")
+Collision_Shape = NodePath("CollisionShape3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1774159343]
 transform = Transform3D(3.4071653, 0, 0, 0, 4.9884505, 0, 0, 0, 0.16239005, 1.7255365, 2.532013, -0.09136057)
