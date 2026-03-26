@@ -89,12 +89,6 @@ func Process_Chase_Target(delta, Enemy):
 	if is_instance_valid(Enemy) == false:
 		return
 	
-	Skip_Dir_Changes = true
-	var target_transform = transform.looking_at(Enemy.get_global_transform().origin, Vector3.UP)
-	transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(
-		target_transform.basis.get_rotation_quaternion(), 
-		35 * delta
-	))
 	var Seen_Target = Raycast_Target(Enemy, [Player])
 	
 	if Weapon.get("Current_Ammo") != null and Weapon.Current_Ammo == 0 and Weapon.Reserve_Ammo > 0:
@@ -110,6 +104,12 @@ func Process_Chase_Target(delta, Enemy):
 		if Distance <= Vision_Distance * Vision_Distance:
 			var Can_Shoot = Can_Attack_From_Angle(Eyelevel.get_global_transform().origin, Eyelevel_Forward.get_global_transform().origin, Seen_Target.position)
 			if Can_Shoot:
+				Skip_Dir_Changes = true
+				var target_transform = transform.looking_at(Enemy.get_global_transform().origin, Vector3.UP)
+				transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(
+					target_transform.basis.get_rotation_quaternion(), 
+					35 * delta
+				))
 				var Aim_Noise = Vector3(
 					randf_range(-Aim_Error, Aim_Error),
 					randf_range(-Aim_Error, Aim_Error),
