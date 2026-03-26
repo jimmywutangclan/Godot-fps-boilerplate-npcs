@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://qc5dyponklls" path="res://Assets/Props/Door.tscn" id="13_05uts"]
 [ext_resource type="Texture2D" uid="uid://b6rh621ruhehe" path="res://Levels/Level_Assets/flutterwin.png" id="14_05uts"]
 [ext_resource type="AudioStream" uid="uid://d3yh22403lbta" path="res://Levels/Level_Assets/fluttershy_letsgo.mp3" id="14_jx3gp"]
-[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="16_b1ih4"]
+[ext_resource type="Script" uid="uid://dx7ocd3glkic0" path="res://Scripts/Objects/Friendly_NPC_Nochase.gd" id="16_b1ih4"]
 [ext_resource type="Texture2D" uid="uid://cn66aa8lib63x" path="res://Levels/Level_Assets/help_fluttershy.png" id="16_ynm0b"]
 [ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="17_ynm0b"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="18_dadvy"]
@@ -46,7 +46,7 @@ size = Vector3(1.8918579, 2.8, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
 size = Vector3(6.691036, 2.7869873, 34.12192)
 
-[node name="Everfree" type="Node3D" unique_id=1629451527 node_paths=PackedStringArray("Help_Screen", "Win_Screen", "Win_Audio_Player", "Wave1_RouteGroup", "Wave2_RouteGroup", "Wave3_RouteGroup", "Wave4_RouteGroup")]
+[node name="Everfree" type="Node3D" unique_id=1629451527 node_paths=PackedStringArray("Help_Screen", "Win_Screen", "Win_Audio_Player", "Wave1_RouteGroup", "Wave2_RouteGroup", "Wave3_RouteGroup", "Wave4_RouteGroup", "Fluttershy")]
 script = ExtResource("1_ymuew")
 Help_Screen = NodePath("CanvasLayer/TextureRect2")
 Win_Screen = NodePath("CanvasLayer/TextureRect")
@@ -65,6 +65,7 @@ Wave3_NPC_Counts = Array[int]([4])
 Wave4_RouteGroup = NodePath("RaiderRoute")
 Wave4_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew")])
 Wave4_NPC_Counts = Array[int]([4])
+Fluttershy = NodePath("Fluttershy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1570669354]
 environment = SubResource("Environment_dadvy")

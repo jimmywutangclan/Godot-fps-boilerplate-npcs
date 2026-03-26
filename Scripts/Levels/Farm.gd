@@ -41,6 +41,9 @@ class Wave:
 @export var Help_Text1: TextureRect
 @export var Help_Text2: TextureRect
 
+@export var Applejack: Node3D
+@export var Big_Mac: Node3D
+
 var RNG: RandomNumberGenerator
 
 var Ripe_Trees_Left: int
@@ -124,6 +127,8 @@ func Handle_Bucked_Tree():
 
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
+	Applejack.Recruit(Player.get_node("Head").get_node("ItemManager"))
+	Big_Mac.Recruit(Player.get_node("Head").get_node("ItemManager"))
 	
 	var Wave_Number_Index = Wave_Number - 1
 	var Current_Wave = Waves[Wave_Number_Index]

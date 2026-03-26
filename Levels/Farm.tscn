@@ -164,7 +164,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpk15"]
 size = Vector3(10.991577, 3.4526367, 7.133423)
 
-[node name="Farm" type="Node3D" unique_id=1429862656 node_paths=PackedStringArray("Trees", "Spawn_Points", "Patrol_Groups", "NPC_Groups", "Win_Sound", "Win_Screen", "Help_Text1", "Help_Text2")]
+[node name="Farm" type="Node3D" unique_id=1429862656 node_paths=PackedStringArray("Trees", "Spawn_Points", "Patrol_Groups", "NPC_Groups", "Win_Sound", "Win_Screen", "Help_Text1", "Help_Text2", "Applejack", "Big_Mac")]
 script = ExtResource("1_pcm07")
 Next_Scene = ExtResource("2_cveji")
 Wave1Enemies = Array[PackedScene]([ExtResource("2_s26yu")])
@@ -188,6 +188,8 @@ Win_Sound = NodePath("CanvasLayer/AudioStreamPlayer2D")
 Win_Screen = NodePath("CanvasLayer/WinScreen")
 Help_Text1 = NodePath("CanvasLayer/HelpText1")
 Help_Text2 = NodePath("CanvasLayer/HelpText2")
+Applejack = NodePath("Applejack")
+Big_Mac = NodePath("Bigmac")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=238931075]
 environment = SubResource("Environment_2cbq7")

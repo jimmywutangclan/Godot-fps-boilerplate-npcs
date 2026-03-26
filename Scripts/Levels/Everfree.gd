@@ -32,6 +32,8 @@ class SpawnGroup:
 @export var Wave4_NPC_Types: Array[PackedScene]
 @export var Wave4_NPC_Counts: Array[int]
 
+@export var Fluttershy: Node3D
+
 var Wave1: Array[SpawnGroup]
 var Wave2: Array[SpawnGroup]
 var Wave3: Array[SpawnGroup]
@@ -96,6 +98,7 @@ func _process(delta: float) -> void:
 
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
+	Fluttershy.Recruit(Player.get_node("Head").get_node("ItemManager"))
 	var Wave_Number_Rounded = Wave_Number - 1
 	var Wave_To_Spawn = Waves[Wave_Number_Rounded]
 	var rng = RandomNumberGenerator.new()
