@@ -108,6 +108,8 @@ func hitscan_Collision(Collision_Point):
 			var Target = null
 			if Is_NPC_Weapon == false:
 				Target = get_parent().get_parent().get_parent().get_parent().get_parent()
+			elif Is_Friendly_NPC_Weapon == true:
+				Target = get_parent().Player
 
 			Collider.Hit_Successful(Damage, Direction, Position, Force_Modifier, Target)
 
