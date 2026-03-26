@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccgkwn2qj8cvu"]
 
-[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="1_vv1ud"]
+[ext_resource type="Script" uid="uid://dx7ocd3glkic0" path="res://Scripts/Objects/Friendly_NPC_Nochase.gd" id="1_8cy4t"]
 [ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_7amn7"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_c6cci"]
 [ext_resource type="Texture2D" uid="uid://bailxe6clv2je" path="res://Assets/FriendlyNPCs/bigmac.png" id="4_8cy4t"]
@@ -15,7 +15,7 @@ size = Vector3(6.691036, 2.7869873, 34.12192)
 [node name="Bigmac" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
 collision_layer = 32
 collision_mask = 21
-script = ExtResource("1_vv1ud")
+script = ExtResource("1_8cy4t")
 Navigation_Agent = NodePath("NavigationAgent3D")
 Eyelevel = NodePath("Eyelevel")
 Eyelevel_Forward = NodePath("Eyelevel_Forward")

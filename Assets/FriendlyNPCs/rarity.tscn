@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4tkigbta5v51"]
 
-[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="1_5jfx1"]
+[ext_resource type="Script" uid="uid://dx7ocd3glkic0" path="res://Scripts/Objects/Friendly_NPC_Nochase.gd" id="1_5jfx1"]
 [ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_spttj"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_1nihu"]
 [ext_resource type="Texture2D" uid="uid://braadmjs6juqv" path="res://Assets/FriendlyNPCs/Rarity.png" id="4_5jfx1"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1l72w6vfy6n"]
 
-[ext_resource type="Script" uid="uid://calxccavb55xt" path="res://Scripts/Objects/Friendly_NPC.gd" id="1_h2vlg"]
+[ext_resource type="Script" uid="uid://dx7ocd3glkic0" path="res://Scripts/Objects/Friendly_NPC_Nochase.gd" id="1_h2vlg"]
 [ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="2_ak26p"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_r42mk"]
 [ext_resource type="Texture2D" uid="uid://2lwywtwlssmn" path="res://Assets/FriendlyNPCs/applejack.png" id="4_h2vlg"]
