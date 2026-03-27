@@ -31,6 +31,7 @@ signal Update_Player_Death_Fade
 @export var sprint_speed : float = 10.0
 ## How fast do we freefly?
 @export var freefly_speed : float = 25.0
+@export var max_run_stamina_time : float = 12
 
 @export_group("Input Actions")
 ## Name of Input Action to move Left.
@@ -86,6 +87,7 @@ var sound_locked : bool = false
 var Active_Effects: Array
 
 enum MoveSound {NONE, WALK, RUN, JUMP}
+var current_run_stamina_time: float
 var current_move_sound: MoveSound = MoveSound.NONE
 var was_on_floor: bool = false
 var is_crouched: bool = false
@@ -112,6 +114,7 @@ func _ready() -> void:
 	for Mark in Marks:
 		Follow_Markers_List.append(Mark)
 	
+	current_run_stamina_time = max_run_stamina_time
 	Invincible = false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -175,9 +178,14 @@ func _physics_process(delta: float) -> void:
 		speed_modifier = 0.5
 
 	# Modify speed based on sprinting
-	if can_sprint and Input.is_action_pressed(input_sprint):
+	if can_sprint and Input.is_action_pressed(input_sprint) and current_run_stamina_time > 0.0:
+		current_run_stamina_time -= delta
+		if current_run_stamina_time < 0.0:
+			current_run_stamina_time = -5
 		move_speed = sprint_speed * speed_modifier
 	else:
+		current_run_stamina_time += delta
+		current_run_stamina_time = min(current_run_stamina_time, max_run_stamina_time)
 		move_speed = base_speed * speed_modifier
 
 	# Apply desired movement to velocity
