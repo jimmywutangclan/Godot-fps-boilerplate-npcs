@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b3ncs4fo8m64p"]
+
+[ext_resource type="Script" uid="uid://drxvo2srsugwd" path="res://UIAssets/Lore.gd" id="1_4bcan"]
+[ext_resource type="Texture2D" uid="uid://dsl16xerp7e8s" path="res://Levels/Level_Assets/cutscene.png" id="1_pw3jn"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/Player.tscn" id="2_kmqg3"]
+[ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="3_guxw7"]
+
+[node name="Lore" type="Control" unique_id=254316942]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4bcan")
+Player = ExtResource("2_kmqg3")
+Start_Level = ExtResource("3_guxw7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1662697294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pw3jn")
+
+[node name="Button" type="Button" parent="." unique_id=847410540]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40885416
+anchor_top = 0.91049385
+anchor_right = 0.5911458
+anchor_bottom = 0.9583333
+grow_horizontal = 2
+grow_vertical = 0
+text = "I understand the situation
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

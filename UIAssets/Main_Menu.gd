@@ -1,12 +1,7 @@
 extends Node
 
-@export var Player: PackedScene
-@export var Start_Level: PackedScene
-@export var Spawn_Point: String
-
 func _on_start_game_pressed() -> void:
-	var Player_Node = Player.instantiate()
-	Switch_Scenes.Discard_Previous_Persist_Current_Scene(Player_Node, Start_Level.resource_path, Spawn_Point)
+	Switch_Scenes.Clear_Game_Return_To_UI("res://Levels/Lore.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
