@@ -1418,6 +1418,7 @@ input_forward = "WalkFront"
 input_back = "WalkBack"
 input_jump = "Jump"
 input_sprint = "Sprint"
+Max_Health = 220
 Audio_Player = NodePath("MovementPlayer")
 Walk_Sfx = ExtResource("2_13mns")
 Run_Sfx = ExtResource("3_67v5n")

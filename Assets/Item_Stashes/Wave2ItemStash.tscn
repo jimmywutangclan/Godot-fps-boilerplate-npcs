@@ -16,6 +16,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8
 [node name="Armor2" parent="." unique_id=246718486 instance=ExtResource("1_mc82p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, -0.22075772)
 
+[node name="Armor3" parent="." unique_id=1885399619 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, -1.154756)
+
+[node name="Armor4" parent="." unique_id=1494016219 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, -1.7612711)
+
 [node name="Taco" parent="." unique_id=971090769 instance=ExtResource("3_0rs7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0962095, 0, 0)
 
@@ -28,6 +34,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2321448, 0, -0.061380148)
 [node name="Taco4" parent="." unique_id=1990794450 instance=ExtResource("3_0rs7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8020997, 0, -0.061380148)
 
+[node name="Taco5" parent="." unique_id=995995484 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0962095, 0, -1.4704692)
+
+[node name="Taco6" parent="." unique_id=211437949 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6661644, 0, -1.4704692)
+
+[node name="Taco7" parent="." unique_id=1073619495 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2321448, 0, -1.5318494)
+
+[node name="Taco8" parent="." unique_id=114730912 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8020997, 0, -1.5318494)
+
 [node name="PistolAmmoBox" parent="." unique_id=1264254395 instance=ExtResource("5_jhgn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2660594, 0, 0)
 
@@ -37,6 +55,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0165486, 0, 0)
 [node name="RifleAmmoBox2" parent="." unique_id=888978286 instance=ExtResource("6_r8jmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.808089, 0, 0)
 
+[node name="RifleAmmoBox3" parent="." unique_id=1913298944 instance=ExtResource("6_r8jmw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0165486, 0, -1.2200043)
+
+[node name="RifleAmmoBox4" parent="." unique_id=793949687 instance=ExtResource("6_r8jmw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.808089, 0, -1.2200043)
+
 [node name="RigidBody3D" parent="." unique_id=46014368 instance=ExtResource("5_26mvm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8764744, 0.18319726, 0)
 
@@ -45,3 +69,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5630383, 0, 0)
 
 [node name="Steroid" parent="." unique_id=389386696 instance=ExtResource("7_0rs7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.364303, 0, 0)
+
+[node name="Steroid2" parent="." unique_id=1132679981 instance=ExtResource("7_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.364303, 0, -0.60250473)

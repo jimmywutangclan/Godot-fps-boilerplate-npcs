@@ -9,7 +9,7 @@
 script = ExtResource("1_btl3n")
 Thumbnail = ExtResource("1_dbama")
 Effects = {
-"Current_Health": 100
+"Current_Health": 150
 }
 Spawn_On_Drop = ExtResource("2_spwvv")
 Consume_Sound = ExtResource("4_s78t1")
