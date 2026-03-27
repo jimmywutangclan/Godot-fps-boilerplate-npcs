@@ -101,7 +101,6 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	var NPC_Counts = Wave_Group.NPC_Counts
 	var Stationary_NPC_Types = Wave_Group.Stationary_NPC_Types
 	var Stationary_NPC_Counts = Wave_Group.Stationary_NPC_Counts
-	var Teleport = Wave_Group.Teleport
 	
 	for i in range(NPC_Types.size()):
 		var NPC_Type = NPC_Types[i]
@@ -132,6 +131,10 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 			Instantiated_Enemy.position = Station_Point.get_global_transform().origin
 			NPC_Group.add_child(Instantiated_Enemy)
 			NPC_Group.Add_NPC(Instantiated_Enemy)
+			
+	var Teleports_Choice = [Wave1_Teleport, Wave2_Teleport, Wave3_Teleport]
+	var Teleport_Selected_Index = rng.randi_range(0 , Teleports_Choice.size() - 1)
+	var Teleport = Teleports_Choice[Teleport_Selected_Index]
 			
 	Teleport.visible = true
 	Teleport.Cave_Portal_Found.connect(_on_teleport_target_reached)
