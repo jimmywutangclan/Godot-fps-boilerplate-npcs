@@ -30,6 +30,7 @@ var Stuck_Timer: float = 0.0
 @export var Walk_Sfx: AudioStreamMP3
 @export var Run_Sfx: AudioStreamMP3
 @export var Audio_Player: AudioStreamPlayer3D
+@export var Vocal_Player: AudioStreamPlayer3D
 
 # patrol+investigation
 var Fight_Started: bool = false
@@ -134,6 +135,7 @@ func Transition_Chase(Target):
 	Fight_Target = null
 	Fight_Elapsed_Reaction_Time = 0.0
 	Group.Alert_All(Target)
+	Vocal_Player.play()
 	
 func Transition_Chase_No_Cascade(Target):
 	print("Entering chase no cascade state")
@@ -144,6 +146,7 @@ func Transition_Chase_No_Cascade(Target):
 	Fight_Started = false
 	Fight_Target = null
 	Fight_Elapsed_Reaction_Time = 0.0
+	Vocal_Player.play()
 
 # ==================== HELPERS ============
 

@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_talux"]
 [ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="4_qhl8t"]
 [ext_resource type="PackedScene" uid="uid://ccmc5nvwwwvfj" path="res://Assets/Rifle/Rifle.tscn" id="5_hw1io"]
+[ext_resource type="AudioStream" uid="uid://dm6nktm68rxof" path="res://Assets/NPCs/cozylaugh.mp3" id="6_qipn5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
 size = Vector3(1.8918579, 2.8, 0.2)
@@ -15,7 +16,7 @@ size = Vector3(27.956085, 2.7869873, 64.08871)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
 size = Vector3(6.691036, 2.7869873, 42.811203)
 
-[node name="StationaryCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
+[node name="StationaryCozyGlowRifleNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Vocal_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_qufwx")
@@ -34,6 +35,7 @@ Current_Health = 120
 Walk_Sfx = ExtResource("2_qipn5")
 Run_Sfx = ExtResource("3_talux")
 Audio_Player = NodePath("AudioStreamPlayer3D")
+Vocal_Player = NodePath("VocalStreamPlayer")
 Weapon = NodePath("Rifle")
 Minimum_Attack_Distance = 3.0
 
@@ -88,6 +90,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2989626, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3231055, 0)
 light_energy = 1.66
 spot_range = 25.0
+
+[node name="VocalStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1855858610]
+stream = ExtResource("6_qipn5")
+max_distance = 153.0
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

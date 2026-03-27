@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="2_xlu84"]
 [ext_resource type="PackedScene" uid="uid://bqo5ivfbm4woq" path="res://Assets/RPG/RPG.tscn" id="3_a7xw5"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_sy4r6"]
+[ext_resource type="AudioStream" uid="uid://dm6nktm68rxof" path="res://Assets/NPCs/cozylaugh.mp3" id="6_sy4r6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
 size = Vector3(1.8918579, 2.8, 0.2)
@@ -15,7 +16,7 @@ size = Vector3(28.039948, 2.7869873, 63.90952)
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4uf4"]
 size = Vector3(6.691036, 2.7869873, 16.985056)
 
-[node name="CozyGlowRPGNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
+[node name="CozyGlowRPGNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Vocal_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_a7xw5")
@@ -33,6 +34,7 @@ Current_Health = 250
 Walk_Sfx = ExtResource("2_ucdbl")
 Run_Sfx = ExtResource("3_sy4r6")
 Audio_Player = NodePath("AudioStreamPlayer3D")
+Vocal_Player = NodePath("VocalStreamPlayer")
 Weapon = NodePath("RPG")
 Minimum_Attack_Distance = 10.0
 
@@ -86,6 +88,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2989626, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.195376, 0)
 light_energy = 1.66
 spot_range = 25.0
+
+[node name="VocalStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1464229990]
+stream = ExtResource("6_sy4r6")
+max_distance = 153.0
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="3_s7do1"]
 [ext_resource type="Texture2D" uid="uid://ctf3q46gkn8fn" path="res://Assets/proto_controller/cozyglow.png" id="4_6wh15"]
 [ext_resource type="PackedScene" uid="uid://d0bt1h32ocqdl" path="res://Assets/Pistol/Pistol.tscn" id="5_e8k45"]
+[ext_resource type="AudioStream" uid="uid://dm6nktm68rxof" path="res://Assets/NPCs/cozylaugh.mp3" id="6_i05a3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_drken"]
 size = Vector3(1.8918579, 2.8, 0.2)
@@ -15,7 +16,7 @@ size = Vector3(28.04203, 2.7869873, 64.2087)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tsgkp"]
 size = Vector3(6.724121, 2.8146973, 17.06189)
 
-[node name="CozyGlowPistolNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Target", "Thug"]]
+[node name="CozyGlowPistolNPC" type="CharacterBody3D" unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Vocal_Player", "Weapon") groups=["Target", "Thug"]]
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("1_tsgkp")
@@ -33,6 +34,7 @@ Current_Health = 120
 Walk_Sfx = ExtResource("2_hnpr6")
 Run_Sfx = ExtResource("3_s7do1")
 Audio_Player = NodePath("AudioStreamPlayer3D")
+Vocal_Player = NodePath("VocalStreamPlayer")
 Weapon = NodePath("Pistol")
 Minimum_Attack_Distance = 3.0
 
@@ -88,6 +90,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2989626, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39253187, 0.9880632, 0)
 light_energy = 1.66
 spot_range = 25.0
+
+[node name="VocalStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1175703705]
+stream = ExtResource("6_i05a3")
+max_distance = 153.12
 
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_navigation_finished"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
