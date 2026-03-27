@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c38sojjmswfhv" path="res://Levels/Level_Assets/instruction.png" id="8_cax11"]
 [ext_resource type="PackedScene" uid="uid://cod75s187o16o" path="res://Assets/Item_Stashes/Wave1ItemStash.tscn" id="9_2uni1"]
 [ext_resource type="PackedScene" uid="uid://cajt362ly775m" path="res://Assets/Item_Stashes/Wave2ItemStash.tscn" id="10_xrkt0"]
+[ext_resource type="AudioStream" uid="uid://bkmoylcskt8ci" path="res://Levels/Ambience/MLP_FiM - Pinkie's Gala Fantasy Song [Instrumental Only][1080p  Blu-ray].mp3" id="14_71c17"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugx0c"]
 albedo_texture = ExtResource("7_2uni1")
@@ -185,3 +186,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, -1.7471
 
 [node name="Wave4ItemStashSpawn" type="Marker3D" parent="." unique_id=2040809341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3370976, 1.1420228, -5.3500195)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1221911167]
+stream = ExtResource("14_71c17")
+autoplay = true
+parameters/looping = true

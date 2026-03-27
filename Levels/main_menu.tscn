@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqyl1lltrbvo5" path="res://UIAssets/Main_Menu.gd" id="1_jy27m"]
 [ext_resource type="Texture2D" uid="uid://bokjd2ss4tk7y" path="res://UIAssets/ponyvillenights.png" id="2_jy27m"]
+[ext_resource type="AudioStream" uid="uid://dg8kr7k7rpt2n" path="res://Levels/Ambience/Opening Titles Remix - Instrumental.mp3" id="3_3es34"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy27m"]
 texture = ExtResource("2_jy27m")
@@ -82,6 +83,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_jy27m")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6ucrw")
 text = "Exit
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1883734765]
+stream = ExtResource("3_3es34")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
