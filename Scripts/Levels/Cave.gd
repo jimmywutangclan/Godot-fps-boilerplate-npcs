@@ -54,6 +54,7 @@ class SpawnGroup:
 
 @export var Rarity: Node3D
 
+var Current_Wave_Number: int
 var Waves: Array
 var Won: bool
 var Time_Elapsed_Since_Start: float
@@ -92,8 +93,8 @@ func _process(delta: float) -> void:
 func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 	Player = _Player
 	Rarity.Recruit(Player.get_node("Head").get_node("ItemManager"))
-	var Wave_Number_Rounded = Wave_Number - 1
-	var Wave_Group = Waves[Wave_Number_Rounded]
+	Current_Wave_Number = Wave_Number - 1
+	var Wave_Group = Waves[Current_Wave_Number]
 	var rng = RandomNumberGenerator.new()
 	
 	var Route_Group = Wave_Group.Route
@@ -138,7 +139,7 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 			
 	Teleport.visible = true
 	Teleport.Cave_Portal_Found.connect(_on_teleport_target_reached)
-
+	
 func _on_teleport_target_reached():
 	if Won == false:
 		Player.Invincible = true
@@ -146,3 +147,43 @@ func _on_teleport_target_reached():
 		Win_Screen.visible = true
 		Win_Audio.play()
 	
+func _on_timer_timeout() -> void: # punishment with a second wave
+	print("You wasted too much, reinforcements have arrived")
+	var Wave_Group = Waves[Current_Wave_Number]
+	var rng = RandomNumberGenerator.new()
+	
+	var Route_Group = Wave_Group.Route
+	var NPC_Types = Wave_Group.NPC_Types
+	var NPC_Counts = Wave_Group.NPC_Counts
+	var Stationary_NPC_Types = Wave_Group.Stationary_NPC_Types
+	var Stationary_NPC_Counts = Wave_Group.Stationary_NPC_Counts
+	
+	for i in range(NPC_Types.size()):
+		var NPC_Type = NPC_Types[i]
+		var NPC_Count = NPC_Counts[i]
+		for j in range(NPC_Count):
+			var Instantiated_Enemy = NPC_Type.instantiate()
+			var Start_Goalpost_Index = rng.randi_range(0, Route_Group.get_child_count() - 1)
+			var Start_Goalpost_Node = Route_Group.get_child(Start_Goalpost_Index)
+			Instantiated_Enemy.Nav_Trail_Group = Route_Group
+			Instantiated_Enemy.Start_Goalpost = Start_Goalpost_Index
+			Instantiated_Enemy.Start_Reversed = (true if rng.randi_range(0, 1) == 1 else false)
+			Instantiated_Enemy.position = Start_Goalpost_Node.get_global_transform().origin
+			NPC_Group.add_child(Instantiated_Enemy)
+			NPC_Group.Add_NPC(Instantiated_Enemy)
+			
+	for i in range(Stationary_NPC_Types.size()):
+		var NPC_Type = Stationary_NPC_Types[i]
+		var NPC_Count = Stationary_NPC_Counts[i]
+		for j in range(NPC_Count):
+			var Instantiated_Enemy = NPC_Type.instantiate()
+			var Station_Index = rng.randi_range(0, Stationary_Points.size() - 1)
+			var Station_Point_Node = Stationary_Points.get(Station_Index)
+			
+			var Station_Point = Station_Point_Node.get_node("Standpoint")
+			var Station_Point_Dir = Station_Point_Node.get_node("Direction")
+			Instantiated_Enemy.Station_Point = Station_Point
+			Instantiated_Enemy.Direction_To_Face = Station_Point_Dir
+			Instantiated_Enemy.position = Station_Point.get_global_transform().origin
+			NPC_Group.add_child(Instantiated_Enemy)
+			NPC_Group.Add_NPC(Instantiated_Enemy)

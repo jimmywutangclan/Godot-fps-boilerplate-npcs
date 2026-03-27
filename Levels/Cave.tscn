@@ -431,3 +431,9 @@ transform = Transform3D(0.7737409, 0, 0, 0, 0.7597987, 0, 0, 0, 1, 15.072433, 2.
 
 [node name="Gems9" parent="." unique_id=1737331952 instance=ExtResource("12_k60ki")]
 transform = Transform3D(0.7737409, 0, 0, 0, 0.7597987, 0, 0, 0, 1, 15.892656, 2.5292847, 35.038723)
+
+[node name="Timer" type="Timer" parent="." unique_id=1934043076]
+wait_time = 45.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
