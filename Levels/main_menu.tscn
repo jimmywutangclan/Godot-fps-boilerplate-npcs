@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://dgid713jv0vxu"]
 
-[ext_resource type="Texture2D" uid="uid://mcuyhd0apsiv" path="res://UIAssets/operationtwosisters.png" id="1_6ucrw"]
 [ext_resource type="Script" uid="uid://dqyl1lltrbvo5" path="res://UIAssets/Main_Menu.gd" id="1_jy27m"]
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Assets/proto_controller/Player.tscn" id="2_3es34"]
-[ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="3_8md67"]
+[ext_resource type="Texture2D" uid="uid://bokjd2ss4tk7y" path="res://UIAssets/ponyvillenights.png" id="2_jy27m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy27m"]
-texture = ExtResource("1_6ucrw")
+texture = ExtResource("2_jy27m")
 modulate_color = Color(1.0416296, 1.0416296, 1.0416296, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_351dl"]
@@ -41,9 +39,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jy27m")
-Player = ExtResource("2_3es34")
-Start_Level = ExtResource("3_8md67")
-Spawn_Point = "SpawnPoint1"
 
 [node name="Panel" type="Panel" parent="." unique_id=1898379829]
 layout_mode = 1

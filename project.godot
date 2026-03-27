@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Bronygame2"
+config/name="Violence is A Last Resort"
 run/main_scene="uid://dgid713jv0vxu"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"

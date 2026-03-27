@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bjh3fyn52vxfa" path="res://Assets/Item_Stashes/Wave3ItemStash.tscn" id="4_v025o"]
 [ext_resource type="PackedScene" uid="uid://ygm3sq26ixmv" path="res://Assets/Basics/FurnishedWall.tscn" id="5_j83j6"]
 [ext_resource type="Texture2D" uid="uid://ckax1641f8cco" path="res://Levels/Level_Assets/crappywall.png" id="7_2uni1"]
+[ext_resource type="Texture2D" uid="uid://b73olb2lfkqbo" path="res://Levels/Level_Assets/blacksofa.png" id="7_mh5bn"]
 [ext_resource type="PackedScene" uid="uid://dd8xjgcgrvm34" path="res://Assets/Props/LobbyToRoundTeleport.tscn" id="8_2uni1"]
+[ext_resource type="Texture2D" uid="uid://c38sojjmswfhv" path="res://Levels/Level_Assets/instruction.png" id="8_cax11"]
 [ext_resource type="PackedScene" uid="uid://cod75s187o16o" path="res://Assets/Item_Stashes/Wave1ItemStash.tscn" id="9_2uni1"]
 [ext_resource type="PackedScene" uid="uid://cajt362ly775m" path="res://Assets/Item_Stashes/Wave2ItemStash.tscn" id="10_xrkt0"]
 
@@ -57,6 +59,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.388157, 4.7749815, 3.805929
 [node name="Sprite3D" type="Sprite3D" parent="Physical_Room" unique_id=1969844339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3325317, 2.3360858, 6.983634)
 texture = ExtResource("2_f5k8n")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Physical_Room" unique_id=376274898]
+transform = Transform3D(0.10511887, 0, 0, 0, 0.07604589, 0, 0, 0, 1, -8.374895, 1.4956293, 6.7103605)
+texture = ExtResource("7_mh5bn")
+
+[node name="Sprite3D7" type="Sprite3D" parent="Physical_Room" unique_id=1857443739]
+transform = Transform3D(0.86282563, 0, 0, 0, 0.8288796, 0, 0, 0, 1, 1.6269474, 3.9321365, -8.224707)
+texture = ExtResource("8_cax11")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Physical_Room" unique_id=2035351442]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7777388, 3.1151733, 6.983634)
