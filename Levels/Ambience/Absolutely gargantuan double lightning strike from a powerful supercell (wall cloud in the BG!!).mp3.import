@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bk0yxjwvi75s6"
+path="res://.godot/imported/Absolutely gargantuan double lightning strike from a powerful supercell (wall cloud in the BG!!).mp3-433725d9e1ac5b0991863dcef1cdfa6a.mp3str"
+
+[deps]
+
+source_file="res://Levels/Ambience/Absolutely gargantuan double lightning strike from a powerful supercell (wall cloud in the BG!!).mp3"
+dest_files=["res://.godot/imported/Absolutely gargantuan double lightning strike from a powerful supercell (wall cloud in the BG!!).mp3-433725d9e1ac5b0991863dcef1cdfa6a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cctie42u52smu"
+path="res://.godot/imported/The Eerie Sounds Of Saturn.mp3-b2b82d459556e593c38fa873d0bfa552.mp3str"
+
+[deps]
+
+source_file="res://Levels/Ambience/The Eerie Sounds Of Saturn.mp3"
+dest_files=["res://.godot/imported/The Eerie Sounds Of Saturn.mp3-b2b82d459556e593c38fa873d0bfa552.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

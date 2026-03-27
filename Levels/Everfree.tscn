@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b6rh621ruhehe" path="res://Levels/Level_Assets/flutterwin.png" id="14_05uts"]
 [ext_resource type="AudioStream" uid="uid://d3yh22403lbta" path="res://Levels/Level_Assets/fluttershy_letsgo.mp3" id="14_jx3gp"]
 [ext_resource type="Script" uid="uid://dx7ocd3glkic0" path="res://Scripts/Objects/Friendly_NPC_Nochase.gd" id="16_b1ih4"]
+[ext_resource type="AudioStream" uid="uid://d0fuho41fb5bq" path="res://Levels/Ambience/Forest Ambience Sound Effects _ No Copyright _ Nature Forest HQ.mp3" id="16_dadvy"]
 [ext_resource type="Texture2D" uid="uid://cn66aa8lib63x" path="res://Levels/Level_Assets/help_fluttershy.png" id="16_ynm0b"]
 [ext_resource type="AudioStream" uid="uid://q5moxdsecn7b" path="res://Assets/proto_controller/Walk.mp3" id="17_ynm0b"]
 [ext_resource type="AudioStream" uid="uid://bqk5oixvfbcyu" path="res://Assets/proto_controller/Run.mp3" id="18_dadvy"]
@@ -455,6 +456,11 @@ pivot_offset = Vector2(525, 175)
 size_flags_horizontal = 4
 texture = ExtResource("16_ynm0b")
 metadata/_edit_use_anchors_ = true
+
+[node name="AmbientSong" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1801853762]
+stream = ExtResource("16_dadvy")
+autoplay = true
+parameters/looping = true
 
 [node name="Fluttershy" type="CharacterBody3D" parent="." unique_id=907599060 node_paths=PackedStringArray("Navigation_Agent", "Eyelevel", "Eyelevel_Forward", "Audio_Player", "Weapon") groups=["Friendly", "Target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72254, -0.030983448, -83.653145)

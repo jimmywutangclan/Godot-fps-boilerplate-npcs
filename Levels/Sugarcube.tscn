@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://uw4lnq23htnn" path="res://Levels/Level_Assets/pinkiehelp.png" id="29_2iiav"]
 [ext_resource type="AudioStream" uid="uid://dhcb5swd1qrm4" path="res://Levels/Level_Assets/pinkie_letsgo.mp3" id="29_a58a0"]
 [ext_resource type="AudioStream" uid="uid://b0k3toycxgpie" path="res://Levels/Level_Assets/screamscaR.mp3" id="29_psa31"]
+[ext_resource type="AudioStream" uid="uid://cobimo14mly66" path="res://Levels/Ambience/cricket on a summer night _ Cricket sound effects _ Copyright Free Nature sounds.mp3" id="30_2iiav"]
 [ext_resource type="Texture2D" uid="uid://cyuk0fsgqpgsr" path="res://Levels/Level_Assets/pinkiewin.png" id="30_a58a0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2iiav"]
@@ -993,6 +994,11 @@ texture = ExtResource("26_cx17w")
 
 [node name="Die_Stream" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1166512250]
 stream = ExtResource("29_psa31")
+
+[node name="AmbientSong" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=804885554]
+stream = ExtResource("30_2iiav")
+autoplay = true
+parameters/looping = true
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=1075329969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.853859, 2.3971882, -20.928543)

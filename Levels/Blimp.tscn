@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ckcex8073hkd" path="res://Levels/Level_Assets/dashie_instructions.png" id="9_akmqw"]
 [ext_resource type="Texture2D" uid="uid://c6mww3i873qe2" path="res://Levels/Level_Assets/dashie_yourewinner.png" id="10_5hly5"]
 [ext_resource type="AudioStream" uid="uid://dy31qjgjwrhit" path="res://Levels/Level_Assets/dashie_letsgo.mp3" id="12_urh1d"]
+[ext_resource type="AudioStream" uid="uid://bk0yxjwvi75s6" path="res://Levels/Ambience/Absolutely gargantuan double lightning strike from a powerful supercell (wall cloud in the BG!!).mp3" id="13_k1666"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gw4uq"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -304,3 +305,8 @@ texture = ExtResource("10_5hly5")
 
 [node name="WinSound" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=328957019]
 stream = ExtResource("12_urh1d")
+
+[node name="AmbientSong" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1979694870]
+stream = ExtResource("13_k1666")
+autoplay = true
+parameters/looping = true

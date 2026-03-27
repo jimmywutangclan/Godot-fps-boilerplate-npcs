@@ -124,6 +124,7 @@ func Transition_Investigate(Target):
 	Investigation_Target = Target
 	Navigation_Agent.set_target_position(Investigation_Target_Pos)
 	Current_State = STATE.INVESTIGATE
+	Vocal_Player.play()
 
 func Transition_Chase(Target):
 	print("Entering chase state")

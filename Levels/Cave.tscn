@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bebi5lptrt36y" path="res://Levels/Level_Assets/rarityhelp.png" id="9_2217u"]
 [ext_resource type="Texture2D" uid="uid://oxh6duortmb7" path="res://Levels/Level_Assets/raritywinner.png" id="10_b4h26"]
 [ext_resource type="AudioStream" uid="uid://bed8xur60vuti" path="res://Levels/Level_Assets/rarity_letsgo.mp3" id="11_52d18"]
+[ext_resource type="AudioStream" uid="uid://cctie42u52smu" path="res://Levels/Ambience/The Eerie Sounds Of Saturn.mp3" id="11_icx5k"]
 [ext_resource type="PackedScene" uid="uid://c4tkigbta5v51" path="res://Assets/FriendlyNPCs/rarity.tscn" id="11_k60ki"]
 [ext_resource type="PackedScene" uid="uid://iucdjwvcy23n" path="res://Assets/Props/Gems.tscn" id="12_k60ki"]
 
@@ -332,6 +333,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1048623744]
 stream = ExtResource("11_52d18")
+
+[node name="AmbientSong" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1002117945]
+stream = ExtResource("11_icx5k")
+autoplay = true
+parameters/looping = true
 
 [node name="Rarity" parent="." unique_id=907599060 instance=ExtResource("11_k60ki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2381835, 33.52279)

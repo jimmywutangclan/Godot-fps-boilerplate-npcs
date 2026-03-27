@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://bgktswp3bl4h8" path="res://Levels/Level_Assets/aj_letsgo.mp3" id="26_hpk15"]
 [ext_resource type="Texture2D" uid="uid://bvd6xahfh76x1" path="res://Levels/Level_Assets/ajwinner.png" id="27_hpk15"]
 [ext_resource type="Texture2D" uid="uid://c0y3xmeeurqxu" path="res://Levels/Level_Assets/ajhelp.png" id="28_361qc"]
+[ext_resource type="AudioStream" uid="uid://cobimo14mly66" path="res://Levels/Ambience/cricket on a summer night _ Cricket sound effects _ Copyright Free Nature sounds.mp3" id="29_2cbq7"]
 [ext_resource type="Texture2D" uid="uid://baxu40t3autb5" path="res://Levels/Level_Assets/ajhelp2.png" id="29_iiw5v"]
 [ext_resource type="PackedScene" uid="uid://1l72w6vfy6n" path="res://Assets/FriendlyNPCs/applejack.tscn" id="30_2cbq7"]
 [ext_resource type="PackedScene" uid="uid://ccgkwn2qj8cvu" path="res://Assets/FriendlyNPCs/bigmac.tscn" id="31_qb6s3"]
@@ -3184,6 +3185,11 @@ pivot_offset = Vector2(525, 175)
 size_flags_horizontal = 4
 texture = ExtResource("29_iiw5v")
 metadata/_edit_use_anchors_ = true
+
+[node name="AmbientSong" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1217768041]
+stream = ExtResource("29_2cbq7")
+autoplay = true
+parameters/looping = true
 
 [node name="WinArea" type="Area3D" parent="." unique_id=1966915199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1889105, 2.492526, 0)
