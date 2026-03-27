@@ -1929,9 +1929,6 @@ light_color = Color(1, 1, 0.078431375, 1)
 [node name="Node3D" parent="." unique_id=984706579 instance=ExtResource("17_5kejk")]
 transform = Transform3D(1, 0, 0, 0, 0.44877273, 0, 0, 0, 1, 24.99521, 0.8750396, 13.972374)
 
-[node name="Node3D2" parent="." unique_id=2131430168 instance=ExtResource("17_5kejk")]
-transform = Transform3D(1, 0, 0, 0, 0.44877273, 0, 0, 0, 1, 5.3025627, 0.8750396, -24.824242)
-
 [node name="Decor" type="Node3D" parent="." unique_id=2099900312]
 
 [node name="WeedFarm2" type="Sprite3D" parent="Decor" unique_id=1962893194]
