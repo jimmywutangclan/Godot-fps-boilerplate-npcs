@@ -1499,7 +1499,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27529144, 0)
 visible = false
 light_energy = 3.0
-spot_range = 55.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 97.887
 spot_attenuation = 1.79
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1665302140]
