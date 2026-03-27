@@ -109,6 +109,7 @@ func Instantiate_Round(Wave_Number: int, _Player: Node3D):
 		var NPC_Counts = Wave_Group.NPC_Counts
 		
 		var NPC_Group = NPC_Parent_Prefab.instantiate()
+		NPC_Group.Limit_Recruitment = true
 		for i in range(NPC_Types.size()):
 			var NPC_Type = NPC_Types[i]
 			var NPC_Count = NPC_Counts[i]
