@@ -45,6 +45,8 @@ background_mode = 2
 sky = SubResource("Sky_a58a0")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwfej"]
 albedo_texture = ExtResource("7_hi1cq")
@@ -189,6 +191,13 @@ albedo_texture = ExtResource("15_4nnje")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nnje"]
 albedo_texture = ExtResource("15_lpa1h")
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_psa31"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_2iiav"]
+density = 8.0
+albedo = Color(0, 0, 0, 1)
+density_texture = SubResource("NoiseTexture3D_psa31")
 
 [node name="Sugarcube" type="Node3D" unique_id=118222618 node_paths=PackedStringArray("Pinkie", "Spawnpoints", "Patrol_Route_Nodes", "Help_Screen", "Win_Screen", "Win_Audio_Player", "Die_Screen", "Die_Stream")]
 script = ExtResource("1_gr2rd")
@@ -984,6 +993,26 @@ texture = ExtResource("26_cx17w")
 
 [node name="Die_Stream" type="AudioStreamPlayer2D" parent="CanvasLayer" unique_id=1166512250]
 stream = ExtResource("29_psa31")
+
+[node name="FogVolume" type="FogVolume" parent="." unique_id=1075329969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.853859, 2.3971882, -20.928543)
+size = Vector3(12.106964, 3.5732422, 6.1497803)
+material = SubResource("FogMaterial_2iiav")
+
+[node name="FogVolume2" type="FogVolume" parent="." unique_id=466064641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.379232, 4.641553, 12.193939)
+size = Vector3(5.056217, 4.0634766, 5.142273)
+material = SubResource("FogMaterial_2iiav")
+
+[node name="FogVolume3" type="FogVolume" parent="." unique_id=1432087691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.446014, 2.9257765, -14.89338)
+size = Vector3(11.179154, 4.301758, 5.142273)
+material = SubResource("FogMaterial_2iiav")
+
+[node name="FogVolume4" type="FogVolume" parent="." unique_id=39390749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.531041, 2.0330153, 6.108901)
+size = Vector3(6.317499, 4.8258057, 6.4773407)
+material = SubResource("FogMaterial_2iiav")
 
 [connection signal="current_animation_changed" from="Door1/AnimationPlayer" to="Door1/Door" method="_on_animation_player_current_animation_changed"]
 [connection signal="current_animation_changed" from="Door5/AnimationPlayer" to="Door5/Door" method="_on_animation_player_current_animation_changed"]
