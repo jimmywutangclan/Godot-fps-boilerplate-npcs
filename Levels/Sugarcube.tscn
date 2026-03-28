@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cdodfeqvxvp00" path="res://Assets/NPCs/PinkieCloneNPCs/pinkie_clone_npc_pistol.tscn" id="2_a58a0"]
 [ext_resource type="Texture2D" uid="uid://duiti1581xtdm" path="res://Levels/Level_Assets/bluefloor.jpg" id="2_lxc4i"]
 [ext_resource type="Texture2D" uid="uid://cxr78vqd51s28" path="res://Levels/Level_Assets/woodfloor.jpg" id="3_5aqrl"]
+[ext_resource type="PackedScene" uid="uid://byeilm2jqvbf2" path="res://Assets/NPCs/CaveNPCs/weaker_cozy_glow_npc_rifle.tscn" id="3_a58a0"]
 [ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="3_cx17w"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="3_raen5"]
+[ext_resource type="PackedScene" uid="uid://cvhgw0f34vjkv" path="res://Assets/NPCs/cozy_glow_npc_sword.tscn" id="4_q3i78"]
 [ext_resource type="Script" uid="uid://7oio7q7lptxw" path="res://Scripts/Objects/Door.gd" id="5_qwcdp"]
 [ext_resource type="PackedScene" uid="uid://dclpp1m4u7k25" path="res://Assets/FriendlyNPCs/pinkie_og.tscn" id="5_raen5"]
 [ext_resource type="AudioStream" uid="uid://cglbre7jdl4i0" path="res://Assets/Props/Door.mp3" id="6_hi1cq"]
@@ -205,12 +207,12 @@ script = ExtResource("1_gr2rd")
 Wave1Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
 Wave1EnemyCounts = Array[int]([4])
 Wave1Interval = 2.0
-Wave2Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
-Wave2EnemyCounts = Array[int]([6])
-Wave2Interval = 1.75
-Wave3Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
-Wave3EnemyCounts = Array[int]([8])
-Wave3Interval = 1.75
+Wave2Enemies = Array[PackedScene]([ExtResource("2_a58a0"), ExtResource("3_a58a0"), ExtResource("4_q3i78")])
+Wave2EnemyCounts = Array[int]([5, 3, 1])
+Wave2Interval = 2.0
+Wave3Enemies = Array[PackedScene]([ExtResource("2_a58a0"), ExtResource("3_a58a0"), ExtResource("4_q3i78")])
+Wave3EnemyCounts = Array[int]([8, 5, 2])
+Wave3Interval = 2.0
 Wave4Enemies = Array[PackedScene]([ExtResource("2_a58a0")])
 Wave4EnemyCounts = Array[int]([10])
 Wave4Interval = 1.0

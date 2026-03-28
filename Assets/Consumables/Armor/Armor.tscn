@@ -10,7 +10,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 script = ExtResource("1_p4ues")
 Thumbnail = ExtResource("2_qf5di")
 Effects = {
-"Current_Armor": 150
+"Current_Armor": 250
 }
 Spawn_On_Drop = ExtResource("3_jdly3")
 Consume_Sound = ExtResource("4_qf5di")

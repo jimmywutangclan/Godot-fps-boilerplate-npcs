@@ -8,15 +8,25 @@ var Completed_Levels: Array[String] = []
 var Current_Level: String = ""
 var Won: bool
 
+@export var Wave_Override: int = -1
+var Overriden: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Select_Next_Level()
 	Won = false
 	Spawn_Wave_Item_Stash(0)
+	if Wave_Override != -1:
+		for i in range(1, Wave_Override):
+			Spawn_Wave_Item_Stash(i)
+	Overriden = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Overriden == false and Wave_Override != -1:
+		print("Overriding wave")
+		Switch_Scenes.Current_Wave = Wave_Override
+		Overriden = true
 	if Won:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		Switch_Scenes.Clear_Game_Return_To_UI("res://Levels/You_Won.tscn") 

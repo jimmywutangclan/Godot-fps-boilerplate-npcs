@@ -5,7 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="2_cveji"]
 [ext_resource type="PackedScene" uid="uid://dbol8i64138la" path="res://Assets/NPCs/cozy_glow_npc_pistol.tscn" id="2_s26yu"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="3_cm0qc"]
+[ext_resource type="PackedScene" uid="uid://byeilm2jqvbf2" path="res://Assets/NPCs/CaveNPCs/weaker_cozy_glow_npc_rifle.tscn" id="4_qb6s3"]
+[ext_resource type="PackedScene" uid="uid://cvhgw0f34vjkv" path="res://Assets/NPCs/cozy_glow_npc_sword.tscn" id="5_c7avg"]
 [ext_resource type="PackedScene" uid="uid://rqne6n76lupl" path="res://Assets/Basics/RedWall.tscn" id="6_cm0qc"]
+[ext_resource type="PackedScene" uid="uid://d1oc5t5is4ttn" path="res://Assets/NPCs/cozy_glow_npc_rpg.tscn" id="6_n44cl"]
 [ext_resource type="Texture2D" uid="uid://brj2bsy6kcy7h" path="res://Levels/Level_Assets/siding.jpg" id="7_i2qka"]
 [ext_resource type="PackedScene" uid="uid://dfx2mu5ct4vh1" path="res://Assets/Basics/StoneWall.tscn" id="8_0y14n"]
 [ext_resource type="Texture2D" uid="uid://cx5s5jdol23nf" path="res://Levels/Level_Assets/weathervane.png" id="9_aipd3"]
@@ -179,11 +182,11 @@ Next_Scene = ExtResource("2_cveji")
 Wave1Enemies = Array[PackedScene]([ExtResource("2_s26yu")])
 Wave1EnemyWeights = Array[int]([4])
 Wave1Interval = 9.0
-Wave2Enemies = Array[PackedScene]([ExtResource("2_s26yu")])
-Wave2EnemyWeights = Array[int]([4])
+Wave2Enemies = Array[PackedScene]([ExtResource("2_s26yu"), ExtResource("4_qb6s3"), ExtResource("5_c7avg")])
+Wave2EnemyWeights = Array[int]([4, 2, 1])
 Wave2Interval = 8.0
-Wave3Enemies = Array[PackedScene]([ExtResource("2_s26yu")])
-Wave3EnemyWeights = Array[int]([4])
+Wave3Enemies = Array[PackedScene]([ExtResource("2_s26yu"), ExtResource("4_qb6s3"), ExtResource("5_c7avg"), ExtResource("6_n44cl")])
+Wave3EnemyWeights = Array[int]([3, 3, 1, 1])
 Wave3Interval = 8.0
 Wave4Enemies = Array[PackedScene]([ExtResource("2_s26yu")])
 Wave4EnemyWeights = Array[int]([4])
