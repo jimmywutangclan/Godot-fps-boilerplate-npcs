@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://bemt1k2vsjmix" path="res://Scripts/Levels/Cave.gd" id="1_tpm3r"]
 [ext_resource type="PackedScene" uid="uid://dfx2mu5ct4vh1" path="res://Assets/Basics/StoneWall.tscn" id="1_ubde1"]
 [ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="2_tut6m"]
-[ext_resource type="PackedScene" uid="uid://dbol8i64138la" path="res://Assets/NPCs/cozy_glow_npc_pistol.tscn" id="3_v4vex"]
+[ext_resource type="PackedScene" uid="uid://dv7gqos161egn" path="res://Assets/NPCs/CaveNPCs/weaker_cozy_glow_npc_pistol.tscn" id="3_mlrk7"]
 [ext_resource type="PackedScene" uid="uid://cj8eay1lw2evk" path="res://Assets/Props/CaveWinTrigger.tscn" id="4_h3v5l"]
 [ext_resource type="PackedScene" uid="uid://c81j3kvj1xa02" path="res://Assets/NPCs/stationary_cozy_glow_npc_rifle.tscn" id="4_roxr1"]
+[ext_resource type="PackedScene" uid="uid://byeilm2jqvbf2" path="res://Assets/NPCs/CaveNPCs/weaker_cozy_glow_npc_rifle.tscn" id="5_mlrk7"]
+[ext_resource type="PackedScene" uid="uid://cvhgw0f34vjkv" path="res://Assets/NPCs/cozy_glow_npc_sword.tscn" id="6_j7mhn"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="6_km1o6"]
+[ext_resource type="PackedScene" uid="uid://d1oc5t5is4ttn" path="res://Assets/NPCs/cozy_glow_npc_rpg.tscn" id="7_w7o4i"]
 [ext_resource type="Texture2D" uid="uid://bebi5lptrt36y" path="res://Levels/Level_Assets/rarityhelp.png" id="9_2217u"]
 [ext_resource type="Texture2D" uid="uid://oxh6duortmb7" path="res://Levels/Level_Assets/raritywinner.png" id="10_b4h26"]
 [ext_resource type="AudioStream" uid="uid://bed8xur60vuti" path="res://Levels/Level_Assets/rarity_letsgo.mp3" id="11_52d18"]
@@ -49,22 +52,22 @@ Next_Scene = ExtResource("2_tut6m")
 Route = NodePath("PatrolTrail")
 Stationary_Points = [NodePath("StationaryPoints/Station1"), NodePath("StationaryPoints/Station2"), NodePath("StationaryPoints/Station3"), NodePath("StationaryPoints/Station4"), NodePath("StationaryPoints/Station5"), NodePath("StationaryPoints/Station6")]
 NPC_Group = NodePath("NPC_Group")
-Wave1_NPC_Types = Array[PackedScene]([ExtResource("3_v4vex")])
+Wave1_NPC_Types = Array[PackedScene]([ExtResource("3_mlrk7")])
 Wave1_NPC_Counts = Array[int]([4])
 Wave1_Stationary_NPC_Types = Array[PackedScene]([ExtResource("4_roxr1")])
 Wave1_Stationary_NPC_Counts = Array[int]([2])
 Wave1_Teleport = NodePath("CaveWinTrigger1")
-Wave2_NPC_Types = Array[PackedScene]([ExtResource("3_v4vex")])
-Wave2_NPC_Counts = Array[int]([8])
+Wave2_NPC_Types = Array[PackedScene]([ExtResource("3_mlrk7"), ExtResource("5_mlrk7"), ExtResource("6_j7mhn")])
+Wave2_NPC_Counts = Array[int]([6, 3, 2])
 Wave2_Stationary_NPC_Types = Array[PackedScene]([ExtResource("4_roxr1")])
 Wave2_Stationary_NPC_Counts = Array[int]([3])
 Wave2_Teleport = NodePath("CaveWinTrigger2")
-Wave3_NPC_Types = Array[PackedScene]([ExtResource("3_v4vex")])
-Wave3_NPC_Counts = Array[int]([8])
+Wave3_NPC_Types = Array[PackedScene]([ExtResource("3_mlrk7"), ExtResource("5_mlrk7"), ExtResource("6_j7mhn"), ExtResource("7_w7o4i")])
+Wave3_NPC_Counts = Array[int]([8, 6, 4, 1])
 Wave3_Stationary_NPC_Types = Array[PackedScene]([ExtResource("4_roxr1")])
-Wave3_Stationary_NPC_Counts = Array[int]([3])
+Wave3_Stationary_NPC_Counts = Array[int]([4])
 Wave3_Teleport = NodePath("CaveWinTrigger3")
-Wave4_NPC_Types = Array[PackedScene]([ExtResource("3_v4vex")])
+Wave4_NPC_Types = Array[PackedScene]([ExtResource("3_mlrk7")])
 Wave4_NPC_Counts = Array[int]([8])
 Wave4_Stationary_NPC_Types = Array[PackedScene]([ExtResource("4_roxr1")])
 Wave4_Stationary_NPC_Counts = Array[int]([4])

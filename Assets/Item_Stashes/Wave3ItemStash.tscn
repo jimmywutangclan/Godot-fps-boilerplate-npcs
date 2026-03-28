@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brk80blool2nc" path="res://Assets/Consumables/Steroid/SteroidDrop.tscn" id="5_rty58"]
 [ext_resource type="PackedScene" uid="uid://rjvj82vqrw3n" path="res://Assets/Consumables/Speed/SpeedDrop.tscn" id="6_i6cbt"]
 [ext_resource type="PackedScene" uid="uid://dicfc8ta6hmyb" path="res://Assets/Consumables/Pills/PillsDrop.tscn" id="7_hmq3f"]
+[ext_resource type="PackedScene" uid="uid://los8c3lpnu40" path="res://Assets/Minigun/MinigunDrop.tscn" id="8_i6cbt"]
 
 [node name="Wave3ItemStash" type="Node3D" unique_id=1546438933]
 
@@ -108,3 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.101889, 0, 0)
 
 [node name="Pills" parent="." unique_id=288623864 instance=ExtResource("7_hmq3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.053555, 0, 0)
+
+[node name="MinigunDrop" parent="." unique_id=587187617 instance=ExtResource("8_i6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.974609, 0.401191, 0)

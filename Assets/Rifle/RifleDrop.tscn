@@ -13,7 +13,7 @@ script = ExtResource("1_n5puj")
 Item_Name = "Rifle"
 Item_Type = "Weapon"
 Current_Ammo = 30
-Reserve_Ammo = 60
+Reserve_Ammo = 90
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=356374304]
 transform = Transform3D(-0.052293397, 0, 0.5977168, 0, 0.6000003, 0, -0.5977169, 0, -0.052293386, 0, 0, 0)

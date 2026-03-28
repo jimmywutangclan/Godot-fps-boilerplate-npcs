@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://yqpsvjuugjd3" path="res://Levels/Lobby.tscn" id="2_svus1"]
 [ext_resource type="PackedScene" uid="uid://dr8v4s5ymw282" path="res://Assets/Basics/Tree1.tscn" id="3_1kj58"]
 [ext_resource type="PackedScene" uid="uid://d2wdivj85be5u" path="res://Assets/Basics/Tree2.tscn" id="4_rible"]
+[ext_resource type="PackedScene" uid="uid://byeilm2jqvbf2" path="res://Assets/NPCs/CaveNPCs/weaker_cozy_glow_npc_rifle.tscn" id="5_dadvy"]
 [ext_resource type="PackedScene" uid="uid://brbwofminaknt" path="res://Assets/Basics/Stone.tscn" id="5_rible"]
+[ext_resource type="PackedScene" uid="uid://cvhgw0f34vjkv" path="res://Assets/NPCs/cozy_glow_npc_sword.tscn" id="6_eg1u8"]
 [ext_resource type="PackedScene" uid="uid://dfx2mu5ct4vh1" path="res://Assets/Basics/StoneWall.tscn" id="6_we3mc"]
+[ext_resource type="PackedScene" uid="uid://d1oc5t5is4ttn" path="res://Assets/NPCs/cozy_glow_npc_rpg.tscn" id="7_1locd"]
 [ext_resource type="PackedScene" uid="uid://kqai42bpogp" path="res://Assets/FriendlyNPCs/Squirrel.tscn" id="7_do5in"]
 [ext_resource type="PackedScene" uid="uid://cg2t1cvaxf4mf" path="res://Assets/NPCs/NPC_Group.tscn" id="8_7coso"]
 [ext_resource type="PackedScene" uid="uid://dj2oypxshxocs" path="res://Assets/NPCs/EverfreeNPCs/everfree_cozy_glow_npc_pistol.tscn" id="9_ymuew"]
@@ -63,11 +66,11 @@ Wave1_RouteGroup = NodePath("RaiderRoute")
 Wave1_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew")])
 Wave1_NPC_Counts = Array[int]([4])
 Wave2_RouteGroup = NodePath("RaiderRoute")
-Wave2_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew")])
-Wave2_NPC_Counts = Array[int]([8])
+Wave2_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew"), ExtResource("5_dadvy"), ExtResource("6_eg1u8")])
+Wave2_NPC_Counts = Array[int]([6, 4, 1])
 Wave3_RouteGroup = NodePath("RaiderRoute")
-Wave3_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew")])
-Wave3_NPC_Counts = Array[int]([4])
+Wave3_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew"), ExtResource("5_dadvy"), ExtResource("6_eg1u8"), ExtResource("7_1locd")])
+Wave3_NPC_Counts = Array[int]([6, 6, 3, 1])
 Wave4_RouteGroup = NodePath("RaiderRoute")
 Wave4_NPC_Types = Array[PackedScene]([ExtResource("9_ymuew")])
 Wave4_NPC_Counts = Array[int]([4])

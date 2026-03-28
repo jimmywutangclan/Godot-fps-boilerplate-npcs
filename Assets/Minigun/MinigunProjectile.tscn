@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c2hvg8v1b7nrm"]
+
+[ext_resource type="Script" uid="uid://bor6nnl38yh73" path="res://Scripts/Weapons/Minigun_Bullets.gd" id="1_6bfug"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igbjw"]
+albedo_color = Color(0.63988745, 0.41609755, 0.051105984, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.64852077, 0.4729358, 0.17015278, 1)
+emission_energy_multiplier = 17.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igbjw"]
+size = Vector3(0.21940327, 0.20978498, 1.219532)
+
+[node name="MinigunBullets" type="RigidBody3D" unique_id=1067080983]
+top_level = true
+collision_layer = 4
+collision_mask = 5
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_6bfug")
+Damage = 85
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=520836962]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, 9.4354764e-05, 0.31275687, 0.28917176)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1711764482]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, -0.20128995, 0.20758179, 0.28917176)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1971710964]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, -0.30325648, 0.07808143, 0.22468254)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=937309424]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, -0.17086755, -0.077860594, 0.03367588)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=2031640779]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, -0.019659773, -0.2639986, -0.13012007)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="." unique_id=906769436]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, 0.19420515, -0.16703637, -0.24137035)
+radius = 0.099609375
+height = 1.1789551
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." unique_id=1729424205]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, 0.30211288, -0.04606466, -0.080501795)
+radius = 0.099609375
+height = 1.1749268
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." unique_id=835039634]
+transform = Transform3D(0.2, 0, 0, 0, -2.4909205e-08, -0.20899996, 0, 0.5698562, -9.135679e-09, 0.16645268, 0.13137789, 0.15664062)
+radius = 0.099609375
+height = 1.1749268
+material = SubResource("StandardMaterial3D_igbjw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1217728037]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1168804158]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, -0.0001911527, 0.04015539, 0.0028972626)
+shape = SubResource("BoxShape3D_igbjw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

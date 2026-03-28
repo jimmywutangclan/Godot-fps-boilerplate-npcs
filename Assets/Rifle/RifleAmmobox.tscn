@@ -12,7 +12,7 @@ size = Vector3(0.6886139, 0.27449036, 1.0834961)
 [node name="RifleAmmoBox" type="RigidBody3D" unique_id=1264254395 groups=["AmmoBox"]]
 script = ExtResource("1_3dcvk")
 Item_Name = "Rifle"
-Reserve_Ammo = 45
+Reserve_Ammo = 90
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1948573964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04559326, 0.049682617, 0)
