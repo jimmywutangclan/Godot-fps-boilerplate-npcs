@@ -22,6 +22,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.8
 [node name="Armor4" parent="." unique_id=1494016219 instance=ExtResource("1_mc82p")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.88563037, 0.21381968, -1.7612711)
 
+[node name="Armor5" parent="." unique_id=667782526 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9737988, 0.21381968, 0.38575745)
+
+[node name="Armor6" parent="." unique_id=2044128187 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9737988, 0.21381968, -0.22075772)
+
+[node name="Armor7" parent="." unique_id=817644478 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9737988, 0.21381968, -1.154756)
+
+[node name="Armor8" parent="." unique_id=684667982 instance=ExtResource("1_mc82p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9737988, 0.21381968, -1.7612711)
+
 [node name="Taco" parent="." unique_id=971090769 instance=ExtResource("3_0rs7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0962095, 0, 0)
 
@@ -45,6 +57,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2321448, 0, -1.5318494)
 
 [node name="Taco8" parent="." unique_id=114730912 instance=ExtResource("3_0rs7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8020997, 0, -1.5318494)
+
+[node name="Taco9" parent="." unique_id=1758297070 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.031787, 0, 0)
+
+[node name="Taco10" parent="." unique_id=155822687 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.461832, 0, 0)
+
+[node name="Taco11" parent="." unique_id=752071684 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8958516, 0, -0.061380148)
+
+[node name="Taco12" parent="." unique_id=1490394564 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3258967, 0, -0.061380148)
+
+[node name="Taco13" parent="." unique_id=1423286599 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.031787, 0, -1.4704692)
+
+[node name="Taco14" parent="." unique_id=444495451 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.461832, 0, -1.4704692)
+
+[node name="Taco15" parent="." unique_id=1398290614 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8958516, 0, -1.5318494)
+
+[node name="Taco16" parent="." unique_id=1391892878 instance=ExtResource("3_0rs7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3258967, 0, -1.5318494)
 
 [node name="PistolAmmoBox" parent="." unique_id=1264254395 instance=ExtResource("5_jhgn2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2660594, 0, 0)
